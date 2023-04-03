@@ -5,7 +5,7 @@ const Post = () => {
     const router = useRouter()
     const {pid} = router.query 
 
-    return <test>Ene bol {pid}</test>
+    return <section className='px-10 py-4'>Ene bol {pid}</section>
 }
 
 export default Post

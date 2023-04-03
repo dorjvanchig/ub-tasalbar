@@ -12,6 +12,11 @@ const EventTsonkh = () => {
         }}>
             event 1
         </div>
+        <div className="w-1/5 h-[200px] flex justify-center items-center border rounded-[3px] cursor-pointer" onClick={() => {
+            eventSongyo('event/BlackPink toglolt')
+        }}>
+            BlackPink тоглолт
+        </div>
     </section>
 }
 
