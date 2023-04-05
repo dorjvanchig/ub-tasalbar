@@ -3,7 +3,7 @@ import '../styles/tailwind.css'
 import Tses from '@/src/tses/Tses'
 export default function App({ Component, pageProps }) {
   return <main>
-      <Tses />
+      {/* <Tses /> */}
       <Component {...pageProps} />
     </main>
 }
