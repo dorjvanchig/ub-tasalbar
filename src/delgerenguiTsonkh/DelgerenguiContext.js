@@ -22,9 +22,7 @@ const DelgerenguiContext = (props) => {
 
     return (
         <DelgerenguiCtx.Provider value={{ testRef, tomState, setleye }}>
-            <TolgoiTses/>
             <UndsenTsonkh/>
-            <UndsenZagvarKhul/>
         </DelgerenguiCtx.Provider>
     );
 }
