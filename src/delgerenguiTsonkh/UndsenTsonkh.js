@@ -1,9 +1,19 @@
 import React from 'react';
 import Image from 'next/image';
-import SuudalZakhialgiinTalbar from './dedKheseg/SuudalZakhialgiinTalbar';
-import KhajuuTal from './dedKheseg/KhajuuTal';
-import { Divider } from 'antd';
+import EventTailbar from './dedKheseg/EventTailbar';
+import EventKhajuuTalbar from './dedKheseg/EventKhajuuTalbar';
+import Swiper from 'react-id-swiper'
 const UndsenTsonkh = () => {
+
+    const params = {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        wrapperClass: 'flex flex-row'
+      }
 
     return (
         <section className='w-full h-fit'>
@@ -21,7 +31,7 @@ const UndsenTsonkh = () => {
                     </div>
                 </div>
             </div>
-            <div className='bg-slate-100 flex w-full justify-center'>
+            {/* <div className='bg-slate-100 flex w-full justify-center'>
                 <div className='container'>
                     <div className='w-full h-[80px] flex flex-row items-center'>
                         <div className='sm:w-full md:w-4/6 h-full  flex flex-row justify-between'>
@@ -52,13 +62,20 @@ const UndsenTsonkh = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className='flex justify-center py-3'>
-                <div className='container flex flex-col'>                
+            </div> */}
+            <div className='flex justify-center py-3 bg-[#f4f5f9] pt-5'>
+                <div className='container flex flex-col gap-3'>
+                    <Swiper {...params}>
+                        <div className='w-[300px] h-[150px] border'>Slide #1</div>
+                        <div className='w-[300px] h-[150px] border'>Slide #2</div>
+                        <div className='w-[300px] h-[150px] border'>Slide #3</div>
+                        <div className='w-[300px] h-[150px] border'>Slide #4</div>
+                        <div className='w-[300px] h-[150px] border'>Slide #5</div>
+                    </Swiper>
                     <div className='w-full flex flex-row relative'>
-                        <SuudalZakhialgiinTalbar />
+                        <EventTailbar/>
                         <div className='mx-3 border-l' />
-                        <KhajuuTal/>
+                        <EventKhajuuTalbar/>
                     </div>
                     {/* <div className='w-full h-[1000px]'></div> */}
                 </div>
