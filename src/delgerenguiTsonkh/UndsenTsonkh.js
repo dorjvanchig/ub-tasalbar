@@ -2,19 +2,15 @@ import React from 'react';
 import Image from 'next/image';
 import EventTailbar from './dedKheseg/EventTailbar';
 import EventKhajuuTalbar from './dedKheseg/EventKhajuuTalbar';
-import Swiper from 'react-id-swiper'
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
+import { Divider } from 'antd';
+import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 const UndsenTsonkh = () => {
 
-    const params = {
-        slidesPerView: 3,
-        spaceBetween: 30,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        wrapperClass: 'flex flex-row'
-      }
-
+    React.useEffect(() => {
+        // const test = new Splide( '.splide' ).mount( { AutoScroll } );
+    }, [])
     return (
         <section className='w-full h-fit'>
             <div className='w-full h-[350px] relative p-4 flex justify-center items-center' style={{backgroundImage: 'url("https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
@@ -65,13 +61,117 @@ const UndsenTsonkh = () => {
             </div> */}
             <div className='flex justify-center py-3 bg-[#f4f5f9] pt-5'>
                 <div className='container flex flex-col gap-3'>
-                    <Swiper {...params}>
-                        <div className='w-[300px] h-[150px] border'>Slide #1</div>
-                        <div className='w-[300px] h-[150px] border'>Slide #2</div>
-                        <div className='w-[300px] h-[150px] border'>Slide #3</div>
-                        <div className='w-[300px] h-[150px] border'>Slide #4</div>
-                        <div className='w-[300px] h-[150px] border'>Slide #5</div>
-                    </Swiper>
+                    <Divider plain>Танд санал болгох</Divider>
+                <Splide 
+                    options={{
+                        type   : 'loop',
+                        drag   : 'free',
+                        focus  : 'center',
+                        rewind: true,
+                        gap   : '1rem',
+                        perPage : 5,
+                        autoScroll: {
+                            speed: 1,
+                          },
+                    }}
+                >
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                    <SplideSlide>
+                        <div className='w-[300px] h-[100px] border overflow-hidden cursor-pointer'>
+                            <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
+                                width={500}
+                                height={500}
+                            />
+                        </div>
+                    </SplideSlide>
+                </Splide>
                     <div className='w-full flex flex-row relative'>
                         <EventTailbar/>
                         <div className='mx-3 border-l' />

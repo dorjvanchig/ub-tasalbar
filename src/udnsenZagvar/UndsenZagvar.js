@@ -162,7 +162,7 @@ export default function UndsenZagvar()
                 {
                 jagsaalt.map((x, i)=>{
                   return (
-                    <widget type="ticket">
+                    <widget key={i} type="ticket">
                         <div className="top ">
                             <Image 
                                 className='h-[177px] w-full rounded-t-md bg-origin-content'
