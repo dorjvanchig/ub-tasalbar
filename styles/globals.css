@@ -14,3 +14,25 @@ body {
 body {
   color: rgb(var(--foreground-rgb)); 
 } 
+.ant-menu-horizontal > .ant-menu-item:after {
+  border-bottom: none !important;
+}
+.ant-menu-horizontal > .ant-menu-item:hover::after,
+.ant-menu-horizontal > .ant-menu-item-selected::after {
+  border-bottom: none !important;
+}
+.ant-menu-horizontal .ant-menu-item{
+  padding-inline: 10px;
+}
+.ant-menu-horizontal > .ant-menu-item:hover{
+  color: red;
+}
+/* CSS styles for adding bottom border on hover */
+.ant-menu-horizontal > .ant-menu-item:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
