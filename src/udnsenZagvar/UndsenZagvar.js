@@ -86,7 +86,7 @@ export default function UndsenZagvar()
 
   return ( <div className='block'>
             <TolgoiTses />
-            <main className='bg-[#f4f5f9] pt-[40px] relative'>
+            <main className='bg-[#f4f5f9] py-[30px] relative'>
                 <div className='container mx-auto'>
                     <div className='banner h-[330px] w-full shadow-md bg-white rounded-lg p-2'>
                     <Carousel autoplay>
@@ -186,7 +186,10 @@ export default function UndsenZagvar()
                         </div>
                         <div className="rip"></div>
                         <div className="bottom ">
-                            <a className="buy bg-slate-100 text-slate-400 hover:bg-red-500 hover:text-white px-1 py-1 rounded-sm" href="#">Тасалбар авах</a>
+                            <a className="buy bg-slate-100 text-slate-400 hover:bg-red-500 hover:text-white px-1 py-1 rounded-sm hover:cursor-pointer"
+                                onClick={()=> routeKhiiye('a')}>
+                                Тасалбар авах
+                            </a>
                         </div>
                         </widget>)
                 })}
