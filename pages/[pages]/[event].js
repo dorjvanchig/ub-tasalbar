@@ -1,6 +1,9 @@
 import React from 'react'
 import DelgerenguiContext from '@/src/delgerenguiTsonkh/DelgerenguiContext'
-const event = () => {
+import { useRouter } from 'next/router';
+const event = (props) => {
+  const router = useRouter();
+  const { slug } = router.query;
   return (
     <DelgerenguiContext/>
   )
