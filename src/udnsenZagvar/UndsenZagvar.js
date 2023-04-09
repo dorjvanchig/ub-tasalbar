@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import TolgoiTses from './TolgoiTses'
 import UndsenZagvarKhul from './UndsenZagvarKhul'
-import { Carousel, Spin } from 'antd';
+import { Carousel, Spin, Button } from 'antd';
 import Image from 'next/image'
 import Toglolt from '../../public/zurag/bieKhun.png'
 import Toglolt1 from '../../public/zurag/playoff.png'
@@ -56,7 +56,7 @@ export default function UndsenZagvar()
             <main className='bg-[#f4f5f9] pt-[40px] relative'>
                 <div className='container mx-auto'>
                     <div className='banner h-[330px] w-full shadow-md bg-white rounded-lg p-2'>
-                    <Carousel autoplay>
+                    <Carousel>
                         {
                             loading ? (
                                 <div className="text-center mt-16">
@@ -64,12 +64,12 @@ export default function UndsenZagvar()
                                 </div>
                               ) : (
                                 bannerJagsaalt.map((ugugdul, muriinDugaar)=>{
-                                    return (<div className='!grid grid-cols-2'>
+                                    return (<div className='!grid grid-cols-2' key={muriinDugaar}>
                                     <div className=' p-8'>
                                         <div className='text-center break-words capitalize text-[1.5rem] mb-[.5rem] font-semibold font-sans text-style !text-[#152035]'>
                                             {ugugdul.garchig}
                                         </div>
-                                        <div className='flex items-center py-1 w-full justify-between'>
+                                        <div className='flex items-center py-1 w-full justify-end'>
                                             <div className='flex items-center text-[#889097] px-1 w-[40%]'>
                                                 <DursZuragch icon = "clarity:date-line" className = "h-[12px] w-[12px] mr-1"/>
                                                 <span className='text-slate-500 text-xs truncate'>2023 оны 4-р сарын 22-нд</span>
@@ -87,12 +87,26 @@ export default function UndsenZagvar()
                                                 <span className='text-slate-500 text-xs truncate'>8 +</span>
                                             </div>
                                         </div>
-                                        <div className='indent-8 py-[18px] font-normal text-[#506172]'>
+                                        <div className='indent-8 py-[18px] font-normal text-[#506172] h-[114px]'>
                                             {ugugdul.delgerengui}
                                         </div>
-                                        <div className='border-t border-t-slate-200 border-dashed flex items-center justify-end'>
-                                            <div className='border-slate-100 border w-[80px] mt-2 p-1 rounded-md flex items-center justify-center' onClick={()=> alert('a')}>
-                                                захиалах
+                                        <div className='border-t border-t-slate-200 border-dashed x-2 py-2 grid grid-cols-3'>
+                                            <div className='grid border-r px-2 border-r-slate-200 border-dashed'>
+                                                <span className='text-xs text-slate-400'>Хаана</span>
+                                                <span className='text-base font-normal truncate'>Төв цэнгэлдэх хүрээлэн</span>
+                                            </div>
+                                            <div className='grid px-2'>
+                                                <span className='text-xs text-slate-400'>Зохион байгуулагч</span>
+                                                <span className='text-base font-normal truncate'>Хурд хамтлаг</span>
+                                            </div>
+                                            <div 
+                                                className='flex items-end justify-center border-l border-l-slate-200 border-dashed px-2' >
+                                               <Button 
+                                                    type="primary" 
+                                                    danger
+                                                    onClick={()=> alert('a')}>
+                                                    Захиалах
+                                                </Button>
                                             </div>
                                         </div>
                                     </div> 

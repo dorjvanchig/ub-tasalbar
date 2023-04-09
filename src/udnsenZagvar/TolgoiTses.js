@@ -48,6 +48,13 @@ export default function TolgoiTses()
           <DursZuragch icon = "material-symbols:arrow-drop-down" className = "ml-1 text-base text-white"/>
         </div>
         <div className='flex items-center justify-end'> 
+          <div className='flex items-center'>
+            <div>
+              <DursZuragch icon = "ic:baseline-call" className = "mr-1 text-sm text-white"/>
+            </div>
+            <div className='text-white text-xs'>1800-1900</div>
+          </div>
+          <div className=' h-[15px] w-[1px] bg-[#cbd3d7] m-[0_10px_-2px_10px]'/>
           <div><DursZuragch icon = "ri:facebook-fill" className = "text-base mr-1 text-white hover:text-red-500 hover:cursor-pointer"/></div>
           <div><DursZuragch icon = "mdi:twitter" className = "text-base mr-1 text-white hover:text-red-500 hover:cursor-pointer"/></div>
           <div><DursZuragch icon = "mingcute:youtube-line" className = "text-base mr-1 text-white hover:text-red-500 hover:cursor-pointer"/></div>
