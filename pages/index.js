@@ -1,5 +1,6 @@
 import { DursZuragch } from '../src/components/index'
 import { Carousel } from 'antd';
+import { useRouter } from 'next/router';
 import Image from 'next/image'
 import Toglolt from '../public/zurag/bieKhun.png'
 import Toglolt1 from '../public/zurag/playoff.png'
