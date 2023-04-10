@@ -1,46 +1,50 @@
 import React from 'react'
+import { DursZuragch, SButton, SInput } from '../components'
 
 export default function NevtrekhKhuudas(props) {
   return (
-    <div className='pb-[100px] mt-[100px]'>
+    <div className='bg-[rgb(244,245,249)] w-full h-full'>
+    <div className='pb-[110px] pt-[110px] '> 
       <div className='container mx-auto'>
-        <div className='grid grid-cols-3'>
-          <div></div>
-            <div className='max-w-max'>
-              <div class="login_wrap bg-white p-[30px] rounded shadow-[0px_0px_40px_0px_#0000000d]">
-                <div class="padding_eight_all bg-white">
-                    <div class="heading_s1">
-                        <h3 class="mb-30">Login</h3>
+         <div className='flex justify-center'>
+          <div className='sm:flex-[0_0_94%] md:flex-[0_0_94%] lg:flex-[0_0_35%] 2xl:flex-[0_0_35%]'>
+            <div className='bg-white p-[30px] rounded overflow-hidden shadow-[0px_0px_40px_0px_#0000000d]'>
+                <div className="heading_s1">
+                      <h3 className="mb-[30px] text-[#152035]">Нэвтрэх</h3>
+                  </div>
+                  <div className='mb-[1rem]'>
+                      <SInput 
+                        placeholder='И-мэйл хаяг эсвэл гар утасны дугаар'
+                      />
+                  </div>
+                  <div className='mb-[1rem]'>
+                      <SInput 
+                        placeholder='Нууц үг'
+                      /> 
+                  </div>
+                  <SButton>Үргэлжлүүлэх</SButton>         
+                  <div className="my-[15px] text-center relative divider-text-center">
+                    <span className='bg-white relative uppercase p-[0px_15px] text-xs'>Бусад</span>
+                  </div> 
+                  <div className='grid grid-cols-2 items-center justify-center'>
+                    <div className='flex items-center justify-end px-1'>
+                      <SButton size= "large" className = "!bg-[#3b5998] !border-[#3b5998] w-[75%] flex items-center justify-center">
+                        <DursZuragch icon = "uil:facebook-f"/>
+                        <span className='capitalize ml-2'>facebook</span>
+                      </SButton>
                     </div>
-                    <form method="post">
-                        <div class="mb-[1rem]">
-                            <input type="text" required="" className="border border-[#f0e9ff] rounded-md h-[48px] pl-[18px] text-sm bg-transparent" name="email" placeholder="Your Email" />
-                        </div>
-                        <div class="mb-[1rem]">
-                            <input className="border border-[#f0e9ff] rounded-md h-[48px] pl-[18px] text-sm bg-transparent" required="" type="password" name="password" placeholder="Password"/>
-                        </div>
-                        <div class="mb-[20px] mt-[5px] flex items-center justify-between w-full">
-                            <div class="chek-form">
-                                <div class="custome-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value=""/>
-                                    <label class="text-[#6c757d]" for="exampleCheckbox1"><span>Remember me</span></label>
-                                </div>
-                            </div>
-                            <a class="text-muted" href="#">Forgot password?</a>
-                        </div>
-                        <div class="mb-[1rem]">
-                            <button type="submit" 
-                              className={`bg-[#ff656a] uppercase text-white inline-block text-sm font-medium p-[27px_44px] rounded relative overflow-hidden m-0 z-10 min-w-[200px] before:content-[""] before:absolute before:left-0 before:top-0 before:w-full before:h-full before:bg-[#e6373d] before:z-10 before:transform before:hover:scale-110 before:transition before:duration-1000 before:ease-linear `} name="login">
-                              Нэвтрэх
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    <div className='flex items-center justify-start px-1 '>
+                      <SButton size= "large" className = "!bg-[#d85040] !border-[#d85040] w-[75%] flex items-center justify-center">
+                        <DursZuragch icon = "entypo-social:google"/>
+                        <span className='capitalize ml-2'>Google</span>
+                      </SButton>
+                    </div>
+                  </div> 
             </div>
-            <div></div>
           </div>
-        </div>
+         </div>
       </div>
+    </div>
     </div>
   )
 }

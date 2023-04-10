@@ -163,7 +163,7 @@ export default function Nuur(props) {
                             <Spin size="large" />
                         </div>
                         ) :(
-                <widget type="ticket">
+                <widget type="ticket" key = {i}>
                     <div className="top ">
                         <Image 
                             className='h-[177px] w-full rounded-t-md bg-origin-content'
