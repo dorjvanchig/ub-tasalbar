@@ -97,8 +97,8 @@ export default function TolgoiTses()
                 </Menu>
             </div>
             <div className='flex items-center justify-end'>
-                <DursZuragch icon = "ic:outline-compare" className = "mr-3 text-lg text-slate-600"/>
-                <DursZuragch icon = "ic:round-search" className = "mr-2 text-lg text-slate-600"/>
+                <DursZuragch icon = "ic:outline-compare" className = "mr-3 text-lg text-slate-700"/>
+                <DursZuragch icon = "ic:round-search" className = "mr-2 text-lg text-slate-700"/>
             </div>
         </div>
     </div>
