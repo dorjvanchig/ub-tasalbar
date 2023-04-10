@@ -76,8 +76,8 @@ export default function Nuur(props) {
         }
     ]
 
-    const routeKhiiye = (zam) => {
-        router.push('concert/' + zam)
+    const routeKhiiye = () => {
+        router.push('delgerenguiTsonkh/DelgerenguiContext')
     }
   return (
     <div>
@@ -188,7 +188,7 @@ export default function Nuur(props) {
                     <div className="rip"></div>
                     <div className="bottom ">
                         <a className="buy bg-slate-100 text-slate-400 hover:bg-red-500 hover:text-white px-1 py-1 rounded-sm hover:cursor-pointer"
-                            onClick={()=> routeKhiiye('a')}>
+                            onClick={()=> routeKhiiye()}>
                             Тасалбар авах
                         </a>
                     </div>

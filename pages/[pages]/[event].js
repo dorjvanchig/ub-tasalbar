@@ -1,13 +1,12 @@
-import React from 'react'
-import DelgerenguiContext from '@/src/delgerenguiTsonkh/DelgerenguiContext'
+import React from 'react' 
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 const event = (props) => {
   const router = useRouter();
   const { pages, event } = router.query;
-  const Khuudas = dynamic(import(`@/src/${pages}/${event}`))
+  let Khuudas = dynamic(() => import(`@/src/${pages}/${event}`), {ssr: false,}) 
   return (
-    <DelgerenguiContext/>
+    <Khuudas/>
   )
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { DursZuragch } from '../components'
 import { Menu } from 'antd' 
+import Link from 'next/link';
 
 export default function TolgoiTses() 
 {
@@ -60,10 +61,12 @@ export default function TolgoiTses()
           <div><DursZuragch icon = "mingcute:youtube-line" className = "text-base mr-1 text-slate-500 hover:text-red-500 hover:cursor-pointer"/></div>
           <div className=' h-[15px] w-[1px] bg-[#cbd3d7] m-[0_10px_-2px_10px]'/>
           <div className='flex items-center hover:cursor-pointer'>
-            <DursZuragch icon = "system-uicons:user-male" className = "text-slate-900  text-base"/>
-            {/* text-slate-900 */}
-             <span className='text-xs text-slate-900'> Нэвтрэх</span>
-            <DursZuragch icon = "material-symbols:arrow-drop-down" className = "ml-1 text-base text-slate-900"/>
+            <Link  
+                href={`/nevtrekh/NevtrekhKhuudas`}>
+                  <DursZuragch icon = "system-uicons:user-male" className = "text-slate-900  text-base"/>
+                   <span className='text-xs text-slate-900'> Нэвтрэх</span>
+                  <DursZuragch icon = "material-symbols:arrow-drop-down" className = "ml-1 text-base text-slate-900"/>
+            </Link> 
           </div>
         </div>
       </div>
