@@ -97,8 +97,8 @@ export default function TolgoiTses()
                 </Menu>
             </div>
             <div className='flex items-center justify-end'>
-                <DursZuragch icon = "ic:outline-compare" className = "mr-3 text-lg text-slate-700"/>
-                <DursZuragch icon = "ic:round-search" className = "mr-2 text-lg text-slate-700"/>
+                <DursZuragch icon = "ic:outline-compare" className = "hover:bg-slate-100 hover:rounded-md mr-3 p-1 text-[1.8rem] text-slate-700 hover:text-slate-500 hover:cursor-pointer"/>
+                <DursZuragch icon = "ic:round-search" className = "hover:bg-slate-100 hover:rounded-md mr-2 p-1 text-[1.8rem] text-slate-700 hover:text-slate-500 hover:cursor-pointer"/>
             </div>
         </div>
     </div>
