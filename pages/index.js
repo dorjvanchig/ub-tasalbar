@@ -1,8 +1,8 @@
-import UndsenZagvar from '@/src/udnsenZagvar/UndsenZagvar';
+import Nuur from '@/src/nuurKhuudas/Nuur';
 
 export default function Home() {
  
   return (
-     <div>loading</div>
+     <Nuur />
   )
 }

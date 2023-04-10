@@ -77,7 +77,7 @@ export default function Nuur(props) {
     ]
 
     const routeKhiiye = (zam) => {
-        router.push('event/' + zam)
+        router.push('concert/' + zam)
     }
   return (
     <div>
@@ -156,7 +156,13 @@ export default function Nuur(props) {
             <div className="grid sm:grid-cols-2 md:grid-cols-3  gap-4 mb-[40px]">
             {
             jagsaalt.map((x, i)=>{
+                
                 return (
+                    loading ? (
+                        <div className="text-center mt-16">
+                            <Spin size="large" />
+                        </div>
+                        ) :(
                 <widget type="ticket">
                     <div className="top ">
                         <Image 
@@ -186,7 +192,7 @@ export default function Nuur(props) {
                             Тасалбар авах
                         </a>
                     </div>
-                    </widget>)
+                    </widget>))
             })}
             </div>
         </section>
