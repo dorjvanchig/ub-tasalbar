@@ -38,7 +38,7 @@ export default function TolgoiTses()
     ];
 
   return ( <header className='bg-white shadow-md'>
-  <div className='border-b border-b-[#f4f5f9] py-2 block'>
+  <div className='border-b border-b-[#f4f5f9] py-2 hidden md:block'>
     <div className='container mx-auto'>
       <div className='grid grid-cols-2 w-full'>
         <div className='flex items-center'>
@@ -81,11 +81,15 @@ export default function TolgoiTses()
   </div>
   <div className='h-[70px] leading-[65px] shadow-sm'>
     <div className='container mx-auto'> 
-        <div className='grid grid-flow-col-dense'>
-          <div className='flex items-center justify-center'>
-            <img src='/zurag/logo.png' height={50} width = {180}/>
+        <div className='grid grid-flow-col-dense items-center px-5 md:px-0'>
+          <div className='hidden md:block'>
+              <img src='/zurag/logo.png' height={50} width = {180}/>
           </div>
-            <div>
+          <div className='md:hidden'>
+            <DursZuragch icon = "ic:round-menu"/>
+          </div>
+          <div className='md:hidden'>Тасалбар</div>
+            <div className='hidden md:block'>
                 <Menu 
                     onClick={onClick} 
                     selectedKeys={[current]} 
@@ -97,8 +101,16 @@ export default function TolgoiTses()
                 </Menu>
             </div>
             <div className='flex items-center justify-end'>
-                <DursZuragch icon = "ic:outline-compare" className = "hover:bg-slate-100 hover:rounded-md mr-3 p-1 text-[1.8rem] text-slate-700 hover:text-slate-500 hover:cursor-pointer"/>
-                <DursZuragch icon = "ic:round-search" className = "hover:bg-slate-100 hover:rounded-md mr-2 p-1 text-[1.8rem] text-slate-700 hover:text-slate-500 hover:cursor-pointer"/>
+                <div className='block md:hidden'>
+                  <Link href={`/nevtrekh/NevtrekhKhuudas`}>
+                    <div className='flex items-center mx-1 p-1 h-7 hover:bg-slate-200 bg-slate-100 rounded-md hover:cursor-pointer text-slate-900 hover:font-normal'>
+                         <span className='text-xs px-1'> Нэвтрэх</span>
+                        <DursZuragch icon = "system-uicons:user-male" className = "text-base mx-1"/>
+                    </div>
+                  </Link>
+                </div>
+                <DursZuragch icon = "ic:outline-compare" className = "bg-slate-100 hidden md:block rounded-md mr-3 p-1 text-[1.8rem] text-slate-700 hover:text-slate-500 hover:cursor-pointer"/>
+                <DursZuragch icon = "ic:round-search" className = "bg-slate-100 rounded-md mr-2 p-1 text-[1.8rem] text-slate-700 hover:text-slate-500 hover:cursor-pointer"/>
             </div>
         </div>
     </div>
