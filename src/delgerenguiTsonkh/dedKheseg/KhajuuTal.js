@@ -8,7 +8,7 @@ const KhajuuTal = () => {
   return (
     <div className='flex flex-col gap-2 p-2 border shadow-md sticky top-10 h-fit rounded-[3px] w-[350px] text-slate-700'>
         <div className='w-fit bg-white mt-[-20px] px-3 text-[md] font-bold text-slate-800'>
-          <span>Захиалга</span>
+          <span className='text-[1.2rem]'>Захиалга</span>
         </div>
         <div className='flex flex-col mb-3'>
           {
