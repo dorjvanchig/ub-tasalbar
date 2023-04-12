@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { DursZuragch, isNullOrUndefined } from '../components'
-import { Menu } from 'antd' 
+import { Menu, Badge } from 'antd' 
 import Link from 'next/link';
 import { UndsenCtx } from './UndsenZagvar';
 
@@ -101,16 +101,20 @@ export default function TolgoiTses()
                 </Menu>
             </div>
             <div className='flex items-center justify-end'>
-                <div className='block md:hidden'>
+                <div className='block md:hidden p-1'>
                   <Link href={`/nevtrekh/NevtrekhKhuudas`}>
-                    <div className='flex items-center mx-1 p-1 h-7 hover:bg-slate-200 bg-slate-100 rounded-md hover:cursor-pointer text-slate-900 hover:font-normal'>
-                         <span className='text-xs px-1'> Нэвтрэх</span>
-                        <DursZuragch icon = "system-uicons:user-male" className = "text-base mx-1"/>
+                    <div className='bg-slate-100 h-[33px] w-[93%] hover:bg-slate-200 rounded-md p-1 ml-3 hover:cursor-pointer flex items-center'>
+                         <span className='text-xs px-1 truncate text-slate-400'>Dorjvanchig@gmail.com</span>
+                        <DursZuragch icon = "system-uicons:user-male" className = "text-[1.2rem]"/>
                     </div>
                   </Link>
                 </div>
-                <DursZuragch icon = "ic:outline-compare" className = "bg-slate-100 hidden md:block rounded-md mr-3 p-1 text-[1.8rem] text-slate-700 hover:text-slate-500 hover:cursor-pointer"/>
-                <DursZuragch icon = "ic:round-search" className = "bg-slate-100 rounded-md mr-2 p-1 text-[1.8rem] text-slate-700 hover:text-slate-500 hover:cursor-pointer"/>
+                <Badge size='small' count={5} className='h-[33px] bg-slate-100 rounded-md p-1 hover:cursor-pointer hover:bg-slate-200'>
+                  <DursZuragch icon = "eva:shopping-bag-fill" className = "text-[1.2rem] text-slate-700"/>
+                </Badge>
+                <div className='bg-slate-100 hover:bg-slate-200 h-[33px] rounded-md p-1 ml-3 hover:cursor-pointer'>
+                  <DursZuragch icon = "ic:round-search" className = "text-[1.2rem] text-slate-700"/>
+                </div>
             </div>
         </div>
     </div>

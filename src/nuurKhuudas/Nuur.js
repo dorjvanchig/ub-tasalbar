@@ -83,8 +83,7 @@ export default function Nuur(props) {
     <div>
         <main className='bg-[#f4f5f9] py-[30px] relative'>
                 <div className='container mx-auto '>
-                   
-                    <Carousel>
+                    <Carousel className='!hidden md:!block'>
                         {
                             loading ? (
                                 <div className="text-center mt-16">
@@ -92,8 +91,8 @@ export default function Nuur(props) {
                                 </div>
                                 ) : (
                                 bannerJagsaalt.map((ugugdul, muriinDugaar)=>{
-                                    return  (<div className='full flex flex-col md:flex-row relative gap-1 md:gap-0 bg-white' key={muriinDugaar}>
-                                    <div className=' p-8 hidden md:block'>
+                                    return  (<div className='w-full bg-white grid-cols-2 !grid' key={muriinDugaar}>
+                                    <div className='p-8'>
                                         <div className='  transition-all duration-300 text-center break-words capitalize text-[1.5rem] md:text-base mb-[.5rem] font-semibold font-sans text-style !text-[#152035]'>
                                             {ugugdul.garchig}
                                         </div>
@@ -151,7 +150,7 @@ export default function Nuur(props) {
                     </Carousel>  
                 </div>
         </main>
-        <section className='container mx-auto  pt-12 pb-12 mt-12'>
+        <section className='container mx-auto pb-12 mt-8'>
             <div className="grid sm:grid-cols-2 md:grid-cols-3  gap-4 mb-[40px]">
             {
             jagsaalt.map((x, i)=>{
