@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { DursZuragch } from '../components'
+import { DursZuragch, isNullOrUndefined } from '../components'
 import { Menu } from 'antd' 
 import Link from 'next/link';
 import { UndsenCtx } from './UndsenZagvar';
@@ -71,7 +71,7 @@ export default function TolgoiTses()
             <Link href={`/nevtrekh/NevtrekhKhuudas`}>
                 <div className='flex items-center hover:cursor-pointer text-slate-900 hover:text-red-500 hover:font-normal'>
                     <DursZuragch icon = "system-uicons:user-male" className = "  text-base"/>
-                     <span className='text-xs'> Нэвтрэх</span>
+                     <span className='text-xs'>{!isNullOrUndefined(undsenCtx.undsenState?.nevtersenKhereglegch?.email) ? undsenCtx.undsenState?.nevtersenKhereglegch?.email : ' Нэвтрэх'}</span>
                     <DursZuragch icon = "material-symbols:arrow-drop-down" className = "ml-1 text-base "/>
                 </div>
             </Link> 

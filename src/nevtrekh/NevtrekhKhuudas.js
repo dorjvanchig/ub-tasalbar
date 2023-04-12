@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
-import { DursZuragch, SButton, SInput } from '../components'
+import React, { useContext, useState } from 'react'
+import { DursZuragch, SButton, SInput, uilchilgeeDuudagch, medeeKharuulakh } from '../components'
 import { Drawer } from 'antd';
 import Burtguulekh from './Burtguulekh';
+import { UndsenCtx } from '../udnsenZagvar/UndsenZagvar';
 
 export default function NevtrekhKhuudas(props) 
 {
+  const undsenCtx = useContext(UndsenCtx)
   const [burtgekhEsekh, setBurtgekhEsekh] = useState(false);
 
+  const [khereglegch, setKhereglegch] = useState({
+    email:'',
+    password:'' 
+  })
   const burtguulekhDarakh = () => {
     setBurtgekhEsekh(true);
   };
@@ -14,12 +20,14 @@ export default function NevtrekhKhuudas(props)
     setBurtgekhEsekh(false);
   };
 
-  const containerStyle = {
-    position: 'relative',
-    padding: 48,
-    overflow: 'hidden',
-    textAlign: 'center',
-  };
+  function utgaSolikh(utga, turul) {
+    console.log('utga', utga)
+    khereglegch[turul] = utga
+    setKhereglegch({...khereglegch})
+  }
+  function urgeljlvvlekh() {
+    undsenCtx.nevtrekh(khereglegch)
+  }
 
   return (
     <div className='bg-[rgb(244,245,249)] w-full h-full'>
@@ -34,14 +42,18 @@ export default function NevtrekhKhuudas(props)
                     <div className='mb-[1rem]'>
                         <SInput 
                           placeholder='И-мэйл хаяг эсвэл гар утасны дугаар'
+                          value = {khereglegch.email}    
+                          onChange = {(e)=> utgaSolikh(e.target.value,'email')}
                         />
                     </div>
                     <div className='mb-[1rem]'>
                         <SInput 
+                         value = {khereglegch.password}    
+                         onChange = {(e)=> utgaSolikh(e.target.value,'password')}
                           placeholder='Нууц үг'
                         /> 
                     </div>
-                    <SButton>Үргэлжлүүлэх</SButton>         
+                    <SButton onClick = {()=> urgeljlvvlekh()}>Үргэлжлүүлэх</SButton>         
                     <div className="my-[15px] text-center relative divider-text-center">
                       <span className='bg-white relative uppercase p-[0px_15px] text-xs'>эсвэл</span>
                     </div> 

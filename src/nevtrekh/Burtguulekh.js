@@ -1,31 +1,39 @@
 import React, { useState } from 'react'
-import { uilchilgeeDuudagch, SButton, SInput } from '../components'
-
+import { uilchilgeeDuudagch, SButton, SInput, medeeKharuulakh } from '../components'
 export default function Burtguulekh(props) {
     const { burtgekhEsekh, setBurtgekhEsekh } = props
     const [state, setState] = useState({
-        nevtrekhNer_utas:'',
-        tulkhuur: ''
+        email:'',
+        password: ''
 
     })
-    function burtguulekh() {
-        uilchilgeeDuudagch('').then((khariu)=>{
-            console.log('burtguulekh')
+    function burtguulekh() {  
+        uilchilgeeDuudagch('khereglegchBurtgekh', state).then((khariu)=>{
+            console.log('khereglegchBurtgekh === >', khariu)
+            medeeKharuulakh('warning', "Анхааруулга", khariu)
             setBurtgekhEsekh(false)
         })
+    }
+
+    function utgaSolikh(utga, turul) {
+        console.log('utga', utga)
+        state[turul] = utga
+        setState({...state})
     }
 
   return (<div className='w-full flex justify-center h-full'>
             <div className='w-full container mx-auto'>
                 <div className='mb-[1rem]'>
                     <SInput 
-                        value = {state.nevtrekhNer_utas}
+                        value = {state.email}
+                        onChange = {(e)=> utgaSolikh(e.target.value,'email')}
                         placeholder='И-мэйл хаяг эсвэл гар утасны дугаар'
                     />
                 </div>
                 <div className='mb-[1rem]'>
                     <SInput 
-                        value = {state.tulkhuur}    
+                        value = {state.password}    
+                        onChange = {(e)=> utgaSolikh(e.target.value,'password')}
                         placeholder='Нууц үг'
                     /> 
                 </div>
