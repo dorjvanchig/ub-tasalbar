@@ -10,7 +10,7 @@ export default function UndsenZagvar({children })
 {  
   const router = useRouter()
   const [undsenState, setUndsenState] = useState({
-    nevtersenKhereglegch:{},
+    nevtersenKhereglegch:{email:'Нэвтрэх'},
     token:{}
   })
   function undsenKhuudasruuShiljikh() {
@@ -48,6 +48,7 @@ export default function UndsenZagvar({children })
   function togloltiinJagsaalt() {
     return new Promise(resolve => {
       uilchilgeeDuudagch('togloltiinJagsaaltAvya').then((khariu)=>{ 
+        console.log("khariu", khariu) 
           resolve(khariu)
       })
     }) 

@@ -33,37 +33,37 @@ body {
   right: 0;
   height: 1px;
 } 
-body widget {
+body section {
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
 } 
-body widget[type=ticket] .top > div,
-body widget[type=ticket] .bottom > div {
+body section[type=ticket] .top > div,
+body section[type=ticket] .bottom > div {
   padding: 0 18px;
 }
-body widget[type=ticket] .top > div:first-child,
-body widget[type=ticket] .bottom > div:first-child {
+body section[type=ticket] .top > div:first-child,
+body section[type=ticket] .bottom > div:first-child {
   padding-top: 18px;
 } 
-body widget[type=ticket] .bottom img {
+body section[type=ticket] .bottom img {
   padding: 18px 0;
 }
-body widget[type=ticket] .top,
-body widget[type=ticket] .bottom,
-body widget[type=ticket] .rip {
+body section[type=ticket] .top,
+body section[type=ticket] .bottom,
+body section[type=ticket] .rip {
   background-color: #fff;
 }
-body widget[type=ticket] .top {
+body section[type=ticket] .top {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
 } 
-body widget[type=ticket] .bottom {
+body section[type=ticket] .bottom {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   padding: 18px;
   /* //height: 30px; */
   padding-top: 10px;
 }  
-body widget[type=ticket] .rip {
+body section[type=ticket] .rip {
   height: 20px;
   margin: 0 10px;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAACCAYAAAB7Xa1eAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAAaSURBVBhXY5g7f97/2XPn/AcCBmSMQ+I/AwB2eyNBlrqzUQAAAABJRU5ErkJggg==);
@@ -73,7 +73,7 @@ body widget[type=ticket] .rip {
   position: relative;
   box-shadow: 0 1px 0 0 #fff, 0 -1px 0 0 #fff;
 }
-body widget[type=ticket] .rip:before, body widget[type=ticket] .rip:after {
+body section[type=ticket] .rip:before, body section[type=ticket] .rip:after {
   content: "";
   position: absolute;
   width: 30px;
@@ -86,14 +86,14 @@ body widget[type=ticket] .rip:before, body widget[type=ticket] .rip:after {
   border-radius: 100%;
   pointer-events: none;
 }
-body widget[type=ticket] .rip:before {
+body section[type=ticket] .rip:before {
   left: -10px;
 }
-body widget[type=ticket] .rip:after {
+body section[type=ticket] .rip:after {
   transform: translate(-50%, -50%) rotate(225deg);
   right: -40px;
 }
-body widget .-bold {
+body section .-bold {
   font-weight: bold;
 }
 
