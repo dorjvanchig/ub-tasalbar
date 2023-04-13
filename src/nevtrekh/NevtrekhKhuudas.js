@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { DursZuragch, SButton, SInput, uilchilgeeDuudagch, medeeKharuulakh } from '../components'
+import { DursZuragch, SButton, SInput, uilchilgeeDuudagch, medeeKharuulakh, isNullOrUndefined } from '../components'
 import { Drawer } from 'antd';
 import Burtguulekh from './Burtguulekh';
 import { UndsenCtx } from '../udnsenZagvar/UndsenZagvar';
@@ -21,12 +21,14 @@ export default function NevtrekhKhuudas(props)
   };
 
   function utgaSolikh(utga, turul) {
-    console.log('utga', utga)
     khereglegch[turul] = utga
     setKhereglegch({...khereglegch})
   }
   function urgeljlvvlekh() {
-    undsenCtx.nevtrekh(khereglegch)
+    undsenCtx.nevtrekh(khereglegch).then(khariu =>{ 
+      if (!isNullOrUndefined(khariu) && !isNullOrUndefined(khariu.message))
+        medeeKharuulakh('warning', "Анхааруулга", khariu.message) 
+    })
   }
 
   return (

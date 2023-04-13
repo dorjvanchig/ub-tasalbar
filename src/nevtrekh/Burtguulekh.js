@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
-import { uilchilgeeDuudagch, SButton, SInput, medeeKharuulakh } from '../components'
+import React, { useContext, useState } from 'react'
+import { uilchilgeeDuudagch, SButton, SInput, medeeKharuulakh, isNullOrUndefined } from '../components'
+import { UndsenCtx } from '../udnsenZagvar/UndsenZagvar'
 export default function Burtguulekh(props) {
+    const undsenCtx = useContext(UndsenCtx)
     const { burtgekhEsekh, setBurtgekhEsekh } = props
     const [state, setState] = useState({
         email:'',
@@ -8,15 +10,18 @@ export default function Burtguulekh(props) {
 
     })
     function burtguulekh() {  
-        uilchilgeeDuudagch('khereglegchBurtgekh', state).then((khariu)=>{
-            console.log('khereglegchBurtgekh === >', khariu)
-            medeeKharuulakh('warning', "Анхааруулга", khariu)
-            setBurtgekhEsekh(false)
+        undsenCtx.khereglegchBurtguulakh(state).then((khariu) =>{
+            if (!isNullOrUndefined(khariu)){
+                medeeKharuulakh('success', 'Бүртгэл амжилттай хийгдлээ')
+                state.email = ""
+                state.password = "" 
+                setState({...state})
+                setBurtgekhEsekh(false) 
+            }
         })
     }
 
     function utgaSolikh(utga, turul) {
-        console.log('utga', utga)
         state[turul] = utga
         setState({...state})
     }

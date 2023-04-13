@@ -14,4 +14,4 @@ export function khoosonObjectEsekh(obj) {
 
 export function khoosonJagsaaltEsekh(jagsaalt) {
     return  isArray(jagsaalt) && jagsaalt.length === 0
-}
+} 

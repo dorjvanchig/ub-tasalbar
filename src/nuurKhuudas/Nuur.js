@@ -1,4 +1,4 @@
-import React, { Children, useEffect, useState } from 'react'
+import React, { Children, useContext, useEffect, useState } from 'react'
 import { Carousel, Spin, Button } from 'antd';
 import Image from 'next/image'
 import Toglolt from '../../public/zurag/bieKhun.png'
@@ -6,13 +6,23 @@ import Toglolt1 from '../../public/zurag/playoff.png'
 import Toglolt2 from '../../public/zurag/hevtee.png'
 import Toglolt3 from '../../public/zurag/rahmaninoff.png'
 import Toglolt4 from '../../public/zurag/winter.png'
-import { DursZuragch } from '../components';
+import { DursZuragch, isNullOrUndefined, khoosonJagsaaltEsekh } from '../components';
 import { useRouter } from 'next/router';
+import { UndsenCtx } from '../udnsenZagvar/UndsenZagvar';
+import {  } from '../components/ShalgakhShalguur';
 export default function Nuur(props) {
     const [loading, setLoading] = useState(true)
+    const [togloltJagsaalt, setTogloltJagsaalt] = useState([])
     const router = useRouter()
-
+    const undsenCtx = useContext(UndsenCtx) 
     useEffect(()=>{
+        undsenCtx.togloltiinJagsaalt().then(khariu=>{
+            if (!isNullOrUndefined(khariu) && khariu.success)
+                setTogloltJagsaalt([...khariu.data ])
+            else{
+                setTogloltJagsaalt([])
+            }
+        })
         setTimeout(() => { setLoading (false) }, 2000)
     }, [])
     let bannerJagsaalt = [
@@ -79,11 +89,19 @@ export default function Nuur(props) {
     const routeKhiiye = () => {
         router.push('delgerenguiTsonkh/DelgerenguiContext')
     }
+
+    function tsagiinMedeelel(muriinUgugdul) {
+        return ""
+        // if (!isNullOrUndefined(muriinUgugdul.tsagiinMedeelel) && 
+        //     !khoosonJagsaaltEsekh(muriinUgugdul.tsagiinMedeelel)){
+
+        // }
+    }
   return (
     <div>
-        <main className='bg-[#f4f5f9] py-[30px] relative'>
+        <main className='bg-[#f4f5f9] py-[30px] relative hidden md:block'>
                 <div className='container mx-auto '>
-                    <Carousel className='!hidden md:!block'>
+                    <Carousel >
                         {
                             loading ? (
                                 <div className="text-center mt-16">
@@ -151,9 +169,9 @@ export default function Nuur(props) {
                 </div>
         </main>
         <section className='container mx-auto pb-12 mt-8'>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3  gap-4 mb-[40px]">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-[40px] px-8 md:p-0">
             {
-            jagsaalt.map((x, i)=>{
+            togloltJagsaalt.map((x, i)=>{
                 
                 return (
                     loading ? (
@@ -165,7 +183,7 @@ export default function Nuur(props) {
                             <div className="top ">
                                 <Image 
                                     className='h-[177px] w-full rounded-t-md bg-origin-content'
-                                    src={x.zurag}
+                                    src={Toglolt}
                                 />
                                 <div className="deetz">
                                     <div className="event ">
@@ -174,11 +192,11 @@ export default function Nuur(props) {
                                     <div className='grid grid-cols-2 mt-2'>
                                         <div className='flex items-center'>
                                             <DursZuragch icon = "material-symbols:date-range" className = "text-sm mr-2 text-slate-400"/>
-                                            <div className='text-xs'>{x.ognoo}</div>
+                                            <div className='text-xs'>{tsagiinMedeelel(x)}</div>
                                         </div>
                                         <div className='flex items-center justify-end'>
                                             <DursZuragch icon = "material-symbols:location-on" className = "text-sm mr-2 text-slate-400"/>
-                                            <div className='text-xs'>{x.bairshil}</div>
+                                            <div className='text-xs'>{x.khaana}</div>
                                         </div>
                                     </div>
                                 </div>
