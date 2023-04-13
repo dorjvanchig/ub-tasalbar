@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { DursZuragch, isNullOrUndefined } from '../components'
-import { Menu, Badge } from 'antd' 
+import { Menu, Badge, Popover } from 'antd' 
 import Link from 'next/link';
 import { UndsenCtx } from './UndsenZagvar';
 import { tsesnuud } from '../components/NegdsenComponent';
 import { khereglegchMedeelel } from '../components/KholboltUusgekh';
+import { useRouter } from 'next/router';
+import KhereglegchProfile from '../nevtrekh/KhereglegchProfile';
 
 export default function TolgoiTses(props) 
 {
     const [scrollProgress, setScrollProgress] = useState(0);
-
+    const router = useRouter()
     const undsenCtx = useContext(UndsenCtx)
     const [current, setCurrent] = useState('nuur');
 
@@ -34,9 +36,16 @@ export default function TolgoiTses(props)
       };
     }, []);
     const onClick = (e) => {
-      console.log('onClick')
-      undsenCtx.togloltiinJagsaalt()
+      router.push(`/nuurKhuudas/Nuur?param=${e.key}`)
+      setCurrent(e.key) 
     }; 
+  
+  function systemiinKhereglegch() {
+    return (<div className='bg-slate-100 h-[33px] w-[93%] hover:bg-slate-200 rounded-md p-1 ml-3 hover:cursor-pointer flex items-center'>
+         <span className='text-xs px-1 truncate text-slate-400'>{undsenCtx.undsenState.nevtersenKhereglegch.email}</span>
+        <DursZuragch icon = "system-uicons:user-male" className = "text-[1.2rem]"/>
+    </div>)
+  }
 
   return ( <header className={`bg-white shadow-[0px_0px_40px_0px_#0000000d] ${scrollProgress > 13 ? 'fixed top-0 left-0 right-0 z-40' : 'sticky'} `}>
     {scrollProgress <= 0 ? null : <div className="h-1 w-full bg-gray-300">
@@ -71,14 +80,6 @@ export default function TolgoiTses(props)
           <div><DursZuragch icon = "ri:facebook-fill" className = "text-base mr-1 text-slate-500 hover:text-red-500 hover:cursor-pointer"/></div>
           <div><DursZuragch icon = "mdi:twitter" className = "text-base mr-1 text-slate-500 hover:text-red-500 hover:cursor-pointer"/></div>
           <div><DursZuragch icon = "mingcute:youtube-line" className = "text-base mr-1 text-slate-500 hover:text-red-500 hover:cursor-pointer"/></div>
-          <div className=' h-[15px] w-[1px] bg-[#cbd3d7] m-[0_10px_-2px_10px]'/>
-            <Link href={`/nevtrekh/NevtrekhKhuudas`}>
-                <div className='flex items-center hover:cursor-pointer text-slate-900 hover:text-red-500 hover:font-normal'>
-                    <DursZuragch icon = "system-uicons:user-male" className = "  text-base"/>
-                     <span className='text-xs'>{undsenCtx.undsenState.nevtersenKhereglegch.email}</span>
-                    <DursZuragch icon = "material-symbols:arrow-drop-down" className = "ml-1 text-base "/>
-                </div>
-            </Link> 
         </div>
       </div>
     </div>
@@ -105,13 +106,17 @@ export default function TolgoiTses(props)
                 </Menu>
             </div>
             <div className='flex items-center justify-end'>
-                <div className='block md:hidden p-1'>
-                  <Link href={`/nevtrekh/NevtrekhKhuudas`}>
-                    <div className='bg-slate-100 h-[33px] w-[93%] hover:bg-slate-200 rounded-md p-1 ml-3 hover:cursor-pointer flex items-center'>
-                         <span className='text-xs px-1 truncate text-slate-400'>{undsenCtx.undsenState.nevtersenKhereglegch.email}</span>
-                        <DursZuragch icon = "system-uicons:user-male" className = "text-[1.2rem]"/>
-                    </div>
-                  </Link>
+                <div className='block p-1 mr-3'>
+                  {
+                    undsenCtx.undsenState.nevtersenKhereglegch.email === 'Нэвтрэх' ?
+                    <Link href={`/nevtrekh/NevtrekhKhuudas`}>
+                      {systemiinKhereglegch()}
+                    </Link> :
+                     <Popover trigger={"click"} content={<KhereglegchProfile/>} >
+                        {systemiinKhereglegch()}
+                     </Popover> 
+                  }
+                  
                 </div>
                 <Badge size='small' count={5} className='h-[33px] bg-slate-100 rounded-md p-1 hover:cursor-pointer hover:bg-slate-200'>
                   <DursZuragch icon = "eva:shopping-bag-fill" className = "text-[1.2rem] text-slate-700"/>

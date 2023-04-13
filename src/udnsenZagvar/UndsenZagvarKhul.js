@@ -4,7 +4,7 @@ export default function UndsenZagvarKhul() {
   return (   <footer>
     <div className='bg-[#010f22] w-full h-full'>
           <div className='container mx-auto py-[30px] border-t border-t-[#242323]'>
-            <div className='grid grid-cols-4 w-full items-center justify-center'>
+            <div className='grid grid-cols-2 md:grid-cols-4 w-full items-center justify-center'>
               <div  className='px-3  grid grid-rows-2'> 
                 <div className='mb-[30px] relative flex items-center'>
                   <h5 className='relative z-10 text-white'>

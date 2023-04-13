@@ -1,7 +1,7 @@
 import { notification } from "antd";
 import { DursZuragch } from '../components' 
 export function medeeKharuulakh(turul, text, delgerengui) {
-    notification.warning({
+    notification[turul]({
         message: text,
         description: delgerengui,
         placement: "topRight",

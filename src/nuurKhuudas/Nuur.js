@@ -14,6 +14,9 @@ export default function Nuur(props) {
     const [loading, setLoading] = useState(true)
     const [togloltJagsaalt, setTogloltJagsaalt] = useState([])
     const router = useRouter()
+    
+    console.log('props', props, router)
+    const { pages, event } = router.query;
     const undsenCtx = useContext(UndsenCtx) 
     useEffect(()=>{
         undsenCtx.togloltiinJagsaalt().then(khariu=>{
@@ -24,67 +27,7 @@ export default function Nuur(props) {
             }
         })
         setTimeout(() => { setLoading (false) }, 2000)
-    }, [])
-    let bannerJagsaalt = [
-        {
-            garchig:'WINTER WELODY ардын урлаг, өв соёлын тоглолт',
-            delgerengui:'Цагаан лавай чуулгын "WINTER MELODY" ардын урлаг, өв соёлын тоглолтоо долоо хоног бүрийн ЛХАГВА, БААСАН, НЯМ гаригт 18.00 цагт тоглож байна.',
-            zurag:Toglolt
-        },
-        {
-            garchig:'WINTER WELODY ардын урлаг, өв соёлын тоглолт',
-            delgerengui:'Цагаан лавай чуулгын "WINTER MELODY" ардын урлаг, өв соёлын тоглолтоо долоо хоног бүрийн ЛХАГВА, БААСАН, НЯМ гаригт 18.00 цагт тоглож байна.',
-            zurag:Toglolt1
-        },
-        {
-            garchig:'WINTER WELODY ардын урлаг, өв соёлын тоглолт',
-            delgerengui:'Цагаан лавай чуулгын "WINTER MELODY" ардын урлаг, өв соёлын тоглолтоо долоо хоног бүрийн ЛХАГВА, БААСАН, НЯМ гаригт 18.00 цагт тоглож байна.',
-            zurag:Toglolt2
-        },
-        {
-            garchig:'WINTER WELODY ардын урлаг, өв соёлын тоглолт',
-            delgerengui:'Цагаан лавай чуулгын "WINTER MELODY" ардын урлаг, өв соёлын тоглолтоо долоо хоног бүрийн ЛХАГВА, БААСАН, НЯМ гаригт 18.00 цагт тоглож байна.',
-            zurag:Toglolt3
-        },
-        {
-            garchig:'WINTER WELODY ардын урлаг, өв соёлын тоглолт',
-            delgerengui:'Цагаан лавай чуулгын "WINTER MELODY" ардын урлаг, өв соёлын тоглолтоо долоо хоног бүрийн ЛХАГВА, БААСАН, НЯМ гаригт 18.00 цагт тоглож байна.',
-            zurag:Toglolt4
-        }
-    ]
-
-    let jagsaalt = [
-        {
-            ner:'Плей-Офф 04/10 (Үндэсний Дээд лиг)',
-            ognoo:'2023 он 04 сар 10 өдөр',
-            bairshil:'UG ARENA',
-            zurag: Toglolt,
-        },
-        {
-            ner:'Плей-Офф 04/10 (Үндэсний Дээд лиг)',
-            ognoo:'2023 он 04 сар 10 өдөр',
-            bairshil:'UG ARENA',
-            zurag: Toglolt1,
-        },
-        {
-            ner:'Плей-Офф 04/10 (Үндэсний Дээд лиг)',
-            ognoo:'2023 он 04 сар 10 өдөр',
-            bairshil:'UG ARENA',
-            zurag: Toglolt2,
-        },
-        {
-            ner:'Плей-Офф 04/10 (Үндэсний Дээд лиг)',
-            ognoo:'2023 он 04 сар 10 өдөр',
-            bairshil:'UG ARENA',
-            zurag: Toglolt3,
-        },
-        {
-            ner:'Плей-Офф 04/10 (Үндэсний Дээд лиг)',
-            ognoo:'2023 он 04 сар 10 өдөр',
-            bairshil:'UG ARENA',
-            zurag: Toglolt4,
-        }
-    ]
+    }, []) 
 
     const routeKhiiye = () => {
         router.push('delgerenguiTsonkh/DelgerenguiContext')

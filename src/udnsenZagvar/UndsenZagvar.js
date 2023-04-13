@@ -2,9 +2,8 @@ import React, { createContext, useState, use } from 'react'
 import TolgoiTses from './TolgoiTses'
 import UndsenKhailt from './UndsenKhailt'
 import UndsenZagvarKhul from './UndsenZagvarKhul' 
-import { uilchilgeeDuudagch, medeeKharuulakh, isNullOrUndefined } from '../components'
+import { uilchilgeeDuudagch, medeeKharuulakh, isNullOrUndefined,khereglegchMedeelelKhadgalakh, khereglegchUstgakh } from '../components'
 import { useRouter } from 'next/router';
-import { khereglegchMedeelelKhadgalakh } from '../components/KholboltUusgekh'
 export const UndsenCtx = createContext({})
 export default function UndsenZagvar({children }) 
 {  
@@ -23,6 +22,11 @@ export default function UndsenZagvar({children })
           resolve(khariu)
       })
     }) 
+  }
+
+  function systemeesGarakh() {
+    khereglegchUstgakh()
+    router.reload()
   }
 
   function nevtrekh(khereglegch) { 
@@ -48,7 +52,6 @@ export default function UndsenZagvar({children })
   function togloltiinJagsaalt() {
     return new Promise(resolve => {
       uilchilgeeDuudagch('togloltiinJagsaaltAvya').then((khariu)=>{ 
-        console.log("khariu", khariu) 
           resolve(khariu)
       })
     }) 
@@ -66,7 +69,8 @@ export default function UndsenZagvar({children })
         khereglegchBurtguulakh,
         khuudasSergeekh, 
         nevtrekh,
-        togloltiinJagsaalt
+        togloltiinJagsaalt,
+        systemeesGarakh
       }}>
       <div className='block'>
             <TolgoiTses />

@@ -8,7 +8,7 @@ const event = (props) => {
   let Khuudas = dynamic(() => import(`@/src/${pages}/${event}`), {ssr: false,}) 
   return (
     <UndsenZagvar>
-      <Khuudas/>
+      <Khuudas {...props} router= {router}/>
     </UndsenZagvar>
   )
 }
