@@ -1,0 +1,21 @@
+.table {
+    border-spacing: 0 5px;
+}
+
+.table tr {
+    border-radius: 5px;
+}
+
+.tableBody tr td:nth-child(n+5),
+.tableBody tr th:nth-child(n+5) {
+    border-radius: 0 .625rem .625rem 0;
+}
+
+.tableBody tr td:nth-child(1),
+.tableBody tr th:nth-child(1) {
+    border-radius: .625rem 0 0 .625rem;
+}
+
+.checkbox:checked+.check-icon {
+    display: flex;
+}

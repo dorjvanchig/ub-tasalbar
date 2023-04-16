@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ['ticket.mn'],
   },
+  experimental: {
+    urlImports: ['https://cdn.esm.sh'],
+  },
 }
 
 module.exports = nextConfig
