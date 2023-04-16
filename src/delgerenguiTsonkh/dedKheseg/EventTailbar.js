@@ -3,7 +3,7 @@ import { Divider } from 'antd'
 const EventTailbar = () => {
   return (
     <div className='w-full md:w-2/3 px-5 bg-white rounded-[4px] shadow-md py-4'>
-        <div class="text-md flex flex-col">
+        <div className="text-md flex flex-col">
             <div className='flex flex-col'>
               <div className='w-full flex md:flex-row flex-col'>
                 <div className='md:w-1/2 w-full flex flex-row gap-2'>

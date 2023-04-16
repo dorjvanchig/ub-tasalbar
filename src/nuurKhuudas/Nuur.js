@@ -29,8 +29,11 @@ export default function Nuur(props) {
         setTimeout(() => { setLoading (false) }, 2000)
     }, []) 
 
-    const routeKhiiye = () => {
-        router.push('delgerenguiTsonkh/DelgerenguiContext')
+    const routeKhiiye = (ugugdul) => {
+        router.push({
+            pathname: '/delgerenguiTsonkh/DelgerenguiContext',
+            query: { ugugdul: JSON.stringify(ugugdul) }
+          }) 
     }
 
     function tsagiinMedeelel(muriinUgugdul) {

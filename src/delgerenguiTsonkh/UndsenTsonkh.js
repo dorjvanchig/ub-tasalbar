@@ -5,13 +5,11 @@ import EventKhajuuTalbar from './dedKheseg/EventKhajuuTalbar';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { Divider } from 'antd';
-import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 import { DursZuragch } from '../components';
-const UndsenTsonkh = () => {
-
-    React.useEffect(() => {
-        // const test = new Splide( '.splide' ).mount( { AutoScroll } );
-    }, [])
+import { DelgerenguiCtx } from './DelgerenguiContext';
+const UndsenTsonkh = () => { 
+    
+    const {songosonTasalbar} = React.useContext(DelgerenguiCtx)
     return (
         <section className='w-full h-fit'>
             <div className='w-full h-[350px] relative p-4 flex justify-center items-center' style={{backgroundImage: 'url("https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
@@ -25,16 +23,16 @@ const UndsenTsonkh = () => {
                     </div>
                     <div className='flex flex-col w-full text-sky-50 gap-5'>
                         <div className='w-full text-center md:text-start text-[1.6rem] font-bold'>
-                            <h2>Сүнс неоклассик баллет</h2>
+                            <h2>{songosonTasalbar?.ner}</h2>
                         </div>
                         <div className='flex flex-col md:flex-row gap-5'>
                             <div className='flex flex-row gap-2'>
                                 <div className='flex flex-row gap-1'><DursZuragch icon='ic:baseline-location-on'/>байршил: </div>
-                                <span>Гандан</span>
+                                <span>{songosonTasalbar?.khaana}</span>
                             </div>
                             <div className='flex flex-row gap-2'>
                                 <div className='flex flex-row gap-1 whitespace-nowrap'><DursZuragch icon='ic:baseline-access-time'/>үргэлжлэх хугацаа: </div>
-                                <span className='whitespace-nowrap'>2 цаг 30 минут</span>
+                                <span className='whitespace-nowrap'>{songosonTasalbar?.urgeljlekhKhugatsaa} минут</span>
                             </div>
                         </div>
                     </div>

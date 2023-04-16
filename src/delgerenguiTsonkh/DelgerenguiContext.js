@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import UndsenTsonkh from './UndsenTsonkh';
 import { message, Drawer } from 'antd';
 import SuudalZakhialgiinTalbar from './dedKheseg/SuudalZakhialgiinTalbar';
 import KhajuuTal from './dedKheseg/KhajuuTal';
+import { useRouter } from 'next/router';
 export const DelgerenguiCtx = React.createContext()
 const DelgerenguiContext = (props) => {
+    const router = useRouter()
+    const { ugugdul } = router.query;
+    const [songosonTasalbar, setSongosonTasalbar] = useState({})
+    console.log('songosonTasalbar', songosonTasalbar)
     const [open, setOpen] = React.useState(false)
     const [tomState, setTomState] = React.useState({
         zahialagdsanSuudal: ['egnee1_15','egnee1_16','egnee1_17','egnee1_18','egnee1_19','egnee1_20'],
@@ -17,7 +22,12 @@ const DelgerenguiContext = (props) => {
             setTomState({...tomState})
             return resolve(true)
         })
-    }
+    } 
+
+
+    React.useEffect(()=>{
+        setSongosonTasalbar(JSON.parse(ugugdul))
+    }, [])
 
     React.useEffect(() => {
         message.config({
@@ -48,7 +58,7 @@ const DelgerenguiContext = (props) => {
                     elem.id = elem.parentNode.id + "_" + elem.id.toLowerCase().split("x5f")[1].split('_')[1]
                     const idAwaw = elem.id
                     const shalguur = tomState.zahialagdsanSuudal.findIndex(x => x === idAwaw)
-                    elem.setAttribute('class', 'cursor-pointer')
+                    elem.setAttribute('className', 'cursor-pointer')
                     if(shalguur >= 0) {
                         elem.setAttribute('fill', "#e3e3e3")
                         elem.addEventListener('click', messageKharuulya)
@@ -90,7 +100,7 @@ const DelgerenguiContext = (props) => {
     }
 
     return (
-        <DelgerenguiCtx.Provider value={{ testRef, tomState, setleye, setOpen, suudalKhasya }}>
+        <DelgerenguiCtx.Provider value={{ testRef, tomState, setleye, setOpen, suudalKhasya, songosonTasalbar, setSongosonTasalbar }}>
             <UndsenTsonkh/>
             <Drawer
                 title="Суудал захиалга"
