@@ -243,3 +243,7 @@ body section .-bold {
   height: 300px;
   margin-bottom: 20px;
 }
+
+.tox-notifications-container {
+  display: none !important;
+}

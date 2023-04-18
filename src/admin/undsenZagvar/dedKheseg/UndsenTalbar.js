@@ -4,7 +4,6 @@ import EventGazarContext from '../../eventGazarOuulakh.js/EventGazarContext'
 import TogloltContext from '../../togloltOruulakh/TogloltContext';
 export default function UndsenTalbar(props) {
   const { tsonkh } = props;
-  console.log("props ============>", props)
   const tsonkhButsaaya = () => {
     if(tsonkh === 'dashboard') {
       return <Dashboard {...props}/>

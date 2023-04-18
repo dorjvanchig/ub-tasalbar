@@ -4,20 +4,17 @@ import dynamic from 'next/dynamic'
 import admin from '../../../styles/Admin.module.css'
 import { Drawer, Button, Space } from 'antd'
 import { DursZuragch } from '@/src/components'
-// import FormTalbar from './dedKheseg/FormTalbar'
+import { EventCtx } from './EventGazarContext'
+
 export default function UndsenTsonkh() {
-    const FormTalbar = dynamic(() => import('./dedKheseg/FormTalbar'), {ssr: false})
+    
+    const { tankhimNemye } = React.useContext(EventCtx)
     const [open, setOpen] = React.useState(false)
-    const showDrawer = () => {
-        setOpen(true);
-      };
-    const onClose = () => {
-        setOpen(false);
-    };
+
     return (
         <div className='w-full flex flex-col relative gap-2 h-full rounded-[3px] p-3'>
             <div className='w-full flex justify-end'>
-                <button class="px-5 py-1 relative rounded group font-medium text-white font-medium inline-block" onClick={showDrawer}>
+                <button class="px-5 py-1 relative rounded group font-medium text-white font-medium inline-block" onClick={tankhimNemye}>
                     <span class="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
                     <span class="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
                     <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
@@ -87,38 +84,6 @@ export default function UndsenTsonkh() {
                     </tbody>
                 </table>
             </div>
-            <Drawer
-                title="Тоглолтын танхим нэмэх"
-                width={720}
-                onClose={onClose}
-                open={open}
-                bodyStyle={{
-                paddingBottom: 80,
-                }}
-                extra={
-                     <button class="px-5 py-1 relative rounded group font-medium text-white inline-block" onClick={showDrawer}>
-                        <span class="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-emerald-700 to-emerald-400"></span>
-                        <span class="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-emerald-700 to-emerald-400"></span>
-                        <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-emerald-700 to-emerald-400"></span>
-                        <span class="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-emerald-700 from-emerald-400"></span>
-                        <div className='flex flex-row items-center relative'>
-                            Хадгалах
-                        </div>
-                    </button>
-                }
-            >
-                <FormTalbar/>
-            </Drawer>
-            {/* <div className='w-[500px]'>
-                <MapContainer center={[state.lat, state.lng]} zoom={13} scrollWheelZoom={true}>
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OdpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <Marker position={[state.lat, state.lng]}/>
-                    <Test/>
-                </MapContainer>
-            </div> */}
         </div>
     )
 }
