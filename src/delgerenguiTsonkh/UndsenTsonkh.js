@@ -8,9 +8,11 @@ import { Divider } from 'antd';
 import { isNullOrUndefined, formatOgnoo, khoosonObjectEsekh, khoosonJagsaaltEsekh } from '../components';
 import { DelgerenguiCtx } from './DelgerenguiContext';
 import ProgressTimer from './ProgressTimer';
+
 import _ from 'lodash'
+import { useRouter } from 'next/router';
 const UndsenTsonkh = () => { 
-    
+    const router = useRouter()
     const {songosonTasalbar} = React.useContext(DelgerenguiCtx)
 
     function tsagiinMedeelel(muriinUgugdul) {
@@ -99,7 +101,7 @@ const UndsenTsonkh = () => {
                                                     </span>
                                                 </div>
                                             </div>
-                                            <a className="uppercase text-center block bg-[#003399] px-3 py-1 mb-4 rounded text-white font-semibold text-sm" href="/events/63dc94cb8899f6194c2b0630/order/643520c97680e21ca189d01a">
+                                            <a onClick={()=> router.push("zakhialgaKheseg/order")} className="uppercase text-center block bg-[#003399] px-3 py-1 mb-4 rounded text-white font-semibold text-sm" href="/events/63dc94cb8899f6194c2b0630/order/643520c97680e21ca189d01a">
                                                 Тасалбар авах
                                             </a>
                                             <ProgressTimer targetDate={new Date("2023-04-27 19:30")} progressValue={0}></ProgressTimer>
