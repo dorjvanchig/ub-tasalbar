@@ -5,6 +5,7 @@ import { useMapEvent } from 'react-leaflet';
 import { DursZuragch } from '@/src/components';
 import SeatMap from '@/src/delgerenguiTsonkh/dedKheseg/SeatMap';
 import Selecto from 'react-selecto';
+import BulegSongokhTalbar from './BulegSongokhTalbar';
 // import Seat from "../../../../public/seats.svg"
 export default function FormTalbar() {
     const { Option } = Select;
@@ -12,8 +13,9 @@ export default function FormTalbar() {
     const MapContainer = dynamic(()=> import('react-leaflet').then((comp) => comp.MapContainer), {ssr: false})
     const Marker = dynamic(()=> import('react-leaflet').then((comp) => comp.Marker), {ssr: false})
     const TileLayer = dynamic(()=> import('react-leaflet').then((comp) => comp.TileLayer), {ssr: false})
-    const editorRef = React.useRef()
     const selectorRef = React.useRef()
+    const editorRef = React.useRef()
+    
     const Test = () => {
         const map = useMapEvent('click', (e) => {
             // console.log({...e.latlng})
@@ -51,6 +53,8 @@ export default function FormTalbar() {
             return resolve(true)
         })
     }
+
+    
 
     return (
         <div className='w-full h-full bg-white rounded-[4px] shadow-md relative flex flex-row overflow-auto'>
@@ -179,34 +183,7 @@ export default function FormTalbar() {
                         <DursZuragch icon='material-symbols:add'/>
                     </div>
                 </div>
-                <div className='flex flex-row gap-2 '>
-                    <Selecto
-                        container={selectorRef.current}
-                        dragContainer={selectorRef.current}
-                        selectableTargets={[".suudal", document.querySelector(".suudal")]}
-                        selectByClick={true}
-                        selectFromInside={true}
-                        continueSelect={false}
-                        toggleContinueSelect={"shift"}
-                        // The rate at which the target overlaps the drag area to be selected. (default: 100)
-                        hitRate={0}
-                        onSelect={e => {
-                            e.added.forEach(el => {
-                                el.setAttribute('fill', '#2980db');
-                            });
-                            e.removed.forEach(el => {
-                                el.setAttribute('fill', '#F3808E');
-                            });
-                        }}
-                    />
-                    <div ref={selectorRef} className='w-3/4 w-full h-full justify-center items-center flex'>
-                        {/* <Seat/> */}
-                        <SeatMap/>
-                    </div>
-                    <div className='w-1/4'>
-                        test
-                    </div>
-                </div>
+                <BulegSongokhTalbar selectorRef={selectorRef}/>
             </div>
         </div>
     )

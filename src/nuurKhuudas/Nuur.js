@@ -75,10 +75,7 @@ export default function Nuur(props) {
                                             {ugugdul.ner}
                                         </div>
                                         <div className='flex flex-col md:flex-row gap-1 items-center py-1 w-full justify-end'>
-                                            <div className='flex items-center text-[#889097] px-1 w-[40%]'>
-                                                <DursZuragch icon = "clarity:date-line" className = "h-[12px] w-[12px] mr-1"/>
-                                                <span className='text-slate-500 text-xs truncate'>2023 оны 4-р сарын 22-нд</span>
-                                            </div>
+                                           
                                             <div className='flex items-center text-[#889097] px-1 w-[17%]'>
                                                 <DursZuragch icon = "ic:baseline-access-time" className = "h-[12px] w-[12px] mr-1"/>
                                                 <span className='text-slate-500 text-xs truncate'>{ugugdul.urgeljlekhKhugatsaa} минут</span>

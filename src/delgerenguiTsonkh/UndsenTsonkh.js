@@ -5,12 +5,35 @@ import EventKhajuuTalbar from './dedKheseg/EventKhajuuTalbar';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { Divider } from 'antd';
-import { DursZuragch } from '../components';
+import { isNullOrUndefined, formatOgnoo, khoosonObjectEsekh, khoosonJagsaaltEsekh } from '../components';
 import { DelgerenguiCtx } from './DelgerenguiContext';
 import ProgressTimer from './ProgressTimer';
+import _ from 'lodash'
 const UndsenTsonkh = () => { 
     
     const {songosonTasalbar} = React.useContext(DelgerenguiCtx)
+
+    function tsagiinMedeelel(muriinUgugdul) {
+        let ognooStr = ""
+        if (!isNullOrUndefined(muriinUgugdul.tsagiinMedeelel) && 
+            !khoosonJagsaaltEsekh(muriinUgugdul.tsagiinMedeelel)){
+            let ognoo = _.groupBy(muriinUgugdul.tsagiinMedeelel, function (ugugdul) {
+                return formatOgnoo(ugugdul.ognoo, 'YYYY')
+            }) 
+            if (!isNullOrUndefined(ognoo) && !khoosonObjectEsekh(ognoo)){
+                Object.keys(ognoo).forEach(a=>{
+                    ognoo[a].forEach(b=> {
+                        if (ognooStr.includes(a)){
+                            ognooStr +=  formatOgnoo(b.ognoo, 'MM/DD') + "   "
+                        }
+                        else 
+                        ognooStr += a+"."  + formatOgnoo(b.ognoo, 'MM/DD') + ","
+                    })
+                })
+            }
+        }
+        return ognooStr;
+    } 
     return (
         <section className='w-full h-fit'>
             <div className='w-full h-[350px] relative p-4 flex justify-center items-center' style={{backgroundImage: 'url("https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
@@ -29,27 +52,27 @@ const UndsenTsonkh = () => {
                         <div className='block line-clamp-2'>
                             <div className='flex'>
                                 <div className='w-[25%] text-sm text-slate-200 font-normal'>Хаана:</div>    
-                                <div>Улсын Драмын Эрдмийн Театр</div>
+                                <div>{songosonTasalbar?.khaana}</div>
                             </div>
                             <div className='flex'>
                                 <div className='w-[25%] text-sm text-slate-200 font-normal'>Хэзээ:</div>    
-                                <div className='truncate'>2023.04.20, 04.21, 04.22, 04.23</div>
+                                <div className='truncate'>{tsagiinMedeelel(songosonTasalbar)}</div>
                             </div>
                             <div className='flex'>
                                 <div className='w-[25%] text-sm text-slate-200 font-normal'>Зохион байгуулагч:</div>    
-                                <div className='truncate'>Улсын Драмын Эрдмийн Театр</div>
+                                <div className='truncate'>{songosonTasalbar?.zokhionBaiguulagch}</div>
                             </div>
                             <div className='flex'>
                                 <div className='w-[25%] text-sm text-slate-200 font-normal'>Тоглолтын төрөл:</div>    
-                                <div className='truncate'>Жүжиг</div>
+                                <div className='truncate'>{songosonTasalbar?.turul}</div>
                             </div>
                             <div className='flex'>
                                 <div className='w-[25%] text-sm text-slate-200 font-normal'>Үргэлжлэх хугацаа:</div>    
-                                <div className='truncate'>150 минут</div>
+                                <div className='truncate'>{songosonTasalbar?.urgeljlekhKhugatsaa} {songosonTasalbar?.urgeljlekhKhugatsaa > 60 ? "цаг" : "минут"}</div>
                             </div>
                             <div className='flex'>
                                 <div className='w-[25%] text-sm text-slate-200 font-normal'>Насны ангилал:</div>    
-                                <div className='truncate'>15+</div>
+                                <div className='truncate'>{songosonTasalbar?.nasniiAngilal}+</div>
                             </div> 
                         </div> 
                     </div>
