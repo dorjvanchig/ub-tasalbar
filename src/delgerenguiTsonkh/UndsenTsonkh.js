@@ -101,7 +101,8 @@ const UndsenTsonkh = () => {
                                                     </span>
                                                 </div>
                                             </div>
-                                            <a onClick={()=> router.push("zakhialgaKheseg/order")} className="uppercase text-center block bg-[#003399] px-3 py-1 mb-4 rounded text-white font-semibold text-sm" href="/events/63dc94cb8899f6194c2b0630/order/643520c97680e21ca189d01a">
+                                            <a onClick={()=> router.push("/zakhialgaKheseg/order")} 
+                                                className="uppercase text-center block bg-[#003399] px-3 py-1 mb-4 rounded text-white font-semibold text-sm">
                                                 Тасалбар авах
                                             </a>
                                             <ProgressTimer targetDate={new Date("2023-04-27 19:30")} progressValue={0}></ProgressTimer>
