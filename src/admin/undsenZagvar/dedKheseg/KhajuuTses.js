@@ -7,7 +7,7 @@ export default function KhajuuTses(props) {
   const {tsonkh} = props
   const router = useRouter()
   const jagsaalt = [
-    {ner: 'Дашбоард', khoch: 'dashboard'},
+    {ner: 'Дашбоард', khoch: 'adminNuur'},
     {ner: 'Танхим оруулах', khoch: 'eventHall'},
     {ner: 'Тоглолт оруулах', khoch: 'toglolt'},
   ]

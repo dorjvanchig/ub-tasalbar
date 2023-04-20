@@ -23,7 +23,7 @@ export default function Navbar() {
   const router = useRouter()
   return (
     <section className='w-full border-b h-[50px] flex items-center justify-between p-4 bg-white drop-shadow-none'>
-        <div className='w-[300px] text-center font-bold cursor-pointer'  onclick = {() => {
+        <div className='w-[300px] text-center font-bold cursor-pointer'  onClick = {() => {
           router.push('/')
         }} >
             <Link href='/'>UB Tasalbar</Link>

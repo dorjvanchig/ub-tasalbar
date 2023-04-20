@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@iconify/react": "^4.1.0",
+    "@react-google-maps/api": "^2.18.1",
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide": "^4.1.4",
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",
@@ -22,6 +23,7 @@
     "dayjs": "^1.11.7",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
+    "google-map-react": "^2.2.0",
     "init": "^0.1.2",
     "leaflet": "^1.9.3",
     "lodash": "^4.17.21",

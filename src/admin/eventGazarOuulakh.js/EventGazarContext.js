@@ -6,7 +6,7 @@ export const EventCtx = React.createContext()
 export default function EventGazarContext(props) {
     const [tomState, setTomState] = React.useState({})
     const { talbarSolbiyo } = props
-    const FormTalbar = dynamic(() => import('./dedKheseg/FormTalbar'), {ssr: false})
+    const TankhimOruulakh = dynamic(() => import('./dedKheseg/TankhimOruulakh'), {ssr: false})
     console.log(props)
 
 
@@ -15,7 +15,7 @@ export default function EventGazarContext(props) {
     const tankhimNemye = () => {
         talbarSolbiyo({
             kharakhEsekh: true,
-            component: FormTalbar,
+            component: TankhimOruulakh,
             componentProps: {'test': 'test'}
         })
     }
