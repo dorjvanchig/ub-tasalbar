@@ -102,31 +102,12 @@ const UndsenTsonkh = () => {
                                                 </div>
                                             </div>
                                             <a onClick={()=> router.push("/zakhialgaKheseg/order")} 
-                                                className="uppercase text-center block bg-[#003399] px-3 py-1 mb-4 rounded text-white font-semibold text-sm">
+                                                className="uppercase text-center block bg-[#ef3f48] px-3 py-1 mb-4 rounded text-white font-semibold text-sm">
                                                 Тасалбар авах
                                             </a>
-                                            <ProgressTimer targetDate={new Date("2023-04-27 19:30")} progressValue={0}></ProgressTimer>
-                                            {/* <section className="flex justify-between">
-                                                <section className="flex flex-col space-y-[2px] items-center">
-                                                    <span className="text-red-500 font-bold">18</span>
-                                                    <span className="text-xs capitalize opacity-50">өдөр</span>
-                                                </section>
-                                                <span className="animate-pulse2 text-red-500">:</span>
-                                                <section className="flex flex-col space-y-[2px] items-center">
-                                                    <span className="text-red-500 font-bold">18</span>
-                                                    <span className="text-xs capitalize opacity-50">цаг</span>
-                                                </section>
-                                                <span className="animate-pulse2 text-red-500">:</span>
-                                                <section className="flex flex-col space-y-[2px] items-center">
-                                                    <span className="text-red-500 font-bold">30</span>
-                                                    <span className="text-xs capitalize opacity-50">минут</span>
-                                                </section>
-                                                <span className="animate-pulse2 text-red-500">:</span>
-                                                <section className="flex flex-col space-y-[2px] items-center">
-                                                    <span className="text-red-500 font-bold">04</span>
-                                                    <span className="text-xs capitalize opacity-50">секунд</span>
-                                                </section>
-                                            </section> */}
+                                            <div className='flex items-center justify-center'>
+                                                <ProgressTimer targetDate={new Date("2023-04-27 19:30")} progressValue={0}></ProgressTimer>
+                                            </div>
                                     </section>
                                 )
                             })

@@ -40,41 +40,41 @@ const ProgressLineWithAnimation = ({ targetDate }) => {
   return (
       <div className="relative w-full bg-gray-200 h-7">
         <div
-          className="absolute top-0 left-0 h-7 bg-blue-500 transition-width duration-500"
+          className="absolute top-0 left-0 h-7 bg-[#ffebc4] transition-width duration-500"
           style={{ width: `${calculatedProgressValue}%` }}
         > 
-          <div className="flex items-center w-full">
+          <div className="flex items-center w-full justify-center mt-[2px]">
             {remainingDays > 0 && (
               <div className="flex items-center">
-                <div>{remainingDays}</div>
-                <div>
+                <div className="text-sm px-1 font-semibold text-slate-900">{remainingDays}</div>
+                <div className="text-sm">
                   {remainingDays === 1 ? "өдөр" : "өдөр"}
                 </div>
                </div>
             )}
              {remainingHours > 0 && (
               <div className="flex">
-                 <div> 
+                 <div className="text-sm text-slate-900 px-1 font-semibold"> 
                   {remainingHours} 
                 </div>
-                <div>
+                <div className="text-sm">
                   {remainingHours === 1 ? "цаг" : "цаг"}
                 </div> 
               </div>
             )}
             {remainingMinutes > 0 && (
                <div className="flex">
-                  <div> 
+                  <div className="text-sm text-slate-900 px-1 font-semibold"> 
                     {remainingMinutes} 
                   </div>
-                  <div>
+                  <div className="text-sm">
                     {remainingMinutes === 1 ? ":" : ":"}
                   </div> 
                 </div> 
             )}
             {remainingSeconds > 0 && ( 
               <div className="flex">
-              <div> 
+              <div className="text-sm text-slate-900 px-1 font-semibold"> 
                 {remainingSeconds} 
               </div>
               <div>
