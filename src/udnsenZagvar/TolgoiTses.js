@@ -47,7 +47,7 @@ export default function TolgoiTses(props)
     </div>)
   }
 
-  return ( <header className={`bg-white shadow-[0px_0px_40px_0px_#0000000d] ${scrollProgress > 13 ? 'fixed top-0 left-0 right-0 z-40' : 'sticky'} `}>
+  return ( <header className={`bg-white transition-all duration-100 shadow-[0px_0px_40px_0px_#0000000d] ${scrollProgress > 13 ? 'fixed top-0 left-0 right-0 z-40' : 'sticky'} `}>
     {scrollProgress <= 0 ? null : <div className="h-1 w-full bg-gray-300">
       <div className="h-full bg-[#ef3f48]" style={{ width: `${scrollProgress}%` }}></div>
     </div>}

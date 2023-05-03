@@ -18,16 +18,14 @@ const khoosonUtga = {
     une: ''
 }
 
-export default function TankhimOruulakh() {
+export default function TogloltOruulakh() {
     const selectorRef = React.useRef()
     const editorRef = React.useRef()
     const [tomState, setTomState] = React.useState({
         yurunkhiiMedeelel: {
-            urgurug: 47.9187,
-            urtrag: 106.9182,
             ner: '',
-            utas: '',
-            tsakhimKhayag: '',
+            tsagiinMedeelel: [],
+            zohionBaiguulagch: '',
             delgerengui: '',
             turul: ''
         },
@@ -131,8 +129,22 @@ export default function TankhimOruulakh() {
         })
     }
 
+    const zuragOruulakh = () => {
+        const a = document.createElement('input')
+        a.type = 'file'
+        a.setAttribute('onchange', function(e) {
+            console.log(e)
+        })
+        a.click()
+        // a.remove()
+    }
+
+    function zurgiinFileAvya(e) {
+        console.log("e.file ==============>", e)
+    }
+
     return (
-        <TankhimContext.Provider value={{ tomState, editorRef, continueEsekh, selectorRef, setleye, yurunkhiiMedeelelAvya, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, songogdsonBulegtSuudalNemye }}>
+        <TankhimContext.Provider value={{ tomState, editorRef, continueEsekh, selectorRef, setleye, yurunkhiiMedeelelAvya, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, songogdsonBulegtSuudalNemye, zuragOruulakh }}>
             <div className='h-full w-full bg-white rounded-[4px] shadow-md p-3 relative overflow-hidden'>
                 <Steps
                     type="navigation"
