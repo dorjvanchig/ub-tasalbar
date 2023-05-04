@@ -1,5 +1,6 @@
 import React, {useRef} from 'react'
 import Corporate from '../Taiz/Corporate'
+import { Drawer } from 'antd';
 import {
   TransformWrapper,
   TransformComponent,
@@ -16,10 +17,18 @@ const Controls = ({ zoomIn, zoomOut, resetTransform }) => (
   </>
 );
 
-export default function SuudalSongokh(props) 
-{
-  const transformComponentRef = useRef()
 
+
+export default function SuudalSongokh(props) {
+  const transformComponentRef = useRef()
+  const [khajuugiinTalbar, setKhajuugiinTalbar] = React.useState(false)
+  const [delgetsiinUrt, setDelgetsiinUrt] = React.useState(0)
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setDelgetsiinUrt(window.innerWidth)
+    })
+    return () => clearTimeout(timer)
+  }, [])
   const zoomToImage = () => {
     if (transformComponentRef.current) {
       const { zoomToElement } = transformComponentRef.current;
@@ -29,7 +38,7 @@ export default function SuudalSongokh(props)
   
   return (<div className='h-screen flex flex-col items-stretch'>
         <div className='flex flex-col h-screen w-screen'>
-            <section className='hidden h-[120px] relative w-full bg-white items-center lg:flex font-semibold text-xl lg:text-3xl p-5 overflow-hidden' 
+            <section className='h-[100px] md:h-[120px] relative w-full bg-white items-center lg:flex font-semibold text-xl lg:text-3xl p-5 overflow-hidden' 
               style={{
                 backgroundImage: 'url(https://steppearena.mn/wp-content/uploads/2023/02/web_event_page_banner-1.png)',
                 backgroundSize: 'cover',
@@ -38,17 +47,17 @@ export default function SuudalSongokh(props)
             >
               {/* backdrop-blur-md */}
               <div className='absolute top-0 left-0 w-full h-full bg-[#000000aa] backdrop-blur-md'/>
-              <div class="w-full lg:px-5 flex items-center justify-between">
-                  <div class="hidden lg:flex space-x-4 items-center">
+              <div class="w-full lg:px-5 flex items-center justify-start md:justify-between">
+                  <div class="flex space-x-4 items-center">
                     <div class="relative w-36 overflow-hidden">
                       <img src="https://steppearena.mn/wp-content/uploads/2023/02/web_event_page_banner-1.png"/>
                     </div>
                     <section>
-                      <h1 class="text-white text-xl">Уран гулгалтын одод Монголд</h1>
-                      <p class="text-white text-lg font-normal">5 сар 7, 2023 15:00</p>
+                      <h1 class="text-white text-md md:text-xl">Уран гулгалтын одод Монголд</h1>
+                      <p class="hidden md:block text-white text-lg font-normal">5 сар 7, 2023 15:00</p>
                     </section>
                   </div>
-                  <section className='flex flex-col text-sm w-[35%] items-center justify-center'>
+                  <section className='flex-col text-sm w-[35%] items-center justify-center hidden md:flex'>
                     <div className='flex flex-row gap-2 w-full justify-start'>  
                       <div className='flex flex-row gap-2 w-1/3'>
                         <span className='text-white'>Төрөл:</span>
@@ -86,7 +95,7 @@ export default function SuudalSongokh(props)
                   <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"
                   ></path>
                   </svg>
-                  <button class="uppercase cursor-default text-c1 cursor-not-allowed opacity-50">Төлбөр төлөх</button></div>
+                  <button class="uppercase text-c1 cursor-not-allowed opacity-50">Төлбөр төлөх</button></div>
             </section>
             <section className='w-full relative flex flex-1 overflow-hidden bg-[#FAFAFA]'>
                 <div className='flex relative w-full flex-1 lg:w-9/12 items-center justify-center'>
@@ -100,7 +109,7 @@ export default function SuudalSongokh(props)
                                       <button className='p-3 py-2 bg-[#e3e3e3] border rounded-[5px]' onClick={() => zoomIn()}>+</button>
                                       <button className='p-3 py-2 bg-[#e3e3e3] border rounded-[5px]' onClick={() => zoomOut()}>-</button> 
                                   </div>
-                                  <div className='absolute right-0 [&_.rzpp-wrapper]:!justify-center [&_.rzpp-wrapper]:!items-center [&_.rzpp-wrapper]:!flex'>
+                                  <div className='hidden md:block absolute right-0 [&_.rzpp-wrapper]:!justify-center [&_.rzpp-wrapper]:!items-center [&_.rzpp-wrapper]:!flex'>
                                       <MiniMap >
                                           <SeatMap/>
                                       </MiniMap>
@@ -112,6 +121,25 @@ export default function SuudalSongokh(props)
                           )}
                       </TransformWrapper>
                   </div>
+                </div>
+                <div className='flex md:hidden w-full h-[60px] border-t-2 fixed bottom-[40px] justify-between items-center px-3 bg-white' onClick={() => setKhajuugiinTalbar(true)}>
+                  <div className='flex flex-row gap-2'>
+                    <span className='text-lg text-gray-800'>Нийт:</span>
+                    <span className='text-xl font-bold text-gray-800'>
+                      250,000.00₮
+                    </span>
+                  </div>
+                  <div className='flex flex-row gap-3 items-center'>
+                    <span className='text-xl font-bold'>
+                      3
+                    </span>
+                    <DursZuragch icon='material-symbols:left-panel-close-outline-sharp'/>
+                  </div>
+                </div>
+                <div className='flex md:hidden w-full h-[40px] fixed bottom-0 justify-center items-center px-3 bg-white'>
+                  <button className='flex w-full h-[40px] bg-emerald-600 justify-center items-center rounded-[4px] mt-[-10px]'>
+                    <span className='text-white font-bold'>Захиалах</span>
+                  </button>
                 </div>
                 <div className='w-full h-full lg:flex lg:w-3/12 bg-white relative z-50 overflow-hidden border border-gray-300 hidden flex-col items-baseline justify-between'>
                   <div className='flex flex-col justify-start h-full w-full px-2 py-3 overflow-auto bg-gray-100'>
@@ -184,5 +212,45 @@ export default function SuudalSongokh(props)
                 </div>
             </section>
         </div>
+        <Drawer
+          title="Суудлын жагсаалт"
+          placement={'right'}
+          closable={true}
+          width={delgetsiinUrt - 80}
+          onClose={() => setKhajuugiinTalbar(false)}
+          open={khajuugiinTalbar}
+          key={'drawer'}
+          bodyStyle={{
+            padding: 10,
+            background: '#f3f3f3'
+          }}
+        >
+          <div className='flex flex-col justify-start h-full w-full overflow-auto'>
+            <div className='h-[70px] flex flex-row w-full border rounded-[3px]'>
+              <div className='w-[80%] h-full bg-white border-r-2 border-dashed shadow-md rounded-l-md py-2 px-3 flex flex-col gap-2'>
+                <div className='flex flex-row w-full justify-between items-center'>
+                    <span>Бүлгийн нэр</span>
+                    <span>Үнэ: 20,000₮</span>
+                </div>
+                <div className='flex flex-row gap-3'>
+                  <div className='bg-sky-100 px-1 rounded-sm flex flex-row gap-2 w-fit text-[0.8rem] border border-sky-300 h-fit'>
+                    <span>Эгнээ:</span>
+                    <span>5</span>
+                  </div>
+                  <div className='bg-sky-100 px-1 rounded-sm flex flex-row gap-2 w-fit text-[0.8rem] border border-sky-300 h-fit'>
+                    <span>суудал:</span>
+                    <span>18</span>
+                  </div>
+                </div>
+              </div>
+              <div className='w-[20%] h-full relative bg-white p-2 after:content-[""] after:absolute after:bg-gray-100 after:w-[10px] after:h-[10px] after:bottom-[-5px] after:left-[-5px] after:rounded-full before:content-[""] before:absolute before:bg-gray-100 before:w-[10px] before:h-[10px] before:top-[-5px] before:left-[-5px] before:rounded-full shadow-md rounded-r-md'>
+                  <button className='w-full h-full bg-rose-600 flex flex-col justify-center items-center rounded-md'>
+                    <DursZuragch icon='solar:trash-bin-minimalistic-2-bold' style={{color: 'white'}}/>
+                    <span className='text-sm text-white'>Хасах</span>
+                  </button>
+              </div>
+            </div>
+          </div>
+        </Drawer>
   </div>)  
 }
