@@ -18,7 +18,7 @@ const khoosonUtga = {
     une: ''
 }
 
-export default function TankhimOruulakh() {
+export default function TankhimOruulakh(props) {
     const selectorRef = React.useRef()
     const editorRef = React.useRef()
     const [tomState, setTomState] = React.useState({
@@ -134,25 +134,7 @@ export default function TankhimOruulakh() {
     return (
         <TankhimContext.Provider value={{ tomState, editorRef, continueEsekh, selectorRef, setleye, yurunkhiiMedeelelAvya, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, songogdsonBulegtSuudalNemye }}>
             <div className='h-full w-full bg-white rounded-[4px] shadow-md p-3 relative overflow-hidden'>
-                <Steps
-                    type="navigation"
-                    size="small"
-                    current={tomState.alkham}
-                    onChange={alkhamSongokh}
-                    className="site-navigation-steps"
-                    items={[
-                        {
-                            title: 'Ерөнхий мэдээлэл',
-                        },
-                        {
-                            title: 'Танхимын тохиргоо',
-                        },
-                        {
-                            title: 'Баталгаажуулах',
-                        },
-                    ]}
-                />
-                {alkhamaarTalbarButsaay(tomState.alkham)}
+                <FormTalbar {...props}/>
             </div>
         </TankhimContext.Provider>
         

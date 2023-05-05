@@ -102,7 +102,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className='flex flex-wrap gap-3'>
+    <div className='flex flex-wrap gap-3 w-full'>
       <div className='w-full flex flex-row gap-3'>
         <div className='bg-white rounded-[3px] shadow-md w-1/4'>
           <ReactApexChart options={config1.options} series={config1.series} type='area' height={200}/>

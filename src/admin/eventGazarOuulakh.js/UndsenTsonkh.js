@@ -1,16 +1,12 @@
-import React from 'react'
-import dynamic from 'next/dynamic'
-// import { useMapEvent } from 'react-leaflet'
-import admin from '../../../styles/Admin.module.css'
-import { Drawer, Button, Space } from 'antd'
-import { DursZuragch } from '@/src/components'
+import React from 'react' 
+import { DursZuragch, Khusnegt, useBodyUndurOlyo } from '@/src/components'
 import { EventCtx } from './EventGazarContext'
 
 export default function UndsenTsonkh() {
     
     const { tankhimNemye } = React.useContext(EventCtx)
     const [open, setOpen] = React.useState(false)
-
+    let undur = useBodyUndurOlyo(0)
     return (
         <div className='w-full flex flex-col relative gap-2 h-full rounded-[3px] p-3'>
             <div className='w-full flex justify-end'>
@@ -24,66 +20,32 @@ export default function UndsenTsonkh() {
                     </div>
                 </button>
             </div>
-            <div className="overflow-auto lg:overflow-visible ">
-                <table className={`${admin.table} table table-fixed w-full text-gray-900 border-separate space-y-6 text-sm`}>
-                    <colgroup>
-                        <col width={150}/>
-                        <col width={250}/>
-                        <col width={100}/>
-                        <col width={100}/>
-                        <col width={100}/>
-                    </colgroup>
-                    <thead className="bg-white text-gray-500">
-                        <tr>
-                            <th className="p-3">Нэр</th>
-                            <th className="p-3 text-left">Хаяг</th>
-                            <th className="p-3 text-left">Заалны тоо</th>
-                            <th className="p-3 text-left">Статус</th>
-                            <th className="p-3 text-left"></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-            <div className="overflow-auto lg:overflow-visible ">
-                <table className={`${admin.table} table table-fixed w-full text-gray-900 border-separate space-y-6 text-sm`}>
-                    <colgroup>
-                        <col width={150}/>
-                        <col width={250}/>
-                        <col width={100}/>
-                        <col width={100}/>
-                        <col width={100}/>
-                    </colgroup>
-                    <tbody className={admin.tableBody}>
-                        <tr className="bg-white hover:shadow-md">
-                            <td className="p-3">
-                                <div className="flex align-items-center">
-                                    <img className="rounded-full h-12 w-12  object-cover" src="https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp" alt="unsplash image"/>
-                                    <div className="ml-3">
-                                        <div className="font-bold">UB Palace</div>
-                                        <div className="text-gray-500">ubpalace@gmail.com</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td className="p-3">
-                                Улаанбаатар хотын хаа нэгэн газар байгаа олоод оч
-                            </td>
-                            <td className="p-3">
-                                <span className="">3</span>
-                            </td>
-                            <td className="p-3">
-                                <span className="bg-green-400 text-gray-50 rounded-md px-2">available</span>
-                            </td>
-                            <td className="p-3 ">
-                                <div className='flex flex-row gap-3'>
-                                    <span className='text-sky-700'><DursZuragch icon='ic:outline-remove-red-eye' className='cursor-pointer'/></span>
-                                    <span className='text-emerald-700'><DursZuragch icon='ri:edit-2-line' className='cursor-pointer'/></span>
-                                    <span className='text-rose-700'><DursZuragch icon='mdi:trash-can-outline' className='cursor-pointer'/></span>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <Khusnegt
+                muriinUildel={{
+                    onClick: (e, muriinUgugdul, muriinDugaar) => console.log(muriinUgugdul),
+                    onDoubleClick: (e, muriinUgugdul, muriinDugaar) => console.log(muriinUgugdul),
+                }}
+                undur={undur - 203}
+                muriinUndur={28}
+                tulkhuur={"UDK"}
+                ugugdluud={[{}]}  
+                baganuud={
+                    [ 
+                        {
+                            tolgoinNer: "Танхим",
+                            baganiinUrt: '15%',
+                            talbariinNer: "tankhimiinNer",
+                            zeregtsuulekh: 'zuun',
+                            muriinRender: (text, muriinUgugdul) => {
+                                return <div className="flex items-center justify-start">
+                                    {muriinUgugdul.tankhimiinNer}
+                                </div>;
+                            },
+                        }, 
+                         
+                    ]
+                }
+            /> 
         </div>
     )
 }

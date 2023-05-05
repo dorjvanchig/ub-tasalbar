@@ -35,7 +35,8 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   color: rgb(var(--foreground-rgb));
-}
+  
+} 
 
 .ant-menu-horizontal>.ant-menu-item:after {
   border-bottom: none !important;
@@ -246,4 +247,21 @@ body section .-bold {
 
 .tox-notifications-container {
   display: none !important;
+}
+
+.zuragOruulayContent:before {
+  display: block;
+  content: ' ';
+  background-image: url('../public/numZurag1.svg');
+  background-size: 28px 28px;
+  height: 28px;
+  width: 28px;
+}
+.zuragOruulayContent::after {
+display: block;
+content: ' ';
+background-image: url('../public/numZurag2.svg');
+background-size: 28px 28px;
+height: 28px;
+width: 28px;
 }

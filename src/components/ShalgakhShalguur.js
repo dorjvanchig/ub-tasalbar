@@ -1,5 +1,4 @@
 import { isArray, isObject } from 'lodash'
-import dayjs from 'dayjs'
 export const isNullOrUndefined = (x) => {
     return (x == undefined || x == null)
 }
@@ -14,8 +13,4 @@ export function khoosonObjectEsekh(obj) {
 
 export function khoosonJagsaaltEsekh(jagsaalt) {
     return  isArray(jagsaalt) && jagsaalt.length === 0
-} 
-
-export function formatOgnoo(ognoo, format) {
-    return  dayjs(ognoo).format(format)
-} 
+}  

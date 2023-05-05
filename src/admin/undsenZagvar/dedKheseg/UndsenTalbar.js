@@ -15,6 +15,6 @@ export default function UndsenTalbar(props) {
   }
 
   return (
-    <div className='w-[calc(100%-300px)] h-full overflow-x-hidden overflow-y-auto'>{tsonkhButsaaya()}</div>
+    <div className='w-[calc(100%-5px)] h-full overflow-x-hidden overflow-y-auto'>{tsonkhButsaaya()}</div>
   )
 }

@@ -7,7 +7,7 @@ import {
   MiniMap
 } from "react-zoom-pan-pinch";
 import SeatMap from '../delgerenguiTsonkh/dedKheseg/SeatMap';
-import { DursZuragch } from '../components';
+import { DursZuragch, useBodyUrgunOlyo } from '../components';
 
 const Controls = ({ zoomIn, zoomOut, resetTransform }) => (
   <>
@@ -22,13 +22,8 @@ const Controls = ({ zoomIn, zoomOut, resetTransform }) => (
 export default function SuudalSongokh(props) {
   const transformComponentRef = useRef()
   const [khajuugiinTalbar, setKhajuugiinTalbar] = React.useState(false)
-  const [delgetsiinUrt, setDelgetsiinUrt] = React.useState(0)
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setDelgetsiinUrt(window.innerWidth)
-    })
-    return () => clearTimeout(timer)
-  }, [])
+  const delgetsiinUrt =  useBodyUrgunOlyo(0) 
+  
   const zoomToImage = () => {
     if (transformComponentRef.current) {
       const { zoomToElement } = transformComponentRef.current;
