@@ -8,7 +8,7 @@ export default function GazriinZuragOruulakh(props) {
     let undur = useBodyUndurOlyo(0)
     const [open, setOpen] = useState(false);
   return (<GazriinZurag 
-            mapContainerStyle={{ height: undur- 230, marginTop:'0px'}}
+            mapContainerStyle={{ height: undur- 170, marginTop:'0px', borderRadius: 8}}
             zoom={15}
             center={{
                 lat: Number(tomState.yurunkhiiMedeelel.urgurug),

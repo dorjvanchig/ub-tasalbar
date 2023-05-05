@@ -1,107 +1,63 @@
-import React from 'react'
-import FormTalbar from './FormTalbar'
+import React, { useEffect } from 'react'
 import BulegSongokhTalbar from './BulegSongokhTalbar'
-import { Steps } from 'antd'
 import _ from 'lodash'
+import { isNullOrUndefined, medeeKharuulakh, uilchilgeeDuudagch } from '@/src/components'
+import { Col, Button, Form, Input, Row, Select, Steps } from 'antd';
+import GazriinZuragOruulakh from './GazriinZuragOruulakh'; 
+
 export const TankhimContext = React.createContext()
 
-const alkhamaarTalbarButsaay = (activeAlkham) => {
-    if(activeAlkham === 0) return <FormTalbar/>
-    else if (activeAlkham === 1) return <BulegSongokhTalbar/>
-    else return <div>Test</div>
-}
-
-const khoosonUtga = {
-    ungu: '#000000',
-    bulgiinNer: '',
-    suudal: [],
-    une: ''
-}
-
 export default function TankhimOruulakh(props) {
-    const selectorRef = React.useRef()
-    const editorRef = React.useRef()
+    console.log('TankhimOruulakh', props)
     const [tomState, setTomState] = React.useState({
         yurunkhiiMedeelel: {
             urgurug: 47.9187,
             urtrag: 106.9182,
-            ner: '',
-            utas: '',
-            tsakhimKhayag: '',
-            delgerengui: '',
-            turul: ''
-        },
-        alkham: 0,
-        bulgiinJagsaalt: [],
-        buleg: khoosonUtga,
-        suudliinJagsaalt: [],
-    })
-
-    const [continueEsekh, setContinueEsekh] = React.useState(false)
+            tankhimiinNer: '',
+            svgNer: '', 
+            // tankhimiinKhayag: '', 
+        },  
+    }) 
+    let kharakhEsekh = isNullOrUndefined(props.songosonTankhim) ? false : true
+    useEffect(()=>{
+        if (!isNullOrUndefined(props.songosonTankhim)){
+            tomState.yurunkhiiMedeelel = props.songosonTankhim
+            setleye()
+        }
+    }, [props.songosonTankhim])
 
     function setleye() {
         return new Promise(resolve => {
             setTomState({...tomState})
             return resolve(true)
         })
-    }
+    } 
 
-    const alkhamSongokh = (utga) => {
-        tomState.alkham = utga
-        setleye().then(result => {
-            if(result && utga === 1) svgShalgajSuudaldOnClickUusgey(selectorRef.current)
-        })
-    }
+    function tankhimKhadgalya() {
+        if (tomState.yurunkhiiMedeelel.tankhimiinNer == "")
+        {
+            medeeKharuulakh('warning', 'Танхимын нэр оруулна уу!')
+            return
+        }
+        if (tomState.yurunkhiiMedeelel.svgNer == "")
+        {
+            medeeKharuulakh('warning', 'Файлын нэр шалгана уу')
+            return
+        }
 
-    const bulgiinMedeelelAvya = (utga, turul) => {
-        tomState.buleg[turul] = utga
-        setleye()
-    }
-
-    const bulegKhadgalya = () => {
-        const clonedBuleg = _.clone(tomState.buleg)
-        const jagsaalt = _.clone(tomState.suudliinJagsaalt)
-        clonedBuleg['suudal'] = jagsaalt
-        jagsaalt.forEach(x => {
-            document.getElementById(x).setAttribute('fill', clonedBuleg.ungu)
-            document.getElementById(x).classList.remove('suudal')
-        })
-        tomState.bulgiinJagsaalt.push(clonedBuleg)
-        tomState.buleg = khoosonUtga
-        tomState.suudliinJagsaalt = []
-        setleye().then(result => {
-            setContinueEsekh(false)
-        })
-    }
-
-    function svgShalgajSuudaldOnClickUusgey (elem, index) {
-        return new Promise(resolve => {
-            const jagsaalt = [...elem.childNodes]
-            if(jagsaalt.length > 0) {
-                jagsaalt.forEach((x, i) => {
-                    svgShalgajSuudaldOnClickUusgey(x, i+1)
-                })
-            } else {
-                if(elem.id.toLowerCase().includes("suudal")) {
-                    elem.id = elem.parentNode.id + "_" + elem.id.toLowerCase().split("x5f")[1].split('_')[1]
-                    const idAwaw = elem.id
-                    let shalguur = false
-                    tomState.bulgiinJagsaalt.forEach(x=>{
-                        x.suudal.forEach(z=>{
-                            if(z === elem.id) {
-                                shalguur = true
-                                elem.setAttribute('fill', x.ungu)
-                                elem.classList.remove('suudal')
-                            }
-                        })
-                    })
-                    if(!shalguur) {
-                        elem.setAttribute('class', 'cursor-pointer')
-                        elem.classList.add('suudal')
-                    }
-                }
+        uilchilgeeDuudagch('tankhimBurtgekh', tomState.yurunkhiiMedeelel).then(khariu=>{
+            console.log('khariu', khariu)
+            if (!isNullOrUndefined(khariu) && khariu.success == false)
+                medeeKharuulakh('warning', 'Хадгалах явцад алдаа гарсан байна')
+            else{
+                tomState.tankhimiinNer = '',
+                tomState.vsvgNer = '',
+                tomState.tankhimiinKhayag = '', 
+                setleye()
+                if (props.talbarButsaakh)
+                    props.talbarButsaakh()
+                medeeKharuulakh('success', 'Танхимын бүртгэл амжилттай бүртгэгдлээ')
             }
-            return resolve(true)
         })
     }
 
@@ -110,31 +66,49 @@ export default function TankhimOruulakh(props) {
         setleye()
     }
 
-    const suudalSongyo = (jagsaalt) => {
-        tomState.suudliinJagsaalt = jagsaalt
-        
-        setleye().then(result => {
-            setContinueEsekh(true)
-        })
-    }
-
-    const songogdsonBulegtSuudalNemye = (index) => {
-        const jagsaalt = _.clone(tomState.suudliinJagsaalt)
-        jagsaalt.forEach(x => {
-            document.getElementById(x).setAttribute('fill', tomState.bulgiinJagsaalt[index].ungu)
-            document.getElementById(x).classList.remove('suudal')
-        })
-        tomState.bulgiinJagsaalt[index].suudal.concat(jagsaalt)
-        tomState.suudliinJagsaalt = []
-        setleye().then(result => {
-            setContinueEsekh(true)
-        })
-    }
-
     return (
-        <TankhimContext.Provider value={{ tomState, editorRef, continueEsekh, selectorRef, setleye, yurunkhiiMedeelelAvya, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, songogdsonBulegtSuudalNemye }}>
+        <TankhimContext.Provider value={{ tomState, setleye }}>
             <div className='h-full w-full bg-white rounded-[4px] shadow-md p-3 relative overflow-hidden'>
-                <FormTalbar {...props}/>
+                    <div className='w-full'>
+                    <div className='border-b flex justify-between items-center py-1 border-b-slate-300 shadow-lg'>
+                        <Button 
+                            onClick={()=> props.talbarButsaakh && props.talbarButsaakh()}
+                        >
+                             Буцах
+                        </Button>
+                    
+                    </div>
+                    <div className='w-[100%] flex flex-row p-2 rounded-lg'>
+                        <div className='w-[80%]'>
+                            <GazriinZuragOruulakh />
+                        </div>
+                        <div className='mb-2 w-[20%] shadow-md ml-1 px-3'>
+                            <div className='mr-1 mb-2'>
+                                <span className='text-slate-500 text-sm font-medium'>Танхимын нэр:</span>
+                                <Input disabled = {kharakhEsekh} value={tomState.yurunkhiiMedeelel.tankhimiinNer} onChange={(e) => {yurunkhiiMedeelelAvya('tankhimiinNer', e.target.value)}} />
+                            </div>
+                            <div className='mr-1 mb-2'>
+                                <span className='text-slate-500 text-sm font-medium'>SVG нэр оруулна уу:</span>
+                                <Input disabled = {kharakhEsekh}  value={tomState.yurunkhiiMedeelel.svgNer} onChange={(e) => {yurunkhiiMedeelelAvya('svgNer', e.target.value)}} />
+                            </div>
+                            <div className='mr-1 mb-2'>
+                                    <span className='text-slate-500 text-sm font-medium'>Хаяг:</span>
+                                <Input.TextArea disabled = {kharakhEsekh} value={tomState.yurunkhiiMedeelel.tankhimiinKhayag} onChange={(e) => {yurunkhiiMedeelelAvya('tankhimiinKhayag', e.target.value)}} />
+                            </div>
+                            <div className='flex items-center justify-end mt-4'>
+                               { !kharakhEsekh && 
+                               <Button 
+                                    disabled = {kharakhEsekh}
+                                    onClick={()=> tankhimKhadgalya()}
+                                    className='!bg-[#1677ff]'
+                                    type="primary"
+                                >
+                                    Хадгалах
+                                </Button>}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </TankhimContext.Provider>
         

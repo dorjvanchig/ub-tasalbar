@@ -1,5 +1,5 @@
 import React from 'react'
-import admin from '../../../styles/Admin.module.css'
+//import admin from '../../../styles/Admin.module.css'
 import { DursZuragch } from '@/src/components'
 import { TogloltCtx } from './TogloltContext'
 export default function UndsenTsonkh() {
@@ -18,7 +18,7 @@ export default function UndsenTsonkh() {
                 </button>
             </div>
             <div className="overflow-auto lg:overflow-visible ">
-                <table className={`${admin.table} table table-fixed w-full text-gray-900 border-separate space-y-6 text-sm`}>
+                <table className={` table table-fixed w-full text-gray-900 border-separate space-y-6 text-sm`}>
                     <colgroup>
                         <col width={150}/>
                         <col width={250}/>
@@ -38,7 +38,7 @@ export default function UndsenTsonkh() {
                 </table>
             </div>
             <div className="overflow-auto lg:overflow-visible ">
-                <table className={`${admin.table} table table-fixed w-full text-gray-900 border-separate space-y-6 text-sm`}>
+                <table className={` table table-fixed w-full text-gray-900 border-separate space-y-6 text-sm`}>
                     <colgroup>
                         <col width={150}/>
                         <col width={250}/>
@@ -46,7 +46,7 @@ export default function UndsenTsonkh() {
                         <col width={100}/>
                         <col width={100}/>
                     </colgroup>
-                    <tbody className={admin.tableBody}>
+                    <tbody >
                         <tr className="bg-white hover:shadow-md">
                             <td className="p-3">
                                 <div className="flex align-items-center">

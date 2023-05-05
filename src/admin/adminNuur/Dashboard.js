@@ -1,7 +1,7 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 import { DursZuragch } from '@/src/components'
-import admin from '../../../styles/Admin.module.css'
+// import admin from '../../../styles/Admin.module.css'
 const randomizeArray = (arg) => {
   var array = arg.slice();
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -122,7 +122,7 @@ export default function Dashboard() {
           <ReactApexChart options={barchart.options} series={barchart.series} type='bar' height={400}/>
         </div>
         <div className='rounded-[3px] md:w-2/4 w-full p-2'>
-        <table className={`${admin.table} table table-fixed w-full text-gray-900 border-separate space-y-6 text-sm`}>
+        <table className={` table table-fixed w-full text-gray-900 border-separate space-y-6 text-sm`}>
                     <colgroup>
                         <col width={150}/>
                         <col width={250}/>
@@ -139,7 +139,7 @@ export default function Dashboard() {
                             <th className="p-3 text-left"></th>
                         </tr>
                     </thead>
-                    <tbody className={admin.tableBody}>
+                    <tbody >
                         <tr className="bg-white hover:shadow-md">
                             <td className="p-3">
                                 <div className="flex align-items-center">

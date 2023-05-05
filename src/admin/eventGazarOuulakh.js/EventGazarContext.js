@@ -15,11 +15,11 @@ export default function EventGazarContext(props) {
         tankhimiinJagsaaltAvya()
     }, [])
 
-    const tankhimNemye = () => {
+    const tankhimNemye = (turul, ugugdul) => { 
         talbarSolbiyo({
             kharakhEsekh: true,
             component: TankhimOruulakh,
-            componentProps: {...props}
+            componentProps: {...props, songosonTankhim: ugugdul}
         })
     }
 

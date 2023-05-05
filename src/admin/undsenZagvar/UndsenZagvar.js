@@ -3,7 +3,6 @@ import React from 'react';
 import DedKheseg from './DedKheseg'
 import UndsenTalbar from './dedKheseg/UndsenTalbar';
 import Tsesuud from './Tsesuud'
-import '../../../styles/Admin.module.css'
 import { useBodyUndurOlyo } from '@/src/components';
 export default function UndsenZagvarAdmin(props) {
     let undur = useBodyUndurOlyo(0)
@@ -12,6 +11,10 @@ export default function UndsenZagvarAdmin(props) {
         component:undefined,
         componentProps: {},
     }
+
+    React.useEffect(()=>{
+      talbarButsaakh()
+    }, [props])
     
     const [talbarSolbigch, setTalbarSolbigch] = React.useState(ankhniiUtga);
 
@@ -35,7 +38,7 @@ export default function UndsenZagvarAdmin(props) {
                 <div className='my-6 w-full h-px bg-white/[0.08] z-10 relative dark:bg-white/[0.07]'></div>
                 <Tsesuud />
             </nav>
-            <div className="rounded-[30px] min-w-0 flex-1 bg-slate-100 px-4 md:px-[15px] max-w-full md:max-w-auto before:content-[''] before:w-full before:h-px before:block">
+            <div className="rounded-[30px] min-w-0 flex-1 bg-slate-100 px-4 md:px-[15px] max-w-full md:max-w-auto before:content-[''] before:w-full before:h-px before:block mr-2">
              <DedKheseg />
               <div className='block w-full p-3' style={{ height: undur - 84}}>
                 {talbarSolbigch.kharakhEsekh ?
