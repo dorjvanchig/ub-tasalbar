@@ -5,7 +5,7 @@ import KhusnegtiinTolgoi from './KhusnegtiinTolgoi';
 import KhusnegtMur from './KhusnegtMur';
 import { Pagination } from 'antd';
 import Selecto from "react-selecto";
-
+import '../../../styles/Khunegs.module.css'
 function Khusnegt(props, ref) {
     const {
         baganuud,
