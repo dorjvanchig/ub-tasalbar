@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FormTalbar from './FormTalbar'
 import BulegSongokhTalbar from './BulegSongokhTalbar'
 import { Steps } from 'antd'
 import _ from 'lodash'
+import { isNullOrUndefined, uilchilgeeDuudagch, useBodyUndurOlyo } from '@/src/components'
+import Batalgaajuulakh from './Batalgaajuulakh'
 export const TankhimContext = React.createContext()
 
 const alkhamaarTalbarButsaay = (activeAlkham) => {
     if(activeAlkham === 0) return <FormTalbar/>
     else if (activeAlkham === 1) return <BulegSongokhTalbar/>
-    else return <div>Test</div>
+    else return <Batalgaajuulakh />
 }
 
 const khoosonUtga = {
@@ -18,24 +20,40 @@ const khoosonUtga = {
     une: ''
 }
 
-export default function TogloltOruulakh() {
+export default function TogloltOruulakh(props) {
     const selectorRef = React.useRef()
     const editorRef = React.useRef()
+    let undur = useBodyUndurOlyo(0)
     const [tomState, setTomState] = React.useState({
         yurunkhiiMedeelel: {
             ner: '',
-            tsagiinMedeelel: [],
-            zohionBaiguulagch: '',
-            delgerengui: '',
-            turul: ''
+            turul:"",
+            tankhim:'',
+            zokhionBaiguulagch:'',
+            urgeljlekhKhugatsaa: 0,
+            nasniiAngilal:0,
+            delgerenguiMedeelel: '',
+            zurgiinZam:'',
+            uniinMedeelel: [],
+            tsagiinMedeelel: [] 
         },
         alkham: 0,
         bulgiinJagsaalt: [],
         buleg: khoosonUtga,
         suudliinJagsaalt: [],
+        tankhimiinJagsaalt: []
     })
 
     const [continueEsekh, setContinueEsekh] = React.useState(false)
+
+    useEffect(()=> {
+        uilchilgeeDuudagch('tankhimiinJagsaaltAvya').then(khariu =>{
+            if (!isNullOrUndefined(khariu))
+                tomState.tankhimiinJagsaalt = khariu.data
+            else tomState.tankhimiinJagsaalt = []
+            setleye()
+        })
+    }, [props])
 
     function setleye() {
         return new Promise(resolve => {
@@ -67,6 +85,7 @@ export default function TogloltOruulakh() {
         tomState.bulgiinJagsaalt.push(clonedBuleg)
         tomState.buleg = khoosonUtga
         tomState.suudliinJagsaalt = []
+        console.log('tomState.bulgiinJagsaalt', tomState.bulgiinJagsaalt)
         setleye().then(result => {
             setContinueEsekh(false)
         })
@@ -80,7 +99,7 @@ export default function TogloltOruulakh() {
                     svgShalgajSuudaldOnClickUusgey(x, i+1)
                 })
             } else {
-                if(elem.id.toLowerCase().includes("suudal")) {
+                if(elem?.id?.toLowerCase().includes("suudal")) {
                     elem.id = elem.parentNode.id + "_" + elem.id.toLowerCase().split("x5f")[1].split('_')[1]
                     const idAwaw = elem.id
                     let shalguur = false
@@ -145,10 +164,10 @@ export default function TogloltOruulakh() {
 
     return (
         <TankhimContext.Provider value={{ tomState, editorRef, continueEsekh, selectorRef, setleye, yurunkhiiMedeelelAvya, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, songogdsonBulegtSuudalNemye, zuragOruulakh }}>
-            <div className='h-full w-full bg-white rounded-[4px] shadow-md p-3 relative overflow-hidden'>
+            <div className='h-full w-full p-2 relative' style={{height:undur-98, overflow:'scroll'}}>
                 <Steps
                     type="navigation"
-                    size="small"
+                    size="small" 
                     current={tomState.alkham}
                     onChange={alkhamSongokh}
                     className="site-navigation-steps"

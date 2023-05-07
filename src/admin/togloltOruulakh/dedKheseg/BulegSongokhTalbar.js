@@ -39,14 +39,14 @@ export default function BulegSongokhTalbar(props) {
                 }}
             />
             <div ref={selectorRef} className='w-3/4 h-full justify-center items-center flex'>
-            <TransformWrapper >
+            {/* <TransformWrapper >
                 {
                     <TransformComponent>
-                        <ZoomControl/>
+                        <ZoomControl/> */}
                         <SeatMap/>
-                    </TransformComponent>
+                    {/* </TransformComponent>
                 }
-            </TransformWrapper>
+            </TransformWrapper> */}
             </div>
             <div className='w-1/4'>
                 <div className='w-full h-fit flex flex-col gap-2 p-2 border rounded-[4px]'>

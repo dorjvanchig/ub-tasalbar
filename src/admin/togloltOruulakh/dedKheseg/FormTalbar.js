@@ -1,140 +1,149 @@
 import React from 'react'
-import { Col, DatePicker, Form, Input, Row, Select, Steps } from 'antd';
-import dynamic from 'next/dynamic';
-import { TankhimContext } from './TogloltOruulakh';
-import GoogleMapReact from 'google-map-react';
+import { Col, DatePicker, Form, Input, Row, Select, Steps } from 'antd'; 
+import { TankhimContext } from './TogloltOruulakh'; 
 import { DursZuragch } from '@/src/components';
+import EditorOruulakh from './EditorOruulakh';
+import { InboxOutlined } from '@ant-design/icons'; 
+import OgnooOlnooOruulakh from '@/src/components/OgnooOlnooOruulakh';  
+import { Upoload } from '@/src/components'
+
+const { Option } = Select;
 export default function FormTalbar() {
     const { tomState, editorRef, yurunkhiiMedeelelAvya, zuragOruulakh } = React.useContext(TankhimContext)
-    const { Option } = Select;
-    const Editor = dynamic(() => import('@tinymce/tinymce-react').then(comp => comp.Editor), {ssr: false})
     return (
-        <div className='w-full h-[calc(100%-48px)] bg-white rounded-[4px] shadow-md relative flex flex-row overflow-auto'>
-            <div className='flex flex-col w-full p-2'>
-                <Form layout="vertical" >
-                    <Row gutter={16} className='w-full justify-center'>
-                        <Col span={16}>
-                            <Form.Item
-                                name="name"
-                                label="Тоглолтын нэр"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Тоглолтын нэр оруулна уу',
-                                    },
-                                ]}
+        <div className='w-full  rounded-[4px] relative flex flex-row overflow-auto'>
+            <div className='flex flex-row w-full p-2'>
+                <div className='w-[35%] shadow-lg px-3 bg-white rounded-lg'>
+                    <Form layout="vertical" >
+                        <Form.Item
+                            name="name"
+                            label="Тоглолтын нэр"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Тоглолтын нэр оруулна уу',
+                                },
+                            ]}
+                        >
+                            <Input value={tomState.yurunkhiiMedeelel.ner} onChange={(e) => {yurunkhiiMedeelelAvya('ner', e.target.value)}} />
+                        </Form.Item>
+                        <Form.Item
+                            name="zokhionBaiguulagch"
+
+                            label="Зохион байгуулагч"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Утасны дугаар',
+                                },
+                            ]}
+                        >
+                            <Input value={tomState.yurunkhiiMedeelel.zokhionBaiguulagch} onChange={(e) => {yurunkhiiMedeelelAvya('zokhionBaiguulagch', e.target.value)}} />
+                        </Form.Item>
+                        <Form.Item
+                            name="tankhim"
+                            label="Танхим"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Танхимын төрөл',
+                                },
+                            ]}
+                        >
+                            <Select 
+                                value={tomState.yurunkhiiMedeelel.tankhim} 
+                                onChange={(v) => {yurunkhiiMedeelelAvya('tankhim', v)}}
                             >
-                                <Input placeholder="Тоглолтын нэр" value={tomState.yurunkhiiMedeelel.ner} onChange={(e) => {yurunkhiiMedeelelAvya('ner', e.target.value)}} />
-                            </Form.Item>
-                            <Form.Item
-                                name="description"
-                                label="Дэлгэрэнгүй мэдээлэл"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'please enter url description',
-                                    },
-                                ]}
+                                {tomState.tankhimiinJagsaalt.map((ugugdul) =>{
+                                    return(<Option value={ugugdul.tankhimiinNer}>{ugugdul.tankhimiinNer}</Option>)
+                                })} 
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            name="turul"
+                            label="Тоглолт болох газар"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Тоглолт болох газар',
+                                },
+                            ]}
+                        >
+                            <Select  
+                                    value={tomState.yurunkhiiMedeelel.turul}
+                                    onChange={(v) => {yurunkhiiMedeelelAvya('turul', v)}}>
+                                <Option value="sport">Спорт заал</Option>
+                                <Option value="concert">Концерт</Option>
+                                <Option value="movie">Кино театр</Option>
+                            </Select>
+                        </Form.Item>
+                        <Form.Item label="Үргэлжлэх хугацаа" style={{ marginBottom: 0 }}>
+                            <Form.Item 
+                            name="urgeljlekhKhugatsaa"
+                            label="Минут"
+                                style={{ display: 'inline-block', width: 'calc(50% - 141px)', marginRight: 8 }}
                             >
-                                <Editor
-                                    onInit={(evt, editor) => editorRef.current = editor}
-                                    value={tomState.yurunkhiiMedeelel.delgerenguiMedeelel}
-                                    onChange={() => yurunkhiiMedeelelAvya('delgerenguiMedeelel', editorRef.current.getContent())}
-                                    init={{
-                                        height: 400,
-                                        menubar: false,
-                                        plugins: [
-                                            'advlist autolink lists link image charmap print preview anchor',
-                                            'searchreplace visualblocks code fullscreen',
-                                            'insertdatetime media table paste code help wordcount'
-                                        ],
-                                        toolbar: 'undo redo | formatselect | ' +
-                                        'bold italic backcolor | alignleft aligncenter ' +
-                                        'alignright alignjustify | bullist numlist outdent indent | ' +
-                                        'removeformat | help',
-                                        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-                                    }}
+                                <Input size="middle" prefix={<DursZuragch style = {{fontSize: '19px'}} icon = "mdi:clock-time-five-outline" />} 
+                                    value={tomState.yurunkhiiMedeelel.urgeljlekhKhugatsaa} 
+                                    onChange={(e) => {yurunkhiiMedeelelAvya('urgeljlekhKhugatsaa', e.target.value)}}
                                 />
+                            </Form.Item> 
+                            <Form.Item 
+                                name="tsagiinMedeelel"
+                                label = "Өдөр тохируулах"
+                                style={{ display: 'inline-block', width: 'calc(50% - -131px)' }}>
+                                <OgnooOlnooOruulakh />
                             </Form.Item>
-                        </Col>
-                        <Col span={6}>
-                            <div className='min-h-[200px] h-[200px] w-full border-2 border-dashed cursor-pointer rounded-[4px]' onClick={zuragOruulakh}>
-                                
-                            </div>
-                            <Form.Item
-                                name="phone"
-                                label="Зохион байгуулагч"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Утасны дугаар',
-                                    },
-                                ]}
-                            >
-                                <Input placeholder="Зохион байгуулагч" value={tomState.yurunkhiiMedeelel.ner} onChange={(e) => {yurunkhiiMedeelelAvya('zokhionBaiguulagch', e.target.value)}} />
-                            </Form.Item>
-                            <Form.Item
-                                name="url"
-                                label="Насны ангилал"
-                            >
-                                <Input
-                                    style={{
-                                        width: '100%',
-                                    }}
-                                    addonBefore="+"
-                                    value={tomState.yurunkhiiMedeelel.tsakhimKhayag}
-                                    placeholder="Насны ангилал"
-                                    onChange={(e) => {yurunkhiiMedeelelAvya('nasniiAngilal', e.target.value)}}
-                                />
-                            </Form.Item>
-                            <Form.Item
-                                name="type"
-                                label="Тоглолт болох газар"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Танхимын төрөл',
-                                    },
-                                ]}
-                            >
-                                <Select placeholder="Тоглолт болох газараа сонгоно уу" value={tomState.yurunkhiiMedeelel.turul} onChange={(v) => {yurunkhiiMedeelelAvya('khaana', v)}}>
-                                    <Option value="sport">Спорт заал</Option>
-                                    <Option value="concert">Концерт</Option>
-                                    <Option value="movie">Кино театр</Option>
-                                </Select>
-                            </Form.Item>
-                            <Form.Item
-                                name="type"
-                                label="Танхим"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Танхимын төрөл',
-                                    },
-                                ]}
-                            >
-                                <Select placeholder="Танхим сонгоно уу" value={tomState.yurunkhiiMedeelel.turul} onChange={(v) => {yurunkhiiMedeelelAvya('khaana', v)}}>
-                                    <Option value="sport">Спорт заал</Option>
-                                    <Option value="concert">Концерт</Option>
-                                    <Option value="movie">Кино театр</Option>
-                                </Select>
-                            </Form.Item>
-                            <Form.Item
-                                name="type"
-                                label="Цагийн мэдээлэл"
-                            >
-                                <Input
-                                    style={{
-                                        width: '100%',
-                                    }}
-                                    value={tomState.yurunkhiiMedeelel.tsakhimKhayag}
-                                    placeholder="Цагийн мэдээлэл"
-                                    onChange={(e) => {yurunkhiiMedeelelAvya('tsagiin', e.target.value)}}
-                                />
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                </Form>
+                        </Form.Item>
+                        <Form.Item
+                            name="zurgiinZam"
+                            label="Зураг оруулах"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Зураг оруулах',
+                                },
+                            ]}
+                        >
+                            <Upoload>
+                                <p className="ant-upload-drag-icon">
+                                    <InboxOutlined />
+                                </p>
+                                <p className="ant-upload-text">Байршуулахын тулд файлыг энэ хэсэг рүү чирнэ үү</p>
+                                <p className="ant-upload-hint"> Компанийн мэдээлэл болон бусад хориглогдсон файлуудыг байршуулахыг хатуу хориглоно.
+                                </p>
+                            </Upoload> 
+                        </Form.Item>
+                    </Form>
+                </div>
+                <div className='w-[65%] px-2 ml-2'>
+                    <Form layout="vertical" >
+                        <Form.Item
+                            name="nasniiAngilal"
+                            label="Насны ангилал"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Насны ангилал',
+                                },
+                            ]}
+                        >
+                            <Input value={tomState.yurunkhiiMedeelel.nasniiAngilal} onChange={(e) => {yurunkhiiMedeelelAvya('nasniiAngilal', e.target.value)}} />
+                        </Form.Item>
+                        <Form.Item
+                            name="delgerenguiMedeelel"
+                            label="Дэлгэрэнгүй мэдээлэл"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Дэлгэрэнгүй мэдээлэл',
+                                },
+                            ]}
+                        >
+                            <EditorOruulakh/>
+                        </Form.Item>
+                  </Form>
+                </div>
             </div>
         </div>
     )

@@ -6,6 +6,7 @@ export { default as SInput } from "./suuriComponent/SInput";
 export { default as DursZuragch } from "./suuriComponent/DursZuragch"; 
 export { default as GazriinZurag } from "./GazriinZurag"; 
 export { default as Khusnegt } from "./khusnegt/Khusnegt";
+export { default as Upoload } from "./Upoload";
 export {
     useBodyUrgunOlyo,
     useBodyUndurOlyo,
