@@ -3,12 +3,13 @@ import { DursZuragch } from '@/src/components';
 
 export default function DedKheseg(props) 
 {
+    const { tsesniiNer } = props
     return (
         <div  className="h-[67px] z-[51] flex items-center relative border-b border-slate-200">
         <nav className="hidden mr-auto -intro-x sm:flex" aria-label="breadcrumb">
             <ol className="flex items-center text-primary dark:text-slate-300">
                 <li className="text-base font-semibold">
-                    <a href="/">Ресепшний хяналтын самбар</a>
+                    <span>{tsesniiNer}</span>
                 </li> 
             </ol>
         </nav>

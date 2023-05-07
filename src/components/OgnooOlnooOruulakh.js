@@ -1,11 +1,11 @@
 import { Button, Divider, Select, DatePicker } from 'antd';
 import React, { useRef, useState } from 'react';
 import DursZuragch from './suuriComponent/DursZuragch';
-import { TankhimContext } from '../admin/togloltOruulakh/dedKheseg/TogloltOruulakh';
+import { TogloltContext } from '../admin/togloltOruulakh/dedKheseg/TogloltOruulakh';
 import dayjs from 'dayjs';
 
 export default function OgnooOlnooOruulakh() {
-    const { tomState, setleye } = React.useContext(TankhimContext)
+    const { tomState, setleye } = React.useContext(TogloltContext)
     const [open, setOpen] = useState(false)  
     const inputRef = useRef(null);  
     const onOk = (value) => {

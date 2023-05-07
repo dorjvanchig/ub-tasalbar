@@ -1,20 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import dynamic from 'next/dynamic'
-export const TogloltCtx = React.createContext()
 import UndsenTsonkh from './UndsenTsonkh'
+import { isNullOrUndefined, uilchilgeeDuudagch } from '@/src/components'
 
+export const TogloltCtx = React.createContext()
 export default function TogloltContext(props) {
-  const [tomState, setTomState] = React.useState()
+  const [tolgoltState, setTogloltState] = React.useState({
+    jagsaaltKharuulakh: []
+  })
 
   function setleye() {
     return new Promise(resolve => {
-      setTomState({...tomState})
+      setTogloltState({...tolgoltState})
       return resolve(true)
     })
   }
 
   const { talbarSolbiyo } = props
   const TogloltOruulakh = dynamic(() => import('./dedKheseg/TogloltOruulakh'), {ssr: false})
+
+
+  useEffect(()=>{
+    togloltiinJagsaaltAvya()
+  }, [props])
 
   const togloltOruulya = () => {
       talbarSolbiyo({
@@ -24,8 +32,20 @@ export default function TogloltContext(props) {
       })
   }
 
+  function togloltiinJagsaaltAvya() {
+        uilchilgeeDuudagch('togloltiinJagsaaltAvya').then((khariu)=>
+        {  
+          console.log('khariu', khariu)
+          if (!isNullOrUndefined(khariu))
+            tolgoltState.jagsaaltKharuulakh = khariu.data
+          else tolgoltState.jagsaaltKharuulakh = []
+          setleye()
+        })
+  }
+
+
   return (
-    <TogloltCtx.Provider value={{ togloltOruulya, setleye }}>
+    <TogloltCtx.Provider value={{ togloltOruulya, tolgoltState, setleye }}>
         <UndsenTsonkh {...props}/>
     </TogloltCtx.Provider>
   )

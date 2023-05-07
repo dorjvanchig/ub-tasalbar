@@ -5,7 +5,7 @@ import { Steps } from 'antd'
 import _ from 'lodash'
 import { isNullOrUndefined, uilchilgeeDuudagch, useBodyUndurOlyo } from '@/src/components'
 import Batalgaajuulakh from './Batalgaajuulakh'
-export const TankhimContext = React.createContext()
+export const TogloltContext = React.createContext()
 
 const alkhamaarTalbarButsaay = (activeAlkham) => {
     if(activeAlkham === 0) return <FormTalbar/>
@@ -162,8 +162,12 @@ export default function TogloltOruulakh(props) {
         console.log("e.file ==============>", e)
     }
 
+    function batalgaajuulakh() {
+        alert('a')
+    }
+
     return (
-        <TankhimContext.Provider value={{ tomState, editorRef, continueEsekh, selectorRef, setleye, yurunkhiiMedeelelAvya, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, songogdsonBulegtSuudalNemye, zuragOruulakh }}>
+        <TogloltContext.Provider value={{ tomState, editorRef, continueEsekh, selectorRef, batalgaajuulakh, setleye, yurunkhiiMedeelelAvya, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, songogdsonBulegtSuudalNemye, zuragOruulakh }}>
             <div className='h-full w-full p-2 relative' style={{height:undur-98, overflow:'scroll'}}>
                 <Steps
                     type="navigation"
@@ -185,7 +189,7 @@ export default function TogloltOruulakh(props) {
                 />
                 {alkhamaarTalbarButsaay(tomState.alkham)}
             </div>
-        </TankhimContext.Provider>
+        </TogloltContext.Provider>
         
     )
 }

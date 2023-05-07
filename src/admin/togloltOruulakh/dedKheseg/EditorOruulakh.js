@@ -1,10 +1,10 @@
 import React from 'react'
 import dynamic from 'next/dynamic';
-import { TankhimContext } from './TogloltOruulakh';
+import { TogloltContext } from './TogloltOruulakh';
 
 export default function EditorOruulakh() {
     const Editor = dynamic(() => import('@tinymce/tinymce-react').then(comp => comp.Editor), {ssr: false})
-    const { tomState, editorRef, yurunkhiiMedeelelAvya, zuragOruulakh } = React.useContext(TankhimContext)
+    const { tomState, editorRef, yurunkhiiMedeelelAvya, zuragOruulakh } = React.useContext(TogloltContext)
   return (  <Editor
     onInit={(evt, editor) => editorRef.current = editor}
     value={tomState.yurunkhiiMedeelel.delgerenguiMedeelel}

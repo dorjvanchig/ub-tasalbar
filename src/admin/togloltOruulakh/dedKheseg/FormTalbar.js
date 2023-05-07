@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, DatePicker, Form, Input, Row, Select, Steps } from 'antd'; 
-import { TankhimContext } from './TogloltOruulakh'; 
+import { TogloltContext } from './TogloltOruulakh'; 
 import { DursZuragch } from '@/src/components';
 import EditorOruulakh from './EditorOruulakh';
 import { InboxOutlined } from '@ant-design/icons'; 
@@ -9,7 +9,7 @@ import { Upoload } from '@/src/components'
 
 const { Option } = Select;
 export default function FormTalbar() {
-    const { tomState, editorRef, yurunkhiiMedeelelAvya, zuragOruulakh } = React.useContext(TankhimContext)
+    const { tomState, editorRef, yurunkhiiMedeelelAvya, zuragOruulakh } = React.useContext(TogloltContext)
     return (
         <div className='w-full  rounded-[4px] relative flex flex-row overflow-auto'>
             <div className='flex flex-row w-full p-2'>

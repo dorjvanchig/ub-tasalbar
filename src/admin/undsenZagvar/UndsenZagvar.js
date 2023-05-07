@@ -1,10 +1,11 @@
 // import ReceptionKhyanalt from '../reception/ReceptionKhyanalt'
-import React from 'react';
+import React, { useState } from 'react';
 import DedKheseg from './DedKheseg'
 import UndsenTalbar from './dedKheseg/UndsenTalbar';
 import Tsesuud from './Tsesuud'
 import { useBodyUndurOlyo } from '@/src/components';
 export default function UndsenZagvarAdmin(props) {
+    const [tsesniiNer, setTsesniiNer] = useState('')
     let undur = useBodyUndurOlyo(0)
     const ankhniiUtga = {
         kharakhEsekh: false,
@@ -36,10 +37,10 @@ export default function UndsenZagvarAdmin(props) {
                   <span className="hidden ml-3 text-lg text-white xl:block">  Админ</span>
                 </a>
                 <div className='my-6 w-full h-px bg-white/[0.08] z-10 relative dark:bg-white/[0.07]'></div>
-                <Tsesuud />
+                <Tsesuud setTsesniiNer = {setTsesniiNer}/>
             </nav>
             <div className="rounded-[30px] min-w-0 flex-1 bg-slate-100 px-4 md:px-[15px] max-w-full md:max-w-auto before:content-[''] before:w-full before:h-px before:block mr-2">
-             <DedKheseg />
+             <DedKheseg tsesniiNer = {tsesniiNer} />
               <div className='block w-full p-3' style={{ height: undur - 84}}>
                 {talbarSolbigch.kharakhEsekh ?
                 <talbarSolbigch.component {...talbarSolbigch.componentProps} talbarButsaakh={talbarButsaakh} talbarSolbiyo={talbarSolbiyo}/> :

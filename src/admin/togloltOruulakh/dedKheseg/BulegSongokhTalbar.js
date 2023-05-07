@@ -2,12 +2,12 @@ import React from 'react'
 import Selecto from 'react-selecto'
 import { Input } from 'antd'
 import SeatMap from '@/src/delgerenguiTsonkh/dedKheseg/SeatMap'
-import { TankhimContext } from './TogloltOruulakh'
+import { TogloltContext } from './TogloltOruulakh'
 import { DursZuragch } from '@/src/components'
 import { TransformWrapper, TransformComponent, useControls } from "react-zoom-pan-pinch";
 import ZoomControl from './ZoomControl'
 export default function BulegSongokhTalbar(props) {
-    const {tomState, selectorRef, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, continueEsekh, songogdsonBulegtSuudalNemye } = React.useContext(TankhimContext)
+    const {tomState, selectorRef, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, continueEsekh, songogdsonBulegtSuudalNemye } = React.useContext(TogloltContext)
     
     return (
         <div className='flex flex-row gap-2 '>
