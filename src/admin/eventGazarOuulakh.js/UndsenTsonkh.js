@@ -15,7 +15,7 @@ export default function UndsenTsonkh() {
                     <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
                     <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
                     <div className='flex flex-row items-center relative'>
-                        Нэмэх
+                        Танхим бүртгэл
                     </div>
                 </button>
             </div>

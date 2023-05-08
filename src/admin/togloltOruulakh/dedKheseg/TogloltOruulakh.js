@@ -3,7 +3,7 @@ import FormTalbar from './FormTalbar'
 import BulegSongokhTalbar from './BulegSongokhTalbar'
 import { Steps } from 'antd'
 import _ from 'lodash'
-import { isNullOrUndefined, uilchilgeeDuudagch, useBodyUndurOlyo } from '@/src/components'
+import { isNullOrUndefined, khoosonJagsaaltEsekh, medeeKharuulakh, uilchilgeeDuudagch, useBodyUndurOlyo } from '@/src/components'
 import Batalgaajuulakh from './Batalgaajuulakh'
 export const TogloltContext = React.createContext()
 
@@ -159,15 +159,46 @@ export default function TogloltOruulakh(props) {
         // a.remove()
     }
 
-    function zurgiinFileAvya(e) {
-        console.log("e.file ==============>", e)
-    }
+    function batalgaajuulakh() { 
+        if (tomState.yurunkhiiMedeelel.ner == ""){
+            medeeKharuulakh('warning', "Тоглолтын нэр оруулна уу")
+            return
+        }
+        if (tomState.yurunkhiiMedeelel.turul == ""){
+            medeeKharuulakh('warning', "Тоглолтын төрөл сонгоно уу")
+            return
+        }
 
-    function batalgaajuulakh() {
-        console.log('tomState.yurunkhiiMedeelel', tomState.yurunkhiiMedeelel, tomState.bulgiinJagsaalt)
+        if (tomState.yurunkhiiMedeelel.delgerenguiMedeelel == ""){
+            medeeKharuulakh('warning', "Тоглолтын дэлгэрэнгүй мэдээлэл оруулна уу")
+            return
+        }
+
+        if (isNullOrUndefined(tomState.bulgiinJagsaalt) || 
+            khoosonJagsaaltEsekh(tomState.bulgiinJagsaalt)) 
+        {
+            medeeKharuulakh('warning', "Тоглолтын үнийн мэдээлэл оруулна уу")
+            return
+        }
+
+        if (isNullOrUndefined(tomState.yurunkhiiMedeelel.tsagiinMedeelel) || 
+            khoosonJagsaaltEsekh(tomState.yurunkhiiMedeelel.tsagiinMedeelel)) 
+        {
+            medeeKharuulakh('warning', "Тоглолтын цагийн мэдээлэл оруулна уу")
+            return
+        }
+
+        if (tomState.yurunkhiiMedeelel.urgeljlekhKhugatsaa === 0){
+            medeeKharuulakh('warning', "Үргэлжлэх хугацаа оруулна уу")
+            return
+        }
         tomState.yurunkhiiMedeelel.uniinMedeelel = tomState.bulgiinJagsaalt
         uilchilgeeDuudagch('togloltBurtgekh', tomState.yurunkhiiMedeelel).then(khariu => {
-            console.log('khariu', khariu)
+            if (!isNullOrUndefined(khariu)){
+                medeeKharuulakh('success', 'Тоглолт амжилттай бүртгэгдлээ')
+                if (props.talbarButsaakh)
+                    props.talbarButsaakh()
+            }
         })
     }
 

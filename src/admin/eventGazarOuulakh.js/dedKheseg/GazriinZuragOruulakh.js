@@ -4,7 +4,7 @@ import { Marker, InfoWindow } from "@react-google-maps/api";
 import { useBodyUndurOlyo, DursZuragch, GazriinZurag } from '@/src/components';
 
 export default function GazriinZuragOruulakh(props) {
-    const { tomState, editorRef, yurunkhiiMedeelelAvya } = React.useContext(TankhimContext)
+    const { tomState } = React.useContext(TankhimContext)
     let undur = useBodyUndurOlyo(0)
     const [open, setOpen] = useState(false);
   return (<GazriinZurag 

@@ -28,6 +28,7 @@ export default function OgnooOlnooOruulakh() {
     
   return (<Select
             mode="multiple"
+            className="w-full"
             onFocus={()=> setOpen(true)}  
             onBlur={()=> setOpen(false)}
             open = {open} 

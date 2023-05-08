@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, DatePicker, Form, Input, Row, Select, Steps } from 'antd'; 
+import { Col, DatePicker, Form, Input, Row, Select, Steps, Image } from 'antd'; 
 import { TogloltContext } from './TogloltOruulakh'; 
 import { DursZuragch } from '@/src/components';
 import EditorOruulakh from './EditorOruulakh';
@@ -9,47 +9,47 @@ import { Upoload } from '@/src/components'
 
 const { Option } = Select;
 export default function FormTalbar() {
-    const { tomState, editorRef, yurunkhiiMedeelelAvya, zuragOruulakh } = React.useContext(TogloltContext)
+    const { tomState, yurunkhiiMedeelelAvya } = React.useContext(TogloltContext)
     return (
-        <div className='w-full  rounded-[4px] relative flex flex-row overflow-auto'>
+        <div className='w-full  rounded-[4px] relative'>
             <div className='flex flex-row w-full p-2'>
-                <div className='w-[35%] shadow-lg px-3 bg-white rounded-lg'>
-                    <Form layout="vertical" >
-                        <Form.Item
-                            name="name"
-                            label="Тоглолтын нэр"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Тоглолтын нэр оруулна уу',
-                                },
-                            ]}
-                        >
+                <div className='bg-white p-1 rounded'>
+                    <Image
+                        width={300}
+                        height={280}
+                        src="error"
+                        fallback="data:image/png;base64,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"
+                    />
+                </div>
+                <div className='flex flex-col md:flex-row w-full px-4 items-center justify-center'>
+                    <div className='w-1/2 px-5'>
+                        <div className='py-2'>
+                            <span className = "text-slate-500 font-normal text-sm ml-2">Тоглолтын нэр</span>
                             <Input value={tomState.yurunkhiiMedeelel.ner} onChange={(e) => {yurunkhiiMedeelelAvya('ner', e.target.value)}} />
-                        </Form.Item>
-                        <Form.Item
-                            name="zokhionBaiguulagch"
-
-                            label="Зохион байгуулагч"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Утасны дугаар',
-                                },
-                            ]}
-                        >
+                        </div>
+                        <div className='py-2'>
+                            <span className = "text-slate-500 font-normal text-sm ml-2">Зохион байгуулагч</span>
                             <Input value={tomState.yurunkhiiMedeelel.zokhionBaiguulagch} onChange={(e) => {yurunkhiiMedeelelAvya('zokhionBaiguulagch', e.target.value)}} />
-                        </Form.Item>
-                        <Form.Item
-                            name="tankhim"
-                            label="Танхим"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Танхимын төрөл',
-                                },
-                            ]}
-                        >
+                        </div>
+                        <div className='flex flex-row w-full'>
+                            <div className='flex flex-col w-1/2 px-1 py-2'>
+                                <span className = "text-slate-500 font-normal text-sm ml-2">Минут:</span>
+                                    <Input size="middle" prefix={<DursZuragch style = {{fontSize: '19px'}} icon = "mdi:clock-time-five-outline" />} 
+                                        value={tomState.yurunkhiiMedeelel.urgeljlekhKhugatsaa} 
+                                        className='!text-center'
+                                        onChange={(e) => {yurunkhiiMedeelelAvya('urgeljlekhKhugatsaa', e.target.value)}}
+                                    />
+                            </div>
+                            <div className='flex flex-col w-1/2 px-1 py-2'>
+                                <span className = "text-slate-500 font-normal text-sm ml-2">Насны ангилал</span>
+                                <Input value={tomState.yurunkhiiMedeelel.nasniiAngilal} onChange={(e) => {yurunkhiiMedeelelAvya('nasniiAngilal', e.target.value)}} />
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div className='w-1/2 px-5'>
+                        <div className='flex flex-col py-2'>
+                            <span className = "text-slate-500 font-normal text-sm ml-2">Танхим</span>
                             <Select 
                                 value={tomState.yurunkhiiMedeelel.tankhim} 
                                 onChange={(v) => {yurunkhiiMedeelelAvya('tankhim', v)}}
@@ -58,17 +58,9 @@ export default function FormTalbar() {
                                     return(<Option value={ugugdul.tankhimiinNer}>{ugugdul.tankhimiinNer}</Option>)
                                 })} 
                             </Select>
-                        </Form.Item>
-                        <Form.Item
-                            name="turul"
-                            label="Тоглолт болох газар"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Тоглолт болох газар',
-                                },
-                            ]}
-                        >
+                        </div>
+                        <div className='flex flex-col py-2'>
+                            <span className = "text-slate-500 font-normal text-sm ml-2">Тоглолт болох газар</span>
                             <Select  
                                     value={tomState.yurunkhiiMedeelel.turul}
                                     onChange={(v) => {yurunkhiiMedeelelAvya('turul', v)}}>
@@ -76,74 +68,17 @@ export default function FormTalbar() {
                                 <Option value="concert">Концерт</Option>
                                 <Option value="movie">Кино театр</Option>
                             </Select>
-                        </Form.Item>
-                        <Form.Item label="Үргэлжлэх хугацаа" style={{ marginBottom: 0 }}>
-                            <Form.Item 
-                            name="urgeljlekhKhugatsaa"
-                            label="Минут"
-                                style={{ display: 'inline-block', width: 'calc(50% - 141px)', marginRight: 8 }}
-                            >
-                                <Input size="middle" prefix={<DursZuragch style = {{fontSize: '19px'}} icon = "mdi:clock-time-five-outline" />} 
-                                    value={tomState.yurunkhiiMedeelel.urgeljlekhKhugatsaa} 
-                                    onChange={(e) => {yurunkhiiMedeelelAvya('urgeljlekhKhugatsaa', e.target.value)}}
-                                />
-                            </Form.Item> 
-                            <Form.Item 
-                                name="tsagiinMedeelel"
-                                label = "Өдөр тохируулах"
-                                style={{ display: 'inline-block', width: 'calc(50% - -131px)' }}>
-                                <OgnooOlnooOruulakh />
-                            </Form.Item>
-                        </Form.Item>
-                        <Form.Item
-                            name="zurgiinZam"
-                            label="Зураг оруулах"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Зураг оруулах',
-                                },
-                            ]}
-                        >
-                            <Upoload>
-                                <p className="ant-upload-drag-icon">
-                                    <InboxOutlined />
-                                </p>
-                                <p className="ant-upload-text">Байршуулахын тулд файлыг энэ хэсэг рүү чирнэ үү</p>
-                                <p className="ant-upload-hint"> Компанийн мэдээлэл болон бусад хориглогдсон файлуудыг байршуулахыг хатуу хориглоно.
-                                </p>
-                            </Upoload> 
-                        </Form.Item>
-                    </Form>
-                </div>
-                <div className='w-[65%] px-2 ml-2'>
-                    <Form layout="vertical" >
-                        <Form.Item
-                            name="nasniiAngilal"
-                            label="Насны ангилал"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Насны ангилал',
-                                },
-                            ]}
-                        >
-                            <Input value={tomState.yurunkhiiMedeelel.nasniiAngilal} onChange={(e) => {yurunkhiiMedeelelAvya('nasniiAngilal', e.target.value)}} />
-                        </Form.Item>
-                        <Form.Item
-                            name="delgerenguiMedeelel"
-                            label="Дэлгэрэнгүй мэдээлэл"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Дэлгэрэнгүй мэдээлэл',
-                                },
-                            ]}
-                        >
-                            <EditorOruulakh/>
-                        </Form.Item>
-                  </Form>
-                </div>
+                        </div>
+                        <div className='flex flex-col py-2'>
+                            <span className = "text-slate-500 font-normal text-sm ml-2">Үргэлжлэх хугацаа</span>
+                            <OgnooOlnooOruulakh />
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div className='w-full flex-row mt-3'>
+                <span className = "text-slate-500 font-normal text-sm ml-2">Дэлгэрэнгүй</span>
+                <EditorOruulakh/>
             </div>
         </div>
     )

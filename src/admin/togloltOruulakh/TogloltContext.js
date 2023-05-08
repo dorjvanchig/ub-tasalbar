@@ -28,7 +28,7 @@ export default function TogloltContext(props) {
       talbarSolbiyo({
           kharakhEsekh: true,
           component: TogloltOruulakh,
-          componentProps: {'test': 'test'}
+          componentProps:  {...props }
       })
   }
 
