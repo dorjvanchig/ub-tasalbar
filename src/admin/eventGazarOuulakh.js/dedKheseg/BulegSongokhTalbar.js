@@ -6,7 +6,6 @@ import { TankhimContext } from './TankhimOruulakh'
 import { DursZuragch } from '@/src/components'
 export default function BulegSongokhTalbar(props) {
     const {tomState, selectorRef, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, continueEsekh, songogdsonBulegtSuudalNemye } = React.useContext(TankhimContext)
-    console.log("tomState.bulgiinJagsaalt =========>", tomState.bulgiinJagsaalt)
     return (
         <div className='flex flex-row gap-2 '>
             <Selecto
@@ -28,8 +27,8 @@ export default function BulegSongokhTalbar(props) {
                         let shalguur = -1
                         console.log(el.id)
                         tomState.bulgiinJagsaalt.forEach(x=> {
-                            console.log(x.suudal)
-                            shalguur = x.suudal.findIndex(z => z === el.id)
+                            console.log(x.suudluud)
+                            shalguur = x.suudluud.findIndex(z => z === el.id)
                         })
                         if(shalguur < 0) el.setAttribute('fill', '#f3808e');
                     });
@@ -47,8 +46,8 @@ export default function BulegSongokhTalbar(props) {
                         <input type="color" value={tomState.buleg.ungu} onChange={e => {bulgiinMedeelelAvya(e.target.value, 'ungu')}} className='w-full'/>    
                     </div>
                     <div className='flex flex-col'>
-                        <label className='px-2 text-[0.8rem]'>Бүлгийн нэр</label>
-                        <Input placeholder='Бүлгийн нэр' value={tomState.buleg.bulgiinNer} onChange={e => {bulgiinMedeelelAvya(e.target.value, 'bulgiinNer')}}/>
+                        <label className='px-2 text-[0.8rem]'>Бүлгийн нэр111</label>
+                        <Input placeholder='Бүлгийн нэр' value={tomState.buleg.buleg} onChange={e => {bulgiinMedeelelAvya(e.target.value, 'buleg')}}/>
                     </div>
                     <div className='flex flex-col'>
                         <label className='px-2 text-[0.8rem]'>Үнэ</label>
@@ -66,7 +65,7 @@ export default function BulegSongokhTalbar(props) {
                                         Бүлгийн нэр:
                                     </span>
                                     <span>
-                                        {x.bulgiinNer}
+                                        {x.buleg}
                                     </span>
                                 </div>
                                 <div className='flex flex-row gap-1 '>

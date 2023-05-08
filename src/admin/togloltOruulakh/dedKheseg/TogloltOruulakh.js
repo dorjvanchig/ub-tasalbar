@@ -15,8 +15,8 @@ const alkhamaarTalbarButsaay = (activeAlkham) => {
 
 const khoosonUtga = {
     ungu: '#000000',
-    bulgiinNer: '',
-    suudal: [],
+    buleg: '',
+    suudluud: [],
     une: ''
 }
 
@@ -71,13 +71,14 @@ export default function TogloltOruulakh(props) {
 
     const bulgiinMedeelelAvya = (utga, turul) => {
         tomState.buleg[turul] = utga
+        console.log('tomState.buleg', tomState.buleg, utga, turul)
         setleye()
     }
 
     const bulegKhadgalya = () => {
         const clonedBuleg = _.clone(tomState.buleg)
         const jagsaalt = _.clone(tomState.suudliinJagsaalt)
-        clonedBuleg['suudal'] = jagsaalt
+        clonedBuleg['suudluud'] = jagsaalt
         jagsaalt.forEach(x => {
             document.getElementById(x).setAttribute('fill', clonedBuleg.ungu)
             document.getElementById(x).classList.remove('suudal')
@@ -104,7 +105,7 @@ export default function TogloltOruulakh(props) {
                     const idAwaw = elem.id
                     let shalguur = false
                     tomState.bulgiinJagsaalt.forEach(x=>{
-                        x.suudal.forEach(z=>{
+                        x.suudluud.forEach(z=>{
                             if(z === elem.id) {
                                 shalguur = true
                                 elem.setAttribute('fill', x.ungu)
@@ -163,7 +164,11 @@ export default function TogloltOruulakh(props) {
     }
 
     function batalgaajuulakh() {
-        alert('a')
+        console.log('tomState.yurunkhiiMedeelel', tomState.yurunkhiiMedeelel, tomState.bulgiinJagsaalt)
+        tomState.yurunkhiiMedeelel.uniinMedeelel = tomState.bulgiinJagsaalt
+        uilchilgeeDuudagch('togloltBurtgekh', tomState.yurunkhiiMedeelel).then(khariu => {
+            console.log('khariu', khariu)
+        })
     }
 
     return (

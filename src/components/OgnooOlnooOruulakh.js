@@ -10,7 +10,7 @@ export default function OgnooOlnooOruulakh() {
     const inputRef = useRef(null);  
     const onOk = (value) => {
         let ognoo = dayjs(value).format('YYYY-MM-DD HH:mm:ss')
-        tomState.yurunkhiiMedeelel.tsagiinMedeelel.push(ognoo)
+        tomState.yurunkhiiMedeelel.tsagiinMedeelel.push({khezee: ognoo})
         setleye()
         setTimeout(() => {
           inputRef.current?.focus();
@@ -18,8 +18,8 @@ export default function OgnooOlnooOruulakh() {
        
     };
     const handleChange = (value) => {
-        let index = tomState.yurunkhiiMedeelel.tsagiinMedeelel.findIndex(a=> a===value[0])
-        console.log('index', index, 'value', value)
+        let index = tomState.yurunkhiiMedeelel.tsagiinMedeelel.findIndex(a=> a.khezee === value[0])
+        console.log('index', index, 'value', value, tomState.yurunkhiiMedeelel.tsagiinMedeelel)
         if (index > -1){
             tomState.yurunkhiiMedeelel.tsagiinMedeelel.splice(index,1)
             setleye()
@@ -58,8 +58,8 @@ export default function OgnooOlnooOruulakh() {
       </>
     )}
     options={tomState.yurunkhiiMedeelel.tsagiinMedeelel.map((item) => ({
-      label: item,
-      value: item,
+      label: item.khezee,
+      value: item.khezee,
     }))}
   />
   )
