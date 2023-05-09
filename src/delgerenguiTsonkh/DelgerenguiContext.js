@@ -4,17 +4,18 @@ import { message, Drawer } from 'antd';
 import SuudalZakhialgiinTalbar from './dedKheseg/SuudalZakhialgiinTalbar';
 import KhajuuTal from './dedKheseg/KhajuuTal';
 import { useRouter } from 'next/router';
+
 export const DelgerenguiCtx = React.createContext()
 const DelgerenguiContext = (props) => {
     const router = useRouter()
     const { ugugdul } = router.query;
     const [songosonTasalbar, setSongosonTasalbar] = useState({})
-    console.log('songosonTasalbar', songosonTasalbar)
     const [open, setOpen] = React.useState(false)
     const [tomState, setTomState] = React.useState({
         zahialagdsanSuudal: ['egnee1_15','egnee1_16','egnee1_17','egnee1_18','egnee1_19','egnee1_20'],
         songogdsonSuudal: []
     })
+
     const testRef = React.useRef()
 
     function setleye() {
@@ -24,6 +25,13 @@ const DelgerenguiContext = (props) => {
         })
     } 
 
+    const routeKhiiye = () => {
+        const test = JSON.parse(ugugdul)
+        router.push({
+            pathname: `/zakhialgaKheseg/${test['_id']}`,
+            query: { ugugdul: ugugdul }
+          }) 
+    }
 
     React.useEffect(()=>{
         setSongosonTasalbar(JSON.parse(ugugdul))
@@ -100,7 +108,7 @@ const DelgerenguiContext = (props) => {
     }
 
     return (
-        <DelgerenguiCtx.Provider value={{ testRef, tomState, setleye, setOpen, suudalKhasya, songosonTasalbar, setSongosonTasalbar }}>
+        <DelgerenguiCtx.Provider value={{ testRef, tomState, setleye, setOpen, suudalKhasya, songosonTasalbar, setSongosonTasalbar, routeKhiiye }}>
             <UndsenTsonkh/>
             <Drawer
                 title="Суудал захиалга"

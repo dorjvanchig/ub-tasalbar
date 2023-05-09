@@ -38,54 +38,56 @@ const ProgressLineWithAnimation = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-      <div className="relative w-full bg-gray-200 h-7">
+      <div className="relative w-full bg-gray-200 h-7 overflow-hidden">
         <div
-          className="absolute top-0 left-0 h-7 bg-[#ffebc4] transition-width duration-500"
-          style={{ width: `${calculatedProgressValue}%` }}
-        > 
-          <div className="flex items-center w-full justify-center mt-[2px]">
-            {remainingDays > 0 && (
-              <div className="flex items-center">
-                <div className="text-sm px-1 font-semibold text-slate-900">{remainingDays}</div>
-                <div className="text-sm">
-                  {remainingDays === 1 ? "өдөр" : "өдөр"}
-                </div>
-               </div>
-            )}
-             {remainingHours > 0 && (
-              <div className="flex">
-                 <div className="text-sm text-slate-900 px-1 font-semibold"> 
-                  {remainingHours} 
-                </div>
-                <div className="text-sm">
-                  {remainingHours === 1 ? "цаг" : "цаг"}
-                </div> 
+          className="absolute top-0 left-0 h-7 bg-[#ffebc4] transition-width duration-500 animate-pulse"
+          style={{ 
+            width: `${calculatedProgressValue}%`,
+            background: "linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb)",
+          }}
+        /> 
+        <div className="flex flex-row absolute h-full w-full items-center">
+          {remainingDays > 0 && (
+            <div className="flex items-center">
+              <div className="text-sm px-1 font-semibold text-slate-900">{remainingDays}</div>
+              <div className="text-sm">
+                {remainingDays === 1 ? "өдөр" : "өдөр"}
               </div>
-            )}
-            {remainingMinutes > 0 && (
-               <div className="flex">
-                  <div className="text-sm text-slate-900 px-1 font-semibold"> 
-                    {remainingMinutes} 
-                  </div>
-                  <div className="text-sm">
-                    {remainingMinutes === 1 ? ":" : ":"}
-                  </div> 
-                </div> 
-            )}
-            {remainingSeconds > 0 && ( 
-              <div className="flex">
+            </div>
+          )}
+          {remainingHours > 0 && (
+            <div className="flex">
               <div className="text-sm text-slate-900 px-1 font-semibold"> 
-                {remainingSeconds} 
+                {remainingHours} 
               </div>
-              <div>
-                {remainingSeconds === 1 ? "" : ""}
+              <div className="text-sm">
+                {remainingHours === 1 ? "цаг" : "цаг"}
               </div> 
+            </div>
+          )}
+          {remainingMinutes > 0 && (
+            <div className="flex">
+                <div className="text-sm text-slate-900 px-1 font-semibold"> 
+                  {remainingMinutes} 
+                </div>
+                <div className="text-sm">
+                  {remainingMinutes === 1 ? ":" : ":"}
+                </div> 
+              </div> 
+          )}
+          {remainingSeconds > 0 && ( 
+            <div className="flex">
+            <div className="text-sm text-slate-900 px-1 font-semibold"> 
+              {remainingSeconds} 
+            </div>
+            <div>
+              {remainingSeconds === 1 ? "" : ""}
             </div> 
-            )}
-            {remainingDays === 0 && remainingHours === 0 && remainingMinutes === 0 && remainingSeconds === 0 && (
-              <div>Closed</div>
-            )}
-          </div>
+          </div> 
+          )}
+          {remainingDays === 0 && remainingHours === 0 && remainingMinutes === 0 && remainingSeconds === 0 && (
+            <div>Closed</div>
+          )}
         </div>
       </div> 
   );
