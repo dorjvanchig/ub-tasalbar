@@ -23,6 +23,8 @@ const khoosonUtga = {
 export default function TogloltOruulakh(props) {
     const selectorRef = React.useRef()
     const editorRef = React.useRef()
+    const {id} = props
+    console.log("props =============>", props)
     let undur = useBodyUndurOlyo(0)
     const [tomState, setTomState] = React.useState({
         yurunkhiiMedeelel: {
@@ -38,6 +40,7 @@ export default function TogloltOruulakh(props) {
             tsagiinMedeelel: [] 
         },
         alkham: 0,
+        zurag: undefined,
         bulgiinJagsaalt: [],
         buleg: khoosonUtga,
         suudliinJagsaalt: [],
@@ -47,6 +50,9 @@ export default function TogloltOruulakh(props) {
     const [continueEsekh, setContinueEsekh] = React.useState(false)
 
     useEffect(()=> {
+        if(!isNullOrUndefined(id)) {
+            idBaiwalTogloltiinMedeelelAvya()
+        }
         uilchilgeeDuudagch('tankhimiinJagsaaltAvya').then(khariu =>{
             if (!isNullOrUndefined(khariu))
                 tomState.tankhimiinJagsaalt = khariu.data
@@ -59,6 +65,16 @@ export default function TogloltOruulakh(props) {
         return new Promise(resolve => {
             setTomState({...tomState})
             return resolve(true)
+        })
+    }
+
+    const idBaiwalTogloltiinMedeelelAvya = () => {
+        uilchilgeeDuudagch('togloltAvya', {id}).then(result => {
+            if(result.success) {
+                tomState.yurunkhiiMedeelel = result.data
+            }
+        }).finally(() => {
+            setleye()
         })
     }
 
@@ -192,6 +208,7 @@ export default function TogloltOruulakh(props) {
             medeeKharuulakh('warning', "Үргэлжлэх хугацаа оруулна уу")
             return
         }
+        tomState.yurunkhiiMedeelel['zurag'] = tomState.zurag
         tomState.yurunkhiiMedeelel.uniinMedeelel = tomState.bulgiinJagsaalt
         uilchilgeeDuudagch('togloltBurtgekh', tomState.yurunkhiiMedeelel).then(khariu => {
             if (!isNullOrUndefined(khariu)){
@@ -202,8 +219,28 @@ export default function TogloltOruulakh(props) {
         })
     }
 
+
+    const zuragKhurvuuljKhadgalya = (e) => {
+        const fileUnshigch = new FileReader()
+        fileUnshigch.addEventListener('load',()=>{
+            tomState.zurag = fileUnshigch.result
+            console.log(fileUnshigch.result)
+            setleye()
+        })
+        fileUnshigch.readAsDataURL(e.target.files[0])
+    }
+    
+    const zuragAvya = () => {
+        const a = document.createElement('input')
+        a.type = 'file'
+        a.accept = 'image/*'
+        a.addEventListener('change', zuragKhurvuuljKhadgalya)
+        a.click()
+    }
+    
+
     return (
-        <TogloltContext.Provider value={{ tomState, editorRef, continueEsekh, selectorRef, batalgaajuulakh, setleye, yurunkhiiMedeelelAvya, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, songogdsonBulegtSuudalNemye, zuragOruulakh }}>
+        <TogloltContext.Provider value={{ tomState, editorRef, continueEsekh, selectorRef, batalgaajuulakh, setleye, yurunkhiiMedeelelAvya, bulgiinMedeelelAvya, bulegKhadgalya, suudalSongyo, songogdsonBulegtSuudalNemye, zuragOruulakh, zuragAvya }}>
             <div className='h-full w-full p-2 relative' style={{height:undur-98, overflow:'scroll'}}>
                 <Steps
                     type="navigation"

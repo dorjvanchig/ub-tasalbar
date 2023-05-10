@@ -10,6 +10,7 @@ import { DursZuragch, formatOgnoo, isNullOrUndefined, khoosonJagsaaltEsekh, khoo
 import { useRouter } from 'next/router';
 import { UndsenCtx } from '../udnsenZagvar/UndsenZagvar'; 
 import _ from 'lodash'
+import { CLASS_PAGINATION } from '@splidejs/splide';
 export default function Nuur(props) {
     const [loading, setLoading] = useState(true)
     const [togloltJagsaalt, setTogloltJagsaalt] = useState([])
@@ -31,8 +32,7 @@ export default function Nuur(props) {
 
     const routeKhiiye = (ugugdul) => {
         router.push({
-            pathname: '/delgerenguiTsonkh/DelgerenguiContext',
-            query: { ugugdul: JSON.stringify(ugugdul) }
+            pathname: `/delgerengui/${ugugdul['_id']}`,
           }) 
     }
 
@@ -130,7 +130,7 @@ export default function Nuur(props) {
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-[40px] px-8 md:p-0">
             {
             togloltJagsaalt.map((x, i)=>{
-                
+                console.log(x)
                 return (
                     loading ? (
                         <div className="text-center mt-16" key={i+1}>
@@ -142,7 +142,7 @@ export default function Nuur(props) {
                                 <Image 
                                     alt = "zurag1"
                                     className='h-[177px] w-full rounded-t-md bg-origin-content'
-                                    src={Toglolt}
+                                    src={!isNullOrUndefined(x.zurgiinZam) && x.zurgiinZam != '' && x.zurgiinZam != 'photo_6437c1d2c1650dabadd6d822.jpg' ? x.zurgiinZam : Toglolt}
                                 />
                                 <div className="deetz">
                                     <div className="event ">

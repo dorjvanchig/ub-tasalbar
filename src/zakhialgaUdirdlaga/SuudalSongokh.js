@@ -8,31 +8,25 @@ import {
 import SeatMap from '../delgerenguiTsonkh/dedKheseg/SeatMap';
 import { DursZuragch, isNullOrUndefined, useBodyUrgunOlyo } from '../components';
 import { useRouter } from 'next/router';
+import { uilchilgeeDuudagch } from '../components';
 
 export default function SuudalSongokh(props) {
   const router = useRouter()
   const selectorRef = React.useRef()
   const [khajuugiinTalbar, setKhajuugiinTalbar] = React.useState(false)
   const delgetsiinUrt =  useBodyUrgunOlyo(0) 
-  const { ugugdul } = router.query;
+  const { pages } = router.query;
   const [togloltiinMedeelel, setTogloltiinMedeelel] = React.useState()
   const [zakhialgataiSuudal, setZakhialgataiSuudal] = React.useState([])
   const [songogdsonSuudal, setSongogdsonSuudal] = React.useState([])
-  console.log(ugugdul)
+  
   React.useEffect(() => {
-    queueMicrotask(() => {
-      ugugdulSetley().then((result) => {
-        
-        svgShalgajSuudaldOnClickUusgey(selectorRef.current)
-      })
-    })
+      togloltiinMedeelelAvya()
+      svgShalgajSuudaldOnClickUusgey(selectorRef.current)
   }, [])
-
-  const ugugdulSetley = () => {
-    return new Promise(resolve => {
-      if(!isNullOrUndefined(ugugdul))
-        setTogloltiinMedeelel(JSON.parse(ugugdul))
-      return resolve(true)
+  const togloltiinMedeelelAvya = () => {
+    uilchilgeeDuudagch('togloltAvya', {id: pages}).then(result => {
+      console.log('uilchilgeeniiKhariu =============>', result)
     })
   }
 

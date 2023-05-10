@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import UndsenTsonkh from './UndsenTsonkh'
 import { isNullOrUndefined, uilchilgeeDuudagch } from '@/src/components'
+import { CLASS_PAGINATION } from '@splidejs/splide'
 
 export const TogloltCtx = React.createContext()
 export default function TogloltContext(props) {
@@ -24,11 +25,11 @@ export default function TogloltContext(props) {
     togloltiinJagsaaltAvya()
   }, [props])
 
-  const togloltOruulya = () => {
+  const togloltOruulya = (id) => {
       talbarSolbiyo({
           kharakhEsekh: true,
           component: TogloltOruulakh,
-          componentProps:  {...props }
+          componentProps:  {...props, id }
       })
   }
 
@@ -42,7 +43,6 @@ export default function TogloltContext(props) {
           setleye()
         })
   }
-
 
   return (
     <TogloltCtx.Provider value={{ togloltOruulya, tolgoltState, setleye }}>
