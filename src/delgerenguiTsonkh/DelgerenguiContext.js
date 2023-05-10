@@ -41,7 +41,9 @@ const DelgerenguiContext = (props) => {
 
     function togloltAvya () {
         uilchilgeeDuudagch('togloltAvya', {id: toglolt}).then(result => {
-            console.log('toglolt ========>', result)
+            if(result.success) {
+                setSongosonTasalbar({...result.data})
+            }
         })
     }
 
