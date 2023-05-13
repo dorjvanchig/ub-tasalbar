@@ -1,11 +1,23 @@
 import React from 'react'
 import UndsenZagvar from '@/src/admin/undsenZagvar/UndsenZagvar'
 import { useRouter } from 'next/router'
-import SuudalSongokh from '@/src/zakhialgaUdirdlaga/SuudalSongokh'
-
+import ZakhialgaContext from '@/src/zakhialgaUdirdlaga/zakhialgaContext'
+import { isNullOrUndefined } from '@/src/components'
 export default function Pages() {
   const router = useRouter()
-  const {pages} = router.query
+  const [togloltId, setToglolId] = React.useState(undefined)
+  
 
-  return (<SuudalSongokh {...pages}/>)
+  React.useEffect(() => {
+    if(router.isReady) {
+      const {pages} = router.query
+      setToglolId(pages)
+    }
+  }, [router.isReady])
+
+  return (<>
+    {
+      !isNullOrUndefined(togloltId) && <ZakhialgaContext id={togloltId}/>
+    }
+  </>)
 }

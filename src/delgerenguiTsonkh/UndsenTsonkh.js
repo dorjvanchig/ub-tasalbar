@@ -38,13 +38,14 @@ const UndsenTsonkh = () => {
     } 
     return (
         <section className='w-full h-fit'>
-            <div className='w-full h-[350px] relative p-4 flex justify-center items-center' style={{backgroundImage: 'url("https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
+            <div className='w-full h-[350px] relative p-4 flex justify-center items-center' style={{backgroundImage: `url("${songosonTasalbar?.zurag}")`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
                 <div className='absolute w-full h-full top-0 left-0 bg-[#000000aa] backdrop-blur-sm z-0'></div>
                 <div className='w-5/6 h-[300px] flex md:flex-row flex-col z-10 items-center gap-4'>
-                    <div className='h-fit w-fit rounded-[4px] overflow-hidden shadow-sm shadow-sky-50'>
-                        <Image src={'https://ticket.mn/files/concerts/images/medium/910x460_jjTaBKT_cCc08vo.webp'} 
-                            width={500}
-                            height={500}
+                    <div className='h-[300px] w-auto rounded-[4px] relative overflow-hidden'>
+                        <Image 
+                            src={songosonTasalbar?.zurag} 
+                            style={{objectFit: 'contain'}}
+                            fill
                         />
                     </div>
                     <div className='flex flex-col w-full text-sky-50 gap-5'>
@@ -86,10 +87,10 @@ const UndsenTsonkh = () => {
                     {/* grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 */}
                     <div className="container mx-auto flex flex-row gap-10 lg:mb-16 overflow-auto p-2"> 
                         {
-                            [1,2,3].map((ugugdul, muriinDugaar)=> {
+                            songosonTasalbar?.tsagiinMedeelel?.map((ugugdul, muriinDugaar)=> {
                                 return (<section className="relative min-w-[280px] w-[280px] bg-white rounded transition-all border-b shadow-sm p-5">
                                             <div className="flex items-center justify-between mb-5">
-                                                <span className="uppercase text-c1 font-semibold">05 / 06 <br/>
+                                                <span className="uppercase text-c1 font-semibold">{new Date(ugugdul.khezee).getMonth() + 1} / {new Date(ugugdul.khezee).getDay()} <br/>
                                                     <span className="text-gray-400">Бямба</span>
                                                 </span>
                                                 <div className="flex rounded px-2 py-1 text-c1 shadow-sm font-bold items-center space-x-2">
@@ -107,7 +108,7 @@ const UndsenTsonkh = () => {
                                                 Тасалбар авах
                                             </button>
                                             <div className='flex items-center justify-center'>
-                                                <ProgressTimer targetDate={new Date("2023-05-27 19:30")} progressValue={0}></ProgressTimer>
+                                                <ProgressTimer targetDate={new Date(ugugdul.khezee)} progressValue={0}></ProgressTimer>
                                             </div>
                                     </section>
                                 )

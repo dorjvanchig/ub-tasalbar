@@ -9,7 +9,9 @@ import SeatMap from '../delgerenguiTsonkh/dedKheseg/SeatMap';
 import { DursZuragch, isNullOrUndefined, useBodyUrgunOlyo } from '../components';
 import { useRouter } from 'next/router';
 import { uilchilgeeDuudagch } from '../components';
-
+import Image from 'next/image';
+import { clone } from 'lodash';
+import { useJsApiLoader } from '@react-google-maps/api';
 export default function SuudalSongokh(props) {
   const router = useRouter()
   const selectorRef = React.useRef()
@@ -19,35 +21,45 @@ export default function SuudalSongokh(props) {
   const [togloltiinMedeelel, setTogloltiinMedeelel] = React.useState()
   const [zakhialgataiSuudal, setZakhialgataiSuudal] = React.useState([])
   const [songogdsonSuudal, setSongogdsonSuudal] = React.useState([])
-  
+  console.log("togloltiinMedeelel =============>", togloltiinMedeelel)
   React.useEffect(() => {
-      togloltiinMedeelelAvya()
-      svgShalgajSuudaldOnClickUusgey(selectorRef.current)
+      togloltiinMedeelelAvya().then(result => {
+        if(!isNullOrUndefined(result)) {
+          svgShalgajSuudaldOnClickUusgey(selectorRef.current, undefined, result)
+        }
+      })
   }, [])
+
   const togloltiinMedeelelAvya = () => {
-    uilchilgeeDuudagch('togloltAvya', {id: pages}).then(result => {
-      console.log('uilchilgeeniiKhariu =============>', result)
+    return new Promise(resolve => {
+      uilchilgeeDuudagch('togloltAvya', {id: pages}).then(result => {
+        if(!isNullOrUndefined(result) && result.success) {
+          setTogloltiinMedeelel({...result.data})
+          return resolve (result.data)
+        } else {
+          return resolve (undefined)
+        }
+      })
     })
   }
 
   const routeKhiiye = () => {
     router.push({
-        pathname: `/delgerenguiTsonkh/DelgerenguiContext`,
-        query: { ugugdul: ugugdul }
+        pathname: `/delgerengui/${togloltiinMedeelel['_id']}`,
     }) 
   }
 
-  function svgShalgajSuudaldOnClickUusgey (elem, index) {
+  function svgShalgajSuudaldOnClickUusgey (elem, index, ugugdul) {
     return new Promise(resolve => {
         const jagsaalt = [...elem.childNodes]
         if(jagsaalt.length > 0) {
             jagsaalt.forEach((x, i) => {
-                svgShalgajSuudaldOnClickUusgey(x, i+1)
+                svgShalgajSuudaldOnClickUusgey(x, i+1, ugugdul)
             })
         } else {
             if(elem?.id?.toLowerCase().includes("suudal")) {
                 elem.id = elem.parentNode.id + "_" + elem.id.toLowerCase().split("x5f")[1].split('_')[1]
-                togloltiinMedeelel?.uniinMedeelel.forEach(x=>{
+                ugugdul?.uniinMedeelel.forEach(x=>{
                     x.suudluud.forEach(z=>{
                         if(z === elem.id) {
                           const shalguur = zakhialgataiSuudal.findIndex(x => x === elem.id)
@@ -64,7 +76,6 @@ export default function SuudalSongokh(props) {
                         }
                     })
                 })
-                
             }
         }
         return resolve(true)
@@ -76,17 +87,29 @@ export default function SuudalSongokh(props) {
     const shalguur = songogdsonSuudal.findIndex(x => x.id === id)
     if(shalguur < 0) {
       const bulgiinMedelel = JSON.parse(e.target.getAttribute('dataMedeelel'))
+      e.target.setAttribute('fill', '#000')
       let a = {
         id: id,
         egnee: id.split('_')[0].replaceAll('egnee', ''),
         suudal: id.split('_')[1],
         buleg: bulgiinMedelel.buleg,
-        une: bulgiinMedelel.une,
+        une: bulgiinMedelel.une, 
       }
       songogdsonSuudal.push(a)
     } else {
+      let ungu = undefined
+      console.log("suudal =========>",togloltiinMedeelel)
+      togloltiinMedeelel.uniinMedeelel.map(x=>{
+        x.suudal.forEach(z => {
+          if(z === id) {
+            ungu = x.ungu
+          }
+        })
+      })
+      e.target.setAttribute('fill', ungu)
       songogdsonSuudal.splice(shalguur, 1)
     }
+    
     setSongogdsonSuudal([...songogdsonSuudal])
   }
 
@@ -104,20 +127,29 @@ export default function SuudalSongokh(props) {
         <div className='flex flex-col h-screen w-screen'>
             <section className='h-[100px] md:h-[120px] relative w-full bg-white items-center lg:flex font-semibold text-xl lg:text-3xl p-5 overflow-hidden' 
               style={{
-                backgroundImage: 'url(https://steppearena.mn/wp-content/uploads/2023/02/web_event_page_banner-1.png)',
+                backgroundImage: `url('${togloltiinMedeelel?.zurag}')`,
                 backgroundSize: 'cover',
 
               }}
             >
               {/* backdrop-blur-md */}
               <div className='absolute top-0 left-0 w-full h-full bg-[#000000aa] backdrop-blur-md'/>
-              <div class="w-full lg:px-5 flex items-center justify-start md:justify-between">
-                  <div class="flex space-x-4 items-center">
-                    <div class="relative w-36 overflow-hidden">
-                      <img src="https://steppearena.mn/wp-content/uploads/2023/02/web_event_page_banner-1.png"/>
+              <div class="w-full h-full lg:px-5 flex items-center justify-start md:justify-between">
+                  <div class="flex h-full space-x-4 items-center">
+                    <div class="relative h-full w-36 overflow-hidden">
+                      <div className='w-full h-full relative'>
+                        <Image
+                          src={togloltiinMedeelel?.zurag}
+                          style={{
+                            objectFit: 'contain'
+                          }}
+                          fill
+                        />
+                      </div>
+                      {/* <img src={togloltiinMedeelel?.zurag}/> */}
                     </div>
                     <section>
-                      <h1 class="text-white text-md md:text-xl">Уран гулгалтын одод Монголд</h1>
+                      <h1 class="text-white text-md md:text-xl">{togloltiinMedeelel?.ner}</h1>
                       <p class="hidden md:block text-white text-lg font-normal">5 сар 7, 2023 15:00</p>
                     </section>
                   </div>
@@ -125,15 +157,15 @@ export default function SuudalSongokh(props) {
                     <div className='flex flex-row gap-2 w-full justify-start'>  
                       <div className='flex flex-row gap-2 w-1/3'>
                         <span className='text-white'>Төрөл:</span>
-                        <span className='text-white'>Тоглолт</span>
+                        <span className='text-white'>{togloltiinMedeelel?.turul}</span>
                       </div>
                       <div className='flex flex-row gap-2 w-1/3'>
                         <span className='text-white'>Байршил:</span>
-                        <span className='text-white'>Гандан</span>
+                        <span className='text-white'>{togloltiinMedeelel?.tankhim}</span>
                       </div>
                       <div className='flex flex-row gap-2 w-1/3'>
                         <span className='text-white'>Зохион байгуулагч:</span>
-                        <span className='text-white'>Гандан</span>
+                        <span className='text-white'>{togloltiinMedeelel?.zokhionBaiguulagch}</span>
                       </div>
                     </div>
                     <div className='flex flex-row gap-2 w-full justify-start'>  

@@ -72,6 +72,7 @@ export default function TogloltOruulakh(props) {
         uilchilgeeDuudagch('togloltAvya', {id}).then(result => {
             if(result.success) {
                 tomState.yurunkhiiMedeelel = result.data
+                tomState.zurag = result.data.zurag
             }
         }).finally(() => {
             setleye()

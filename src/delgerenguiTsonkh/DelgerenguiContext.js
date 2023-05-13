@@ -28,9 +28,8 @@ const DelgerenguiContext = (props) => {
     } 
 
     const routeKhiiye = () => {
-        const test = JSON.parse(ugugdul)
         router.push({
-            pathname: `/zakhialgaKheseg/${test['_id']}`,
+            pathname: `/zakhialgaKheseg/${songosonTasalbar['_id']}`,
           }) 
     }
 

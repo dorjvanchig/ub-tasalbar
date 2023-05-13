@@ -296,3 +296,7 @@ body section .-bold {
   font-size:0.85rem;
   font-weight: 400;
 }  
+
+img {
+  position: relative !important;
+}

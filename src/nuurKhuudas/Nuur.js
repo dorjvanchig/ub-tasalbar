@@ -139,11 +139,23 @@ export default function Nuur(props) {
                         ) :(
                         <section type="ticket" key = {i}>
                             <div className="top ">
-                                <Image 
-                                    alt = "zurag1"
-                                    className='h-[177px] w-full rounded-t-md bg-origin-content'
-                                    src={!isNullOrUndefined(x.zurgiinZam) && x.zurgiinZam != '' && x.zurgiinZam != 'photo_6437c1d2c1650dabadd6d822.jpg' ? x.zurgiinZam : Toglolt}
-                                />
+                                <div className='relative w-full h-[200px]'>
+                                    <div className='absolute w-full h-[200px] top-0 left-0'>
+                                        <div className='relative h-full w-auto' style={{
+                                            backgroundImage: `url("${!isNullOrUndefined(x.zurag) && x.zurag != '' && x.zurag != 'photo_6437c1d2c1650dabadd6d822.jpg' ? x.zurag : Toglolt}")`,
+                                            backgroundSize: 'cover',
+                                        }}>
+                                            <div className='backdrop-blur-[6px] absolute top-0 left-0 w-full h-full bg-[#000000aa]'/>
+                                            <Image 
+                                                alt = "zurag1"
+                                                className='h-[177px] w-full rounded-t-md bg-origin-content'
+                                                src={!isNullOrUndefined(x.zurag) && x.zurag != '' && x.zurag != 'photo_6437c1d2c1650dabadd6d822.jpg' ? x.zurag : Toglolt}
+                                                fill
+                                                style={{objectFit: 'contain'}}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
                                 <div className="deetz">
                                     <div className="event ">
                                         <span className='text-[#242424] text-sm font-semibold mb-1'>{x.ner}</span>
