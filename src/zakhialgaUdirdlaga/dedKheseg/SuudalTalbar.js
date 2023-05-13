@@ -1,7 +1,7 @@
 import React from 'react'
 import { TransformWrapper, MiniMap, TransformComponent } from 'react-zoom-pan-pinch'
 import SeatMap from '@/src/delgerenguiTsonkh/dedKheseg/SeatMap'
-import { ZakhialgaCtx } from '../zakhialgaContext'
+import { ZakhialgaCtx } from '../ZakhialgaContext'
 export default function SuudalTalbar() {
     const  {selectorRef } = React.useContext(ZakhialgaCtx)
     return (

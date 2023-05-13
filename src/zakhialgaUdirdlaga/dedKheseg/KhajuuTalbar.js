@@ -1,6 +1,6 @@
 import React from 'react'
 import { DursZuragch } from '@/src/components'
-import { ZakhialgaCtx } from '../zakhialgaContext'
+import { ZakhialgaCtx } from '../ZakhialgaContext'
 export default function KhajuuTalbar() {
     const { tomState, suudalKhasya } = React.useContext(ZakhialgaCtx)
     return (

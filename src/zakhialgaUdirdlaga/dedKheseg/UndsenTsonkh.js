@@ -3,7 +3,7 @@ import TolgoinTalbar from './TolgoinTalbar'
 import SuudalTalbar from './SuudalTalbar'
 import KhajuuTalbar from './KhajuuTalbar'
 import BatalgaajuulakhTalbar from './BatalgaajuulakhTalbar'
-import { ZakhialgaCtx } from '../zakhialgaContext'
+import { ZakhialgaCtx } from '../ZakhialgaContext'
 const UndsenTsonkh = (props) => {
     const { tomState } = React.useContext(ZakhialgaCtx)
     return <section className={`w-screen h-screen flex flex-col`}>

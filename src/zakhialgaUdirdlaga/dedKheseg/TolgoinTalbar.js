@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { ZakhialgaCtx } from '../zakhialgaContext'
+import { ZakhialgaCtx } from '../ZakhialgaContext'
 const TolgoinTalbar = (props) => {
     const { tomState, routeKhiiye, talbarSoliyo } = React.useContext(ZakhialgaCtx)
 

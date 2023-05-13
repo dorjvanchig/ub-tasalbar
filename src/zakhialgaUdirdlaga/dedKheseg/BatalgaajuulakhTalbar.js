@@ -1,5 +1,5 @@
 import React from 'react'
-import { ZakhialgaCtx } from '../zakhialgaContext'
+import { ZakhialgaCtx } from '../ZakhialgaContext'
 import Image from 'next/image'
 export default function BatalgaajuulakhTalbar() {
     const { tomState } = React.useContext(ZakhialgaCtx)
