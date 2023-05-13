@@ -1,8 +1,9 @@
 import React from 'react'
 import { DursZuragch } from '@/src/components'
 import { ZakhialgaCtx } from '../ZakhialgaContext'
+import { Drawer } from 'antd'
 export default function KhajuuTalbar() {
-    const { tomState, suudalKhasya } = React.useContext(ZakhialgaCtx)
+    const { tomState, suudalKhasya, khajuugiinTalbar, setKhajuugiinTalbar } = React.useContext(ZakhialgaCtx)
     return (
         <>
             <div className='flex md:hidden w-full h-[60px] border-t-2 fixed bottom-[40px] justify-between items-center px-3 bg-white' onClick={() => setKhajuugiinTalbar(true)}>
@@ -91,6 +92,46 @@ export default function KhajuuTalbar() {
                         }
                     </div>
                 </div>
+                <Drawer
+                    title="Суудлын жагсаалт"
+                    placement={'right'}
+                    closable={true}
+                    width={delgetsiinUrt - 80}
+                    onClose={() => setKhajuugiinTalbar(false)}
+                    open={khajuugiinTalbar}
+                    key={'drawer'}
+                    bodyStyle={{
+                        padding: 10,
+                        background: '#f3f3f3'
+                    }}
+                    >
+                    <div className='flex flex-col justify-start h-full w-full overflow-auto'>
+                        <div className='h-[70px] flex flex-row w-full border rounded-[3px]'>
+                        <div className='w-[80%] h-full bg-white border-r-2 border-dashed shadow-md rounded-l-md py-2 px-3 flex flex-col gap-2'>
+                            <div className='flex flex-row w-full justify-between items-center'>
+                                <span>Бүлгийн нэр</span>
+                                <span>Үнэ: 20,000₮</span>
+                            </div>
+                            <div className='flex flex-row gap-3'>
+                            <div className='bg-sky-100 px-1 rounded-sm flex flex-row gap-2 w-fit text-[0.8rem] border border-sky-300 h-fit'>
+                                <span>Эгнээ:</span>
+                                <span>5</span>
+                            </div>
+                            <div className='bg-sky-100 px-1 rounded-sm flex flex-row gap-2 w-fit text-[0.8rem] border border-sky-300 h-fit'>
+                                <span>суудал:</span>
+                                <span>18</span>
+                            </div>
+                            </div>
+                        </div>
+                        <div className='w-[20%] h-full relative bg-white p-2 after:content-[""] after:absolute after:bg-gray-100 after:w-[10px] after:h-[10px] after:bottom-[-5px] after:left-[-5px] after:rounded-full before:content-[""] before:absolute before:bg-gray-100 before:w-[10px] before:h-[10px] before:top-[-5px] before:left-[-5px] before:rounded-full shadow-md rounded-r-md'>
+                            <button className='w-full h-full bg-rose-600 flex flex-col justify-center items-center rounded-md'>
+                                <DursZuragch icon='solar:trash-bin-minimalistic-2-bold' style={{color: 'white'}}/>
+                                <span className='text-sm text-white'>Хасах</span>
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </Drawer>
         </>
     )
 }

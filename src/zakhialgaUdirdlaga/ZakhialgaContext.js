@@ -14,6 +14,7 @@ export default function ZakhialgaContext(props) {
         songogdsonSuudal: [],
         zakhialgataiSuudal: [],
     })
+    const [khajuugiinTalbar, setKhajuugiinTalbar] = React.useState(false)
     const selectorRef = React.useRef()
 
     React.useEffect(() => {
@@ -131,11 +132,15 @@ export default function ZakhialgaContext(props) {
 
     const talbarSoliyo = (talbar) => {
         tomState.songogdsonTalbar = talbar
-        setleye()
+        setleye().then(() => {
+            if(talbar === 'suudalSongokh') {
+                svgShalgajSuudaldOnClickUusgey(selectorRef.current, undefined, tomState.togloltiinMedeelel)
+            }
+        })
     }
 
     return (
-        <ZakhialgaCtx.Provider value={{ tomState, selectorRef, setleye, routeKhiiye, suudalKhasya, talbarSoliyo }}>
+        <ZakhialgaCtx.Provider value={{ tomState, selectorRef, khajuugiinTalbar, setKhajuugiinTalbar, setleye, routeKhiiye, suudalKhasya, talbarSoliyo }}>
             <UndsenTsonkh {...props}/>
         </ZakhialgaCtx.Provider>
     )
