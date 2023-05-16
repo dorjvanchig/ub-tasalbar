@@ -15,7 +15,8 @@ const DelgerenguiContext = (props) => {
     const [open, setOpen] = React.useState(false)
     const [tomState, setTomState] = React.useState({
         zahialagdsanSuudal: ['egnee1_15','egnee1_16','egnee1_17','egnee1_18','egnee1_19','egnee1_20'],
-        songogdsonSuudal: []
+        songogdsonSuudal: [],
+        songosonTsag: undefined,
     })
 
     const testRef = React.useRef()
@@ -34,7 +35,6 @@ const DelgerenguiContext = (props) => {
     }
 
     React.useEffect(()=>{
-        // setSongosonTasalbar(JSON.parse(ugugdul))
         togloltAvya()
     }, [])
 
@@ -116,8 +116,14 @@ const DelgerenguiContext = (props) => {
         setOpen(false)
     }
 
+    const tsagSongyo = (utga) => {
+        console.log(utga)
+        tomState.songosonTsag = utga
+        setleye()
+    }
+
     return (
-        <DelgerenguiCtx.Provider value={{ testRef, tomState, setleye, setOpen, suudalKhasya, songosonTasalbar, setSongosonTasalbar, routeKhiiye }}>
+        <DelgerenguiCtx.Provider value={{ testRef, tomState, setleye, setOpen, suudalKhasya, songosonTasalbar, setSongosonTasalbar, routeKhiiye, tsagSongyo }}>
             <UndsenTsonkh/>
             <Drawer
                 title="Суудал захиалга"

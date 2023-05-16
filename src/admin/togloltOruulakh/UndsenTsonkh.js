@@ -1,6 +1,6 @@
 import React from 'react'
 //import admin from '../../../styles/Admin.module.css'
-import { DursZuragch, useBodyUndurOlyo } from '@/src/components'
+import { DursZuragch, isNullOrUndefined, useBodyUndurOlyo } from '@/src/components'
 import Image from 'next/image'
 import Toglolt from '../../../public/zurag/bieKhun.png'
 import { TogloltCtx } from './TogloltContext'
@@ -25,11 +25,20 @@ export default function UndsenTsonkh() {
                     tolgoltState?.jagsaaltKharuulakh.map((ugugdul, muriinDugaar) =>{
                         return(<div key={muriinDugaar} 
                             className='w-full drop-shadow-sm hover:drop-shadow-lg hover:cursor-pointer bg-white border border-slate-200 hover:border hover:border-indigo-500 rounded-md mt-2 flex flex-row p-2 items-center'>
-                              <Image 
+                              <div className='h-[158px] w-[473px] relative' style={{
+                                backgroundImage: `url("${!isNullOrUndefined(ugugdul.zurag) && ugugdul.zurag != '' && ugugdul.zurag != 'photo_6437c1d2c1650dabadd6d822.jpg' ? ugugdul.zurag : Toglolt}")`,
+                              }}>
+                                <div className='bg-[#00000090] backdrop-blur-[7px] absolute top-0 left-0 w-full h-full'/>
+                                <Image 
                                     alt = "zurag1"
                                     className='h-[137px] w-[30%] rounded-md bg-origin-content'
-                                    src={Toglolt}
-                              />
+                                    src={!isNullOrUndefined(ugugdul.zurag) ? ugugdul.zurag : Toglolt}
+                                    fill
+                                    style={{
+                                        objectFit: 'contain'
+                                    }}
+                                />
+                               </div> 
                             <div className='px-3 py-1 w-[70%]'>
                                 <div className='flex flex-row items-center justify-between'>
                                     <div className='text-lg font-semibold'>{ugugdul.ner}</div> 

@@ -73,6 +73,7 @@ export default function TogloltOruulakh(props) {
             if(result.success) {
                 tomState.yurunkhiiMedeelel = result.data
                 tomState.zurag = result.data.zurag
+                tomState.bulgiinJagsaalt = result.data.uniinMedeelel
             }
         }).finally(() => {
             setleye()

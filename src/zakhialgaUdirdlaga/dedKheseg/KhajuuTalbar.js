@@ -1,16 +1,17 @@
 import React from 'react'
-import { DursZuragch } from '@/src/components'
+import { DursZuragch, useBodyUrgunOlyo } from '@/src/components'
 import { ZakhialgaCtx } from '../ZakhialgaContext'
 import { Drawer } from 'antd'
 export default function KhajuuTalbar() {
     const { tomState, suudalKhasya, khajuugiinTalbar, setKhajuugiinTalbar } = React.useContext(ZakhialgaCtx)
+    const delgetsiinUrt = useBodyUrgunOlyo() 
     return (
         <>
             <div className='flex md:hidden w-full h-[60px] border-t-2 fixed bottom-[40px] justify-between items-center px-3 bg-white' onClick={() => setKhajuugiinTalbar(true)}>
                 <div className='flex flex-row gap-2'>
                     <span className='text-lg text-gray-800'>Нийт:</span>
                     <span className='text-xl font-bold text-gray-800'>
-                    250,000.00₮
+                        250,000.00₮
                     </span>
                 </div>
                 <div className='flex flex-row gap-3 items-center'>

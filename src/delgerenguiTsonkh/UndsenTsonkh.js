@@ -38,7 +38,7 @@ const UndsenTsonkh = () => {
     } 
     return (
         <section className='w-full h-fit'>
-            <div className='w-full h-[350px] relative p-4 flex justify-center items-center' style={{backgroundImage: `url("${songosonTasalbar?.zurag}")`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
+            {/* <div className='w-full h-[350px] relative p-4 flex justify-center items-center' style={{backgroundImage: `url("${songosonTasalbar?.zurag}")`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
                 <div className='absolute w-full h-full top-0 left-0 bg-[#000000aa] backdrop-blur-sm z-0'></div>
                 <div className='w-5/6 h-[300px] flex md:flex-row flex-col z-10 items-center gap-4'>
                     <div className='h-[300px] w-auto rounded-[4px] relative overflow-hidden'>
@@ -80,11 +80,10 @@ const UndsenTsonkh = () => {
                         </div> 
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className='flex justify-center py-3 bg-[#f4f5f9] pt-5'>
                 <div className='container flex flex-col gap-3'>
-                    <Divider plain></Divider>
-                    {/* grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 */}
+                    {/* <Divider plain></Divider>
                     <div className="container mx-auto flex flex-row gap-10 lg:mb-16 overflow-auto p-2"> 
                         {
                             songosonTasalbar?.tsagiinMedeelel?.map((ugugdul, muriinDugaar)=> {
@@ -114,13 +113,14 @@ const UndsenTsonkh = () => {
                                 )
                             })
                         }
-                     </div>
+                     </div> */}
                     <div className='w-full flex flex-col md:flex-row relative gap-3 md:gap-0'>
-                        <EventTailbar/>
-                        <div className='hidden md:block mx-3 border-l' />
-                        <EventKhajuuTalbar/>
+                        <div className='container mx-40 flex flex-col md:flex-row'>
+                            <EventTailbar/>
+                            <div className='hidden md:block mx-3 border-l' />
+                            <EventKhajuuTalbar/>
+                        </div>
                     </div>
-                    {/* <div className='w-full h-[1000px]'></div> */}
                 </div>
             </div>
         </section>
