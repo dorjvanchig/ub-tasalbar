@@ -38,8 +38,12 @@ export default function UndsenZagvar({children })
             khereglegch: khariu.khereglegch,
             token: khariu.token
           }
-          khereglegchMedeelelKhadgalakh(medeelel) 
-          undsenKhuudasruuShiljikh()
+          khereglegchMedeelelKhadgalakh(medeelel)
+          if(khariu.khereglegch.role === 'admin') {
+            router.push('admin/adminNuur')
+          } else {
+            undsenKhuudasruuShiljikh()
+          }
           medeeKharuulakh('success', 'Амжилттай', "Та амжилттай нэвтэрлээ")
           resolve(null)
         }else {

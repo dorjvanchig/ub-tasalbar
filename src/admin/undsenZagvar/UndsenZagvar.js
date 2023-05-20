@@ -1,11 +1,15 @@
 // import ReceptionKhyanalt from '../reception/ReceptionKhyanalt'
 import React, { useState } from 'react';
 import DedKheseg from './DedKheseg'
+import { useRouter } from 'next/router';
 import UndsenTalbar from './dedKheseg/UndsenTalbar';
 import Tsesuud from './Tsesuud'
-import { useBodyUndurOlyo } from '@/src/components';
+import { isNullOrUndefined, useBodyUndurOlyo } from '@/src/components';
+
 export default function UndsenZagvarAdmin(props) {
     const [tsesniiNer, setTsesniiNer] = useState('')
+    const router = useRouter()
+    const [loader, setLoader] = React.useState(true)
     let undur = useBodyUndurOlyo(0)
     const ankhniiUtga = {
         kharakhEsekh: false,
@@ -13,10 +17,40 @@ export default function UndsenZagvarAdmin(props) {
         componentProps: {},
     }
 
+    
+
+    function loaderSetlegch (utga) {
+      return new Promise(resolve => {
+        setLoader(utga)
+        return resolve(true)
+      })
+    }
+
+    function test () {
+      const snkhm = localStorage.getItem("SKHM");
+      const {khereglegch} = JSON.parse(snkhm)
+      if(isNullOrUndefined(snkhm)) {
+        router.push('/')
+        return
+      } else {
+        if(khereglegch.role != 'admin') {
+          router.push('/')
+          return
+        }
+      }
+      loaderSetlegch(false)
+    }
+
     React.useEffect(()=>{
       talbarButsaakh()
+      queueMicrotask(() => {
+        loaderSetlegch(true).then(result => {
+          test()
+        })
+      })
     }, [props])
-    
+
+
     const [talbarSolbigch, setTalbarSolbigch] = React.useState(ankhniiUtga);
 
     const talbarButsaakh = () => {
@@ -28,7 +62,9 @@ export default function UndsenZagvarAdmin(props) {
     }
 
   return (
-    <> 
+    <> {
+      loader && <div className='absolute w-full h-full top-0 left-0 bg-white z-50'/>
+    }
       <main className='bg-[#1e40af]'>
         <div className='py-2'> 
           <div className='flex mt-[1.7rem] md:mt-0'>

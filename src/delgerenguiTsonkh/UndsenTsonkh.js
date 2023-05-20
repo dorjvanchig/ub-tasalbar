@@ -115,7 +115,7 @@ const UndsenTsonkh = () => {
                         }
                      </div> */}
                     <div className='w-full flex flex-col md:flex-row relative gap-3 md:gap-0'>
-                        <div className='container mx-40 flex flex-col md:flex-row'>
+                        <div className='container 2xl:mx-40 flex flex-col md:flex-row'>
                             <EventTailbar/>
                             <div className='hidden md:block mx-3 border-l' />
                             <EventKhajuuTalbar/>
