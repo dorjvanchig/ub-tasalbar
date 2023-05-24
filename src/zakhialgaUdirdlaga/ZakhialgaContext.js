@@ -20,11 +20,10 @@ export default function ZakhialgaContext(props) {
     React.useEffect(() => {
         if(router.isReady) {
             togloltAvya().then(result => {
+                zakhialgataiSuudalAvya()
                 if(!isNullOrUndefined(result)) {
                     svgShalgajSuudaldOnClickUusgey(selectorRef.current, undefined, result)
                 }
-            }).finally(() => {
-                zakhialgataiSuudalAvya()
             })
         }
     }, [router.isReady])
