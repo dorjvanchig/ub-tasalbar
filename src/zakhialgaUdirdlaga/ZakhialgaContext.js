@@ -23,6 +23,8 @@ export default function ZakhialgaContext(props) {
                 if(!isNullOrUndefined(result)) {
                     svgShalgajSuudaldOnClickUusgey(selectorRef.current, undefined, result)
                 }
+            }).finally(() => {
+                zakhialgataiSuudalAvya()
             })
         }
     }, [router.isReady])
