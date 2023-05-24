@@ -53,6 +53,24 @@ export default function ZakhialgaContext(props) {
         })
     }
 
+    const zakhialgataiSuudalAvya = () => {
+        const param = {
+            togloltiinNer: togloltiinMedeelel['ner'],
+            togloltiinTsag: togloltiinMedeelel['tsagiinMedeelel'][0]['khezee']
+        }
+        uilchilgeeDuudagch('/zakhialsanSuudluudAvya', param).then(result => {
+            if(result.success) {
+                let jagsaalt = []
+                result.data.forEach(x => {
+                    let a = `egnee${x.egnee}_${x.suudal}`
+                    jagsaalt.push(a)
+                })
+                tomState.zakhialgataiSuudal = jagsaalt
+                setleye()
+            }
+        })
+    }
+
     function svgShalgajSuudaldOnClickUusgey (elem, index, ugugdul) {
         return new Promise(resolve => {
             const jagsaalt = [...elem.childNodes]
@@ -103,7 +121,6 @@ export default function ZakhialgaContext(props) {
         } else {
             let ungu = undefined
             tomState.togloltiinMedeelel.uniinMedeelel.map(x=>{
-                console.log("x =========>", x)
                 x.suudluud.forEach(z => {
                     if(z === id) {
                         ungu = x.ungu
@@ -139,8 +156,43 @@ export default function ZakhialgaContext(props) {
         })
     }
 
+    const ugugdulBeldye = () => {
+        const butsaakhUtga = {
+            togloltiinNer: togloltiinMedeelel['ner'],
+            togloltiinTsag: togloltiinMedeelel['tsagiinMedeelel'][0]['khezee'],
+            khereglegchiinUtas: '85664268',
+            niitDun: tomState.songogdsonSuudal.reduce((x, y) => x += y.une, 0),
+            niitToo: tomState.songogdsonSuudal.length,
+            zakhialsanOgnoo: dayjs(new Date()).format('YYYY-MM-DD HH:mm:ss'),
+            barimtiinZadargaa: barimtiinZadargaaBurduulye()
+        }
+        function barimtiinZadargaaBurduulye() {
+            let jagsaalt = []
+            // {
+            //     suudal: '15',
+            //     egnee: '1',
+            //     une: 80000,
+            // }
+            tomState.songogdsonSuudal.forEach(x => {
+                jagsaalt.push(x)
+            })
+            return jagsaalt 
+        }
+        return butsaakhUtga
+    }
+
+    const zakhialgaKhiiye = () => {
+        uilchilgeeDuudagch('/biletZakhialya', ugugdulBeldye()).then(result=> {
+            if(result.success) {
+                router.push({
+                    pathname: `/delgerengui/${togloltiinMedeelel['_id']}`,
+                }) 
+            }
+        })
+    }
+
     return (
-        <ZakhialgaCtx.Provider value={{ tomState, selectorRef, khajuugiinTalbar, setKhajuugiinTalbar, setleye, routeKhiiye, suudalKhasya, talbarSoliyo }}>
+        <ZakhialgaCtx.Provider value={{ tomState, selectorRef, khajuugiinTalbar, setKhajuugiinTalbar, setleye, routeKhiiye, suudalKhasya, talbarSoliyo, zakhialgaKhiiye }}>
             <UndsenTsonkh {...props}/>
         </ZakhialgaCtx.Provider>
     )

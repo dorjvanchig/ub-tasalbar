@@ -31,6 +31,7 @@ const DelgerenguiContext = (props) => {
     const routeKhiiye = () => {
         router.push({
             pathname: `/zakhialgaKheseg/${songosonTasalbar['_id']}`,
+            query: {songogdsonTsag: tomState.songosonTsag}
           }) 
     }
 
