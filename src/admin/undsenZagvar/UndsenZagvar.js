@@ -28,6 +28,10 @@ export default function UndsenZagvarAdmin(props) {
 
     function test () {
       const snkhm = localStorage.getItem("SKHM");
+      if (isNullOrUndefined(snkhm)) {
+        router.push('/') 
+        return
+      }
       const {khereglegch} = JSON.parse(snkhm)
       if(isNullOrUndefined(snkhm)) {
         router.push('/')

@@ -61,7 +61,7 @@ export default function Nuur(props) {
     <div>
         <main className='bg-[#f4f5f9] py-[30px] relative hidden md:block'>
                 <div className='container mx-auto '>
-                    <Carousel autoplay dotPosition = "right" effect='scrollx'>
+                    <Carousel autoplay dotPosition = "right" >
                         {
                             loading ? (
                                 <div className="text-center mt-16">
@@ -89,8 +89,7 @@ export default function Nuur(props) {
                                                 <span className='text-slate-500 text-xs truncate'>{ugugdul.nasniiAngilal} +</span>
                                             </div>
                                         </div>
-                                        <div className='indent-8 font-normal text-slate-500 h-[155px] line-clamp-4 overflow-hidden'>
-                                            {ugugdul.delgerenguiMedeelel}
+                                        <div dangerouslySetInnerHTML={{__html: ugugdul.delgerenguiMedeelel}} className='indent-8 font-normal text-slate-500 h-[155px] line-clamp-4 overflow-hidden'>
                                         </div>
                                         <div className='border-t border-t-slate-200 border-dashed x-2 py-2 grid grid-cols-3'>
                                             <div className='grid border-r px-2 border-r-slate-200 border-dashed'>
@@ -114,10 +113,12 @@ export default function Nuur(props) {
                                     </div> 
                                     <div>
                                         <Image 
-                                            src={Toglolt1}
-                                            alt='zurag'
-                                            className='w-full h-[310px] rounded-md'
-                                        />
+                                            alt = "zurag1111"
+                                            className='h-[177px] w-full rounded-t-md bg-origin-content'
+                                            src={!isNullOrUndefined(ugugdul.zurag) && ugugdul.zurag != '' && ugugdul.zurag != 'photo_6437c1d2c1650dabadd6d822.jpg' ? ugugdul.zurag : Toglolt}
+                                            fill
+                                            style={{objectFit: 'contain'}}
+                                        /> 
                                     </div>
                                 </div>)
                                 }) 

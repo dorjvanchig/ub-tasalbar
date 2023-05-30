@@ -40,7 +40,7 @@ export default function UndsenZagvar({children })
           }
           khereglegchMedeelelKhadgalakh(medeelel)
           if(khariu.khereglegch.role === 'admin') {
-            router.push('admin/adminNuur')
+            router.push('/admin/adminNuur')
           } else {
             undsenKhuudasruuShiljikh()
           }

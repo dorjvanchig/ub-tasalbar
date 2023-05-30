@@ -88,7 +88,7 @@ export default function TolgoiTses(props)
     <div className='container mx-auto'> 
         <div className='grid grid-flow-col-dense items-center px-5 md:px-0'>
           <div className='hidden md:block'>
-              <img src='/zurag/logo.png' height={50} width = {180}/>
+              <img src='/zurag/12121.png' height={50} width = {180}/>
           </div>
           <div className='md:hidden'>
             <DursZuragch icon = "ic:round-menu"/>

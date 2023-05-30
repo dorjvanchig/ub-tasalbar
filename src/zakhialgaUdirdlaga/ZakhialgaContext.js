@@ -56,8 +56,8 @@ export default function ZakhialgaContext(props) {
 
     const zakhialgataiSuudalAvya = () => {
         const param = {
-            togloltiinNer: togloltiinMedeelel['ner'],
-            togloltiinTsag: togloltiinMedeelel['tsagiinMedeelel'][0]['khezee']
+            togloltiinNer: tomState.togloltiinMedeelel['ner'],
+            togloltiinTsag: tomState.togloltiinMedeelel['tsagiinMedeelel'][0]['khezee']
         }
         uilchilgeeDuudagch('/zakhialsanSuudluudAvya', param).then(result => {
             if(result.success) {
