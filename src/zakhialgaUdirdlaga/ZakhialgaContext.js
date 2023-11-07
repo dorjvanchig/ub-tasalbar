@@ -60,7 +60,7 @@ export default function ZakhialgaContext(props) {
             togloltiinTsag: tomState.togloltiinMedeelel['tsagiinMedeelel'][0]['khezee']
         }
         uilchilgeeDuudagch('/zakhialsanSuudluudAvya', param).then(result => {
-            if(result.success) {
+            if(result?.success) {
                 let jagsaalt = []
                 result.data.forEach(x => {
                     let a = `egnee${x.egnee}_${x.suudal}`

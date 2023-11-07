@@ -4,6 +4,7 @@ import Router from "next/router";
 import { objectEsekh, isNullOrUndefined } from "../components";
 
 var serveriinMedeelel = "localhost:8000";
+// var serveriinMedeelel = "192.168.100.47:8000";
 axiosCancel(axios);
 
 export const uilchilgeeDuudagch = (uilchilgeeniiNer, damjuulakhUtga, fileTokhirgoo, khuleekhKhugatsaa) => {
@@ -32,14 +33,16 @@ const kholbogch = (uilchilgeeniiNer, damjuulakhUtga = "", fileTokhirgoo, khuleek
 
     if (objectEsekh(fileTokhirgoo)) option = { ...option, ...fileTokhirgoo }; 
     if (damjuulakhUtga === null || damjuulakhUtga === undefined || damjuulakhUtga === "") damjuulakhUtga = " "; 
+    console.log('damjuulakhUtga',damjuulakhUtga)
     axios
         .post(baseURL, isString || fileTokhirgoo == true ? damjuulakhUtga : JSON.stringify(damjuulakhUtga), option)
         .then((response) => {
+            console.log('response',response)
             resolve(response.data); 
         })
         .catch((error) => { 
-            let aldaa = !isNullOrUndefined(error.response?.data?.aldaa) ? error.response?.data?.aldaa : error.response?.data?.error
-            resolve(aldaa) 
+            console.log('error',error)
+            resolve({aldaataiEsekh:true, error}) 
         });
 }; 
 export const khereglegchMedeelelKhadgalakh = (medeelel) => {

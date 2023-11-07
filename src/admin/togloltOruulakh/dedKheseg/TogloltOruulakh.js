@@ -213,7 +213,14 @@ export default function TogloltOruulakh(props) {
         tomState.yurunkhiiMedeelel['zurag'] = tomState.zurag
         tomState.yurunkhiiMedeelel.uniinMedeelel = tomState.bulgiinJagsaalt
         uilchilgeeDuudagch('togloltBurtgekh', tomState.yurunkhiiMedeelel).then(khariu => {
-            if (!isNullOrUndefined(khariu)){
+            debugger;
+            console.log('togloltBurtgekh', khariu)
+            if (!isNullOrUndefined(khariu?.aldaataiEsekh) && khariu?.aldaataiEsekh)
+            {
+                medeeKharuulakh('warning', khariu.error.message)
+                return
+            }
+            else if (!isNullOrUndefined(khariu)){
                 medeeKharuulakh('success', 'Тоглолт амжилттай бүртгэгдлээ')
                 if (props.talbarButsaakh)
                     props.talbarButsaakh()

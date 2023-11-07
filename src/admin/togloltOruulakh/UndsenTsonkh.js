@@ -61,7 +61,7 @@ export default function UndsenTsonkh() {
                                         <span className='text-sm text-slate-700 ml-2'>{ugugdul.zokhionBaiguulagch}</span>
                                     </div>
                                 </div>
-                                <div className='text-sm text-slate-600 py-1 w-[100%] h-[52px] truncate'>{ugugdul.delgerenguiMedeelel}</div>
+                                <div className='text-sm text-slate-600 py-1 w-[100%] h-[52px] truncate line-clamp-2' dangerouslySetInnerHTML={{__html: ugugdul.delgerenguiMedeelel}}></div>
                                 <div className='flex flex-row'>
                                     <div className='flex flex-row items-center bg-slate-200 px-1 py-1'> 
                                         <div className='text-xs'>Танхим:</div>
